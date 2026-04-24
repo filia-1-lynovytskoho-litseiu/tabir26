@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Табір Мрії 🏕️</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1a472a 0%, #2d5a3b 100%);
+            min-height: 100vh;
+            padding: 12px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* Компактна шапка */
+        .header {
+            background: rgba(255,255,255,0.95);
+            border-radius: 60px;
+            padding: 8px 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+        }
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .title h1 {
+            font-size: 1.3rem;
+            color: #2e7d32;
+            margin: 0;
+        }
+        .title p {
+            font-size: 0.7rem;
+            color: #666;
+        }
+        .role-badge {
+            background: #4caf50;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .menu-btn {
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+        .menu-btn:hover {
+            background: rgba(0,0,0,0.05);
+        }
+        .logout-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.75rem;
+        }
+        .exit-full-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.75rem;
+        }
+
+        /* Модальне вікно входу */
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-card {
+            background: white;
+            border-radius: 32px;
+            padding: 32px 24px;
+            width: 90%;
+            max-width: 340px;
+            text-align: center;
+        }
+        .login-card .logo {
+            margin: 0 auto 15px;
+            width: 70px;
+            height: 70px;
+            font-size: 38px;
+        }
+        .login-card input {
+            width: 100%;
+            padding: 12px;
+            margin: 12px 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 30px;
+            font-size: 16px;
+            text-align: center;
+            letter-spacing: 3px;
+        }
+        .login-card button {
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 30px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .login-error {
+            color: #dc3545;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        /* Меню налаштувань */
+        .settings-menu {
+            position: fixed;
+            top: 0;
+            right: -280px;
+            width: 280px;
+            height: 100%;
+            background: white;
+            box-shadow: -2px 0 20px rgba(0,0,0,0.2);
+            z-index: 1500;
+            transition: right 0.3s ease;
+            padding: 20px;
+        }
+        .settings-menu.open {
+            right: 0;
+        }
+        .settings-menu h3 {
+            margin-bottom: 20px;
+            color: #2e7d32;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+        .settings-menu button {
+            width: 100%;
+            margin: 8px 0;
+            padding: 12px;
+            border-radius: 30px;
+            background: #f0f0f0;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .settings-menu .danger {
+            background: #dc3545;
+            color: white;
+        }
+        .close-menu {
+            background: none !important;
+            font-size: 24px;
+            text-align: right;
+            padding: 0 !important;
+            margin-bottom: 20px;
+        }
+
+        /* Основний контент */
+        .main-layout {
+            display: flex;
+            gap: 20px;
+            flex-direction: column;
+        }
+        @media (min-width: 1200px) {
+            .main-layout { flex-direction: row; }
+            .days-section { flex: 2; min-width: 0; }
+            .blocks-section { width: 320px; flex-shrink: 0; }
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 14px;
+        }
+        .day-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        .day-card:hover { transform: translateY(-3px); }
+        .day-header {
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            color: white;
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .day-number { font-weight: bold; font-size: 14px; }
+        .day-date { font-size: 10px; opacity: 0.9; }
+        .day-count {
+            background: rgba(255,255,255,0.25);
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 11px;
+        }
+        .day-content {
+            min-height: 140px;
+            padding: 10px;
+            background: #fefefe;
+            margin: 8px;
+            border-radius: 14px;
+        }
+        .day-content.drag-over {
+            background: #e8f5e9;
+            border: 2px dashed #4caf50;
+        }
+        .block-chip {
+            background: linear-gradient(135deg, #e3f2fd, #bbdef5);
+            border-left: 4px solid #2196f3;
+            padding: 8px 10px;
+            margin-bottom: 6px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .block-name { font-weight: 700; color: #1565c0; font-size: 13px; }
+        .block-desc { font-size: 10px; color: #666; }
+        .delete-block, .view-detail {
+            background: #ff5252;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        .view-detail { background: #2196f3; }
+        .empty-day {
+            text-align: center;
+            color: #aaa;
+            font-style: italic;
+            padding: 20px;
+            font-size: 12px;
+        }
+        .add-to-day {
+            margin-top: 8px;
+            text-align: center;
+        }
+        .add-day-btn {
+            background: #e0e0e0;
+            border: none;
+            padding: 6px;
+            border-radius: 30px;
+            width: 100%;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        /* Режим повного екрану для дня */
+        .fullscreen-day {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a472a 0%, #2d5a3b 100%);
+            z-index: 1100;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .fullscreen-header {
+            background: white;
+            border-radius: 20px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .fullscreen-nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .nav-btn {
+            background: #4caf50;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .nav-btn:hover { transform: scale(1.1); }
+        .fullscreen-day-card {
+            background: white;
+            border-radius: 28px;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .fullscreen-day-header {
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            color: white;
+            padding: 15px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .fullscreen-day-content {
+            min-height: 400px;
+            padding: 15px;
+        }
+        .fullscreen-block {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .blocks-panel {
+            background: white;
+            border-radius: 24px;
+            padding: 18px;
+            position: sticky;
+            top: 16px;
+            max-height: calc(100vh - 32px);
+            overflow-y: auto;
+        }
+        .blocks-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .block-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 12px;
+            border-radius: 14px;
+            cursor: grab;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .block-item:active { cursor: grabbing; }
+        .add-btn {
+            background: rgba(255,255,255,0.25);
+            border-radius: 30px;
+            padding: 4px 10px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 28px;
+            padding: 24px;
+            width: 90%;
+            max-width: 400px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .day-option {
+            background: #f0f7ff;
+            padding: 12px;
+            border-radius: 14px;
+            margin-bottom: 8px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 40px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1001;
+            font-size: 13px;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .toast.show { opacity: 1; }
+
+        @media (max-width: 768px) {
+            .header { padding: 8px 15px; }
+            .title h1 { font-size: 1rem; }
+            .blocks-panel { position: static; }
+            .blocks-grid { flex-direction: row; flex-wrap: wrap; }
+            .block-item { min-width: 140px; }
+            .toast { white-space: normal; text-align: center; max-width: 90%; }
+            .fullscreen-nav .nav-btn { width: 35px; height: 35px; font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="loginOverlay" class="login-overlay">
+    <div class="login-card">
+        <div class="logo">🏕️</div>
+        <h2>Табір Мрії</h2>
+        <p>Введіть код доступу</p>
+        <input type="password" id="accessCode" placeholder="Код" maxlength="4" style="letter-spacing: 4px;">
+        <button onclick="checkAccess()">Увійти</button>
+        <div id="loginError" class="login-error"></div>
+        <p style="font-size: 11px; margin-top: 15px; color:#888;">Вчитель: 0023 | Учень: 1111</p>
+    </div>
+</div>
+
+<div class="container" id="appContainer" style="display: none;">
+    <div class="header">
+        <div class="logo-area">
+            <div class="logo">
+                <img src="logo.png" alt="logo" onerror="this.style.display='none'; this.parentElement.innerHTML='🏕️'">
+            </div>
+            <div class="title">
+                <h1>🏕️ Табір Мрії</h1>
+                <p>16 днів пригод</p>
+            </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="role-badge" id="roleBadge">👨‍🏫 Вчитель</span>
+            <button class="menu-btn" onclick="toggleMenu()">⚙️</button>
+            <button class="logout-btn" onclick="logout()">🚪</button>
+        </div>
+    </div>
+
+    <div class="main-layout">
+        <div class="days-section">
+            <div id="daysContainer" class="days-grid"></div>
+        </div>
+        <div class="blocks-panel" id="blocksPanel">
+            <h3 style="margin-bottom: 15px;">📦 Заходи</h3>
+            <div id="blocksContainer" class="blocks-grid"></div>
+        </div>
+    </div>
+</div>
+
+<div id="settingsMenu" class="settings-menu">
+    <button class="close-menu" onclick="toggleMenu()">✖</button>
+    <h3>⚙️ Налаштування</h3>
+    <button onclick="showResetPassword()">🗑️ Скинути всі дні</button>
+    <button onclick="loadData(); toggleMenu();">🔄 Оновити дані</button>
+    <button onclick="showHelp(); toggleMenu();">ℹ️ Довідка</button>
+</div>
+
+<div id="fullscreenContainer"></div>
+
+<div id="detailModal" class="modal">
+    <div class="modal-content">
+        <h3 id="detailTitle">📋 Деталі заходу</h3>
+        <div id="detailBody"></div>
+        <button onclick="closeDetailModal()" style="margin-top: 15px; width:100%; padding:10px; border-radius:30px; border:none; background:#4caf50; color:white; cursor:pointer;">Закрити</button>
+    </div>
+</div>
+
+<div id="toast" class="toast">✅</div>
+
+<script>
+    const TEACHER_CODE = "0023";
+    const STUDENT_CODE = "1111";
+    const ADMIN_RESET_CODE = "0230";
+    
+    let currentRole = null;
+    let assignments = {};
+    let draggedBlock = null;
+    let pendingSave = null;
+    let fullscreenDay = null;
+    
+    const startDate = new Date(2026, 5, 1);
+    const campDates = [];
+    let currentDayIndex = null;
+    
+    function generateCampDates() {
+        let date = new Date(startDate);
+        let count = 0;
+        while (count < 16) {
+            const dayOfWeek = date.getDay();
+            if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+                campDates.push(new Date(date));
+                count++;
+            }
+            date.setDate(date.getDate() + 1);
+        }
+    }
+    generateCampDates();
+    
+    function formatDate(date) {
+        return `${date.getDate().toString().padStart(2,'0')}.${(date.getMonth()+1).toString().padStart(2,'0')}.${date.getFullYear()}`;
+    }
+    
+    function getTodayCampIndex() {
+        const today = new Date();
+        today.setHours(0,0,0,0);
+        for(let i=0; i<campDates.length; i++) {
+            if(campDates[i].toDateString() === today.toDateString()) return i+1;
+        }
+        return null;
+    }
+    
+    const BLOCKS = [
+        { id: "b1", name: "🏃 Ранкова зарядка", desc: "8:30", details: "Розминка, біг, загальні вправи. Розвиває дисципліну та бадьорість на весь день." },
+        { id: "b2", name: "🍳 Сніданок", desc: "9:00", details: "Повноцінне харчування: каша, бутерброди, чай. Важливо для енергії." },
+        { id: "b3", name: "🎨 Майстерка", desc: "10:00", details: "Творчі заняття: малювання, ліплення, аплікація. Розвиває фантазію." },
+        { id: "b4", name: "🧗 Скелелазіння", desc: "10:00", details: "Скеледром, безпека, командна робота. Тренує силу та витривалість." },
+        { id: "b5", name: "🏊 Бассейн", desc: "12:15", details: "Плавання, ігри на воді, безпека на воді." },
+        { id: "b6", name: "🍽️ Обід", desc: "13:30", details: "Суп, друге, компот. Відновлення сил." },
+        { id: "b7", name: "💤 Тиха година", desc: "14:30", details: "Відпочинок, сон, читання. Відновлення енергії." },
+        { id: "b8", name: "🎭 Театр", desc: "15:45", details: "Акторська майстерність, етюди, сценки." },
+        { id: "b9", name: "⚽ Футбол", desc: "17:30", details: "Командна гра, стратегія, фізичне навантаження." },
+        { id: "b10", name: "🍬 Полуденок", desc: "18:45", details: "Легке перекушування: йогурт, печиво, сік." },
+        { id: "b11", name: "🌿 Квест", desc: "19:30", details: "Командний пошук скарбів, загадки, пригоди." },
+        { id: "b12", name: "🎬 Кіно", desc: "21:00", details: "Перегляд пізнавальних та розважальних фільмів." },
+        { id: "b13", name: "📖 Читання", desc: "22:30", details: "Читання книг, обговорення, розвиток мови." },
+        { id: "b14", name: "🔥 Ватра", desc: "20:00", details: "Пісні під гітару, розповіді, дружнє коло." },
+        { id: "b15", name: "🧩 Ігри", desc: "16:00", details: "Настільні ігри, логіка, стратегія." },
+        { id: "b16", name: "📸 Фото", desc: "11:00", details: "Фотополювання, створення спогадів." },
+        { id: "b17", name: "🎤 Талант-шоу", desc: "16:00", details: "Виступ талантів, концерт." },
+        { id: "b18", name: "🧘 Йога", desc: "7:30", details: "Ранкова розтяжка, дихання, спокій." },
+        { id: "b19", name: "🎭 Стендап", desc: "20:00", details: "Гумор, імпровізація, жарти." },
+        { id: "b20", name: "⭐ Підсумки", desc: "22:00", details: "Підбиття підсумків дня, нагородження." }
+    ];
+
+    const API_URL = 'https://script.google.com/macros/s/AKfycbyN1LB9WI1pJY6YXdQeZGcv3mXwUZBwTrHmS1mvpP51O5E81Pf5IUK7Mx6CIrPhJR2qsg/exec';
+
+    async function loadData() {
+        showToast('🔄 Завантаження...');
+        try {
+            const response = await fetch(API_URL + '?t=' + Date.now());
+            const data = await response.json();
+            for (let i = 1; i <= 16; i++) assignments[i] = [];
+            const lastEntry = {};
+            if (Array.isArray(data)) {
+                for (let i = 1; i < data.length; i++) {
+                    const row = data[i];
+                    if (row && row[0] && row[0].toString().startsWith('day')) lastEntry[row[0]] = row[1];
+                }
+                for (const [dayName, blocksValue] of Object.entries(lastEntry)) {
+                    const dayNum = parseInt(dayName.replace('day', ''));
+                    if (dayNum >= 1 && dayNum <= 16 && blocksValue) {
+                        try { assignments[dayNum] = JSON.parse(blocksValue); } catch(e) {}
+                    }
+                }
+            }
+            renderAll();
+            showToast('✅ Дані завантажено');
+        } catch(e) { showToast('❌ Помилка', true); }
+    }
+
+    async function saveOneDay(day) {
+        try {
+            await fetch(API_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: 'day' + day, value: JSON.stringify(assignments[day] || []) })
+            });
+            return true;
+        } catch(e) { return false; }
+    }
+
+    function scheduleSave(day) {
+        if (pendingSave) clearTimeout(pendingSave.timeout);
+        const timeout = setTimeout(async () => {
+            await saveOneDay(day);
+            pendingSave = null;
+        }, 300);
+        pendingSave = { day, timeout };
+    }
+
+    function addBlockToDay(day, block) {
+        if (currentRole !== 'teacher') { showToast('⚠️ Тільки для вчителів', true); return; }
+        if (!assignments[day]) assignments[day] = [];
+        if (!assignments[day].some(b => b.id === block.id)) {
+            assignments[day].push({ ...block });
+            if (fullscreenDay === day) renderFullscreenDay(day);
+            else renderDays();
+            scheduleSave(day);
+            showToast(`➕ ${block.name} → День ${day}`);
+        } else { showToast(`⚠️ Вже є`, true); }
+    }
+
+    function removeBlock(day, blockId) {
+        if (currentRole !== 'teacher') { showToast('⚠️ Тільки для вчителів', true); return; }
+        assignments[day] = assignments[day].filter(b => b.id !== blockId);
+        if (fullscreenDay === day) renderFullscreenDay(day);
+        else renderDays();
+        scheduleSave(day);
+        showToast(`➖ Видалено`);
+    }
+
+    function showDetails(block) {
+        document.getElementById('detailTitle').innerHTML = `📋 ${block.name}`;
+        document.getElementById('detailBody').innerHTML = `
+            <p><strong>⏰ Час:</strong> ${block.desc}</p>
+            <p><strong>📖 Опис:</strong> ${block.details || 'Детальна розробка заходу буде додана пізніше.'}</p>
+            <hr>
+            <p><strong>🎯 Мета:</strong> Розвиток навичок, командоутворення, активний відпочинок.</p>
+            <p><strong>📝 Матеріали:</strong> Залежать від формату заходу.</p>
+        `;
+        document.getElementById('detailModal').style.display = 'flex';
+    }
+
+    function closeDetailModal() { document.getElementById('detailModal').style.display = 'none'; }
+
+    async function resetAllData() {
+        if (currentRole !== 'teacher') { showToast('⚠️ Тільки для вчителів', true); return; }
+        const password = prompt('🔐 Введіть пароль адміністратора для скидання всіх днів:');
+        if (password === ADMIN_RESET_CODE) {
+            if (confirm('Увага! Це видалить ВСІ заходи з усіх днів. Продовжити?')) {
+                for (let i = 1; i <= 16; i++) assignments[i] = [];
+                if (fullscreenDay) renderFullscreenDay(fullscreenDay);
+                else renderDays();
+                for (let i = 1; i <= 16; i++) await saveOneDay(i);
+                showToast('✅ Всі дні скинуто');
+            }
+        } else if (password !== null) {
+            showToast('❌ Невірний пароль', true);
+        }
+    }
+
+    function showResetPassword() { resetAllData(); toggleMenu(); }
+
+    // Режим повного екрану
+    function openFullscreen(day) {
+        fullscreenDay = day;
+        renderFullscreenDay(day);
+    }
+
+    function closeFullscreen() {
+        fullscreenDay = null;
+        document.getElementById('fullscreenContainer').innerHTML = '';
+        renderAll();
+    }
+
+    function nextDay() {
+        let newDay = fullscreenDay + 1;
+        if (newDay > 16) newDay = 1;
+        fullscreenDay = newDay;
+        renderFullscreenDay(newDay);
+    }
+
+    function prevDay() {
+        let newDay = fullscreenDay - 1;
+        if (newDay < 1) newDay = 16;
+        fullscreenDay = newDay;
+        renderFullscreenDay(newDay);
+    }
+
+    function renderFullscreenDay(day) {
+        const container = document.getElementById('fullscreenContainer');
+        const dateStr = campDates[day-1] ? formatDate(campDates[day-1]) : 'Дата не визначена';
+        const blocks = assignments[day] || [];
+        
+        let blocksHtml = '';
+        blocks.forEach(b => {
+            blocksHtml += `
+                <div class="fullscreen-block">
+                    <div>
+                        <div class="block-name">${b.name}</div>
+                        <div class="block-desc">${b.desc || ''}</div>
+                    </div>
+                    <div>
+                        <button class="view-detail" onclick="showDetails(${JSON.stringify(b).replace(/"/g, '&quot;')})">📖</button>
+                        ${currentRole === 'teacher' ? `<button class="delete-block" onclick="removeBlock(${day}, '${b.id}')">✖</button>` : ''}
+                    </div>
+                </div>
+            `;
+        });
+        
+        if (blocks.length === 0) {
+            blocksHtml = '<div class="empty-day">📌 Немає заходів</div>';
+        }
+        
+        container.innerHTML = `
+            <div class="fullscreen-day">
+                <div class="fullscreen-header">
+                    <div class="fullscreen-nav">
+                        <button class="nav-btn" onclick="prevDay()">◀</button>
+                        <span style="font-weight: bold; font-size: 1.2rem;">📅 День ${day}</span>
+                        <button class="nav-btn" onclick="nextDay()">▶</button>
+                    </div>
+                    <div>
+                        <span style="margin-right: 15px; color:#666;">${dateStr}</span>
+                        <button class="exit-full-btn" onclick="closeFullscreen()">✖ Вийти</button>
+                    </div>
+                </div>
+                <div class="fullscreen-day-card">
+                    <div class="fullscreen-day-header">
+                        <div style="font-size: 1.5rem;">🏕️ День ${day}</div>
+                        <div style="font-size: 0.9rem;">${dateStr}</div>
+                        <div style="font-size: 0.8rem; margin-top: 5px;">${blocks.length} заходів</div>
+                    </div>
+                    <div class="fullscreen-day-content">
+                        ${blocksHtml}
+                        ${currentRole === 'teacher' ? `
+                            <div class="add-to-day" style="margin-top: 15px;">
+                                <button class="add-day-btn" onclick="showBlockSelector(${day})">➕ Додати захід</button>
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function renderDays() {
+        const container = document.getElementById('daysContainer');
+        container.innerHTML = '';
+        for (let day = 1; day <= 16; day++) {
+            const dateStr = campDates[day-1] ? formatDate(campDates[day-1]) : 'Дата не визначена';
+            const isToday = (currentRole === 'student' && currentDayIndex === day);
+            
+            if (currentRole === 'student') {
+                if (!isToday) continue;
+                // Для учня - відкриваємо автоматично в fullscreen
+                setTimeout(() => { if(fullscreenDay === null) openFullscreen(day); }, 100);
+            }
+            
+            const card = document.createElement('div'); card.className = 'day-card';
+            card.onclick = () => { if(currentRole === 'teacher') openFullscreen(day); };
+            
+            const header = document.createElement('div'); header.className = 'day-header';
+            header.innerHTML = `<div><div class="day-number">📅 День ${day}</div><div class="day-date">${dateStr}</div></div>
+                                <div class="day-count">${assignments[day]?.length || 0} заходів</div>`;
+            const content = document.createElement('div'); content.className = 'day-content';
+            if (currentRole === 'teacher') {
+                content.addEventListener('dragover', (e) => { e.preventDefault(); content.classList.add('drag-over'); });
+                content.addEventListener('dragleave', () => content.classList.remove('drag-over'));
+                content.addEventListener('drop', (e) => { e.preventDefault(); content.classList.remove('drag-over'); if(draggedBlock) addBlockToDay(day, draggedBlock); });
+            }
+            const blocks = assignments[day] || [];
+            if (blocks.length === 0) { content.innerHTML = '<div class="empty-day">📌 Немає заходів</div>'; }
+            else {
+                blocks.forEach(b => {
+                    const chip = document.createElement('div'); chip.className = 'block-chip';
+                    chip.innerHTML = `<div><div class="block-name">${b.name}</div><div class="block-desc">${b.desc || ''}</div></div>
+                                      <div><button class="view-detail" onclick="event.stopPropagation(); showDetails(${JSON.stringify(b).replace(/"/g, '&quot;')})">📖</button>
+                                      ${currentRole === 'teacher' ? `<button class="delete-block" onclick="event.stopPropagation(); removeBlock(${day}, '${b.id}')">✖</button>` : ''}</div>`;
+                    content.appendChild(chip);
+                });
+            }
+            if (currentRole === 'teacher') {
+                const addDiv = document.createElement('div'); addDiv.className = 'add-to-day';
+                addDiv.innerHTML = `<button class="add-day-btn" onclick="event.stopPropagation(); showBlockSelector(${day})">➕ Додати захід</button>`;
+                content.appendChild(addDiv);
+            }
+            card.appendChild(header); card.appendChild(content); container.appendChild(card);
+        }
+    }
+
+    function showBlockSelector(day) {
+        let options = '';
+        BLOCKS.forEach(b => { options += `<div class="day-option" onclick="addBlockToDay(${day}, ${JSON.stringify(b).replace(/"/g, '&quot;')}); closeDetailModal();">${b.name}</div>`; });
+        document.getElementById('detailTitle').innerHTML = `📅 День ${day} - Виберіть захід`;
+        document.getElementById('detailBody').innerHTML = `<div class="day-list">${options}</div>`;
+        document.getElementById('detailModal').style.display = 'flex';
+    }
+
+    function showBlockSelectorForBlock(block) {
+        let options = '';
+        for (let i = 1; i <= 16; i++) {
+            options += `<div class="day-option" onclick="addBlockToDay(${i}, ${JSON.stringify(block).replace(/"/g, '&quot;')}); closeDetailModal();">📅 День ${i} (${campDates[i-1] ? formatDate(campDates[i-1]) : '-'})</div>`;
+        }
+        document.getElementById('detailTitle').innerHTML = `📍 Виберіть день для: ${block.name}`;
+        document.getElementById('detailBody').innerHTML = `<div class="day-list">${options}</div>`;
+        document.getElementById('detailModal').style.display = 'flex';
+    }
+
+    function renderBlocks() {
+        if (currentRole !== 'teacher') { 
+            const blocksPanel = document.getElementById('blocksPanel');
+            if (blocksPanel) blocksPanel.style.display = 'none'; 
+            return; 
+        }
+        const blocksPanel = document.getElementById('blocksPanel');
+        if (blocksPanel) blocksPanel.style.display = 'block';
+        const container = document.getElementById('blocksContainer');
+        if (!container) return;
+        container.innerHTML = '';
+        BLOCKS.forEach(block => {
+            const div = document.createElement('div'); 
+            div.className = 'block-item';
+            div.setAttribute('draggable', 'true');
+            div.innerHTML = `<div><div class="block-item-name">${block.name}</div><div class="block-item-desc">${block.desc}</div></div>
+                             <div class="add-btn" onclick="showBlockSelectorForBlock(${JSON.stringify(block).replace(/"/g, '&quot;')})">➕</div>`;
+            div.addEventListener('dragstart', (e) => { 
+                draggedBlock = block; 
+                e.target.style.opacity = '0.5'; 
+            });
+            div.addEventListener('dragend', (e) => { 
+                e.target.style.opacity = '1'; 
+                draggedBlock = null; 
+            });
+            container.appendChild(div);
+        });
+    }
+
+    function renderAll() { 
+        renderDays(); 
+        renderBlocks(); 
+    }
+
+    function showToast(msg, isErr = false) {
+        const t = document.getElementById('toast');
+        t.textContent = msg;
+        t.style.background = isErr ? '#dc3545' : '#2e7d32';
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 2000);
+    }
+
+    function checkAccess() {
+        const code = document.getElementById('accessCode').value;
+        if (code === TEACHER_CODE) {
+            currentRole = 'teacher';
+            document.getElementById('roleBadge').innerHTML = '👨‍🏫 Вчитель';
+            startApp();
+        } else if (code === STUDENT_CODE) {
+            currentRole = 'student';
+            document.getElementById('roleBadge').innerHTML = '🧑‍🎓 Учень';
+            currentDayIndex = getTodayCampIndex();
+            if (!currentDayIndex) currentDayIndex = 1;
+            startApp();
+        } else {
+            document.getElementById('loginError').innerText = 'Невірний код доступу';
+        }
+    }
+
+    function startApp() {
+        document.getElementById('loginOverlay').style.display = 'none';
+        document.getElementById('appContainer').style.display = 'block';
+        loadData();
+    }
+
+    function logout() {
+        currentRole = null;
+        fullscreenDay = null;
+        document.getElementById('fullscreenContainer').innerHTML = '';
+        document.getElementById('loginOverlay').style.display = 'flex';
+        document.getElementById('appContainer').style.display = 'none';
+        document.getElementById('accessCode').value = '';
+        document.getElementById('loginError').innerText = '';
+    }
+
+    function toggleMenu() {
+        document.getElementById('settingsMenu').classList.toggle('open');
+    }
+    
+    function showHelp() {
+        alert('🏕️ Табір Мрії\n\n👨‍🏫 Вчитель (код 0023):\n• Перетягуйте заходи на дні\n• Натисніть на день для перегляду на весь екран\n• Гортайте дні стрілками ◀ ▶\n• Додавайте заходи кнопкою +\n\n🧑‍🎓 Учень (код 1111):\n• Бачить тільки сьогоднішній день\n• Автоматично відкривається на весь екран\n\n🔐 Скидання всіх днів: пароль 0230\n\n📖 Натисніть 📖 для деталей заходу');
+    }
+
+    // Закриття модального вікна при кліку поза ним
+    window.onclick = (e) => { 
+        if(e.target === document.getElementById('detailModal')) closeDetailModal(); 
+        if(e.target === document.getElementById('settingsMenu')) toggleMenu();
+    };
+</script>
+</body>
+</html>
