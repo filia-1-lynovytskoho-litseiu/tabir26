@@ -1,0 +1,1739 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <title>Табір Мрії 🏕️ - Розклад для загонів</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #1a472a 0%, #2d5a3b 100%);
+            min-height: 100vh;
+            padding: 10px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: rgba(255,255,255,0.95);
+            border-radius: 50px;
+            padding: 6px 16px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+        .title h1 {
+            font-size: 1.1rem;
+            color: #2e7d32;
+            margin: 0;
+        }
+        .title p {
+            font-size: 0.6rem;
+            color: #666;
+        }
+        .role-badge {
+            background: #4caf50;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+        .menu-btn, .logout-btn {
+            background: none;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.75rem;
+        }
+        .menu-btn {
+            background: #e0e0e0;
+            font-size: 18px;
+            padding: 6px 10px;
+        }
+        .logout-btn {
+            background: #6c757d;
+            color: white;
+        }
+
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a472a 0%, #0d2818 100%);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+        .login-card {
+            background: white;
+            border-radius: 40px;
+            padding: 32px 24px;
+            width: 100%;
+            max-width: 360px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.4s ease;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .login-card .logo {
+            margin: 0 auto 16px;
+            width: 70px;
+            height: 70px;
+            font-size: 40px;
+        }
+        .login-card h2 {
+            color: #2e7d32;
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+        }
+        .login-card .subtitle {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+        .login-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .teacher-login-btn, .student-login-btn {
+            padding: 14px 20px;
+            border: none;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .teacher-login-btn {
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            color: white;
+        }
+        .student-login-btn {
+            background: linear-gradient(135deg, #2196f3, #1565c0);
+            color: white;
+        }
+        .teacher-login-btn:active, .student-login-btn:active {
+            transform: scale(0.98);
+        }
+        .password-section {
+            display: none;
+            margin-top: 16px;
+        }
+        .password-section input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 40px;
+            font-size: 16px;
+            text-align: center;
+            letter-spacing: 4px;
+        }
+        .password-section button {
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 40px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .back-btn {
+            background: none !important;
+            color: #666 !important;
+            margin-top: 8px;
+        }
+        .login-error {
+            color: #dc3545;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+        .welcome-student {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 16px;
+        }
+        .squad-select-login {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        .squad-select-login button {
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 40px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .settings-menu {
+            position: fixed;
+            top: 0;
+            right: -280px;
+            width: 280px;
+            height: 100%;
+            background: white;
+            box-shadow: -2px 0 20px rgba(0,0,0,0.2);
+            z-index: 1500;
+            transition: right 0.3s ease;
+            padding: 20px;
+        }
+        .settings-menu.open { right: 0; }
+        .settings-menu h3 {
+            margin-bottom: 20px;
+            color: #2e7d32;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+        .settings-menu button {
+            width: 100%;
+            margin: 8px 0;
+            padding: 12px;
+            border-radius: 30px;
+            background: #f0f0f0;
+            border: none;
+            cursor: pointer;
+        }
+        .settings-menu .danger { background: #dc3545; color: white; }
+        .close-menu { background: none !important; font-size: 24px; text-align: right; padding: 0 !important; }
+
+        .main-layout {
+            display: flex;
+            gap: 16px;
+            flex-direction: column;
+        }
+        @media (min-width: 1024px) {
+            .main-layout { flex-direction: row; }
+            .days-section { flex: 2; min-width: 0; }
+            .blocks-panel { width: 320px; flex-shrink: 0; }
+        }
+
+        .squad-selector {
+            background: white;
+            border-radius: 50px;
+            padding: 6px 12px;
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+            justify-content: center;
+        }
+        .squad-btn {
+            flex: 1;
+            padding: 8px 16px;
+            border-radius: 40px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+        .squad-btn.active {
+            background: #4caf50;
+            color: white;
+        }
+        .squad-btn:not(.active) {
+            background: #e0e0e0;
+            color: #666;
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 12px;
+        }
+        @media (max-width: 700px) {
+            .days-grid { grid-template-columns: 1fr; }
+        }
+        .day-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        .day-card:active { transform: scale(0.99); }
+        .day-header {
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            color: white;
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .day-number { font-weight: bold; font-size: 13px; word-break: break-word; flex: 1; }
+        .day-date { font-size: 9px; opacity: 0.9; margin-top: 2px; }
+        .day-count {
+            background: rgba(255,255,255,0.25);
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 11px;
+            white-space: nowrap;
+            margin-left: 8px;
+        }
+        .day-content {
+            padding: 10px;
+            background: #fefefe;
+            margin: 8px;
+            border-radius: 14px;
+            max-height: none;
+            overflow-y: visible;
+        }
+        .block-chip {
+            background: linear-gradient(135deg, #e3f2fd, #bbdef5);
+            border-left: 4px solid #2196f3;
+            padding: 8px 10px;
+            margin-bottom: 6px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+        .template-chip {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            border-left: 4px solid #ff9800;
+        }
+        .block-info { flex: 1; min-width: 0; }
+        .block-name { font-weight: 700; color: #1565c0; font-size: 13px; word-break: break-word; }
+        .template-name { color: #e65100; }
+        .block-desc { font-size: 10px; color: #666; margin-top: 2px; }
+        .block-actions { display: flex; gap: 5px; flex-shrink: 0; }
+        .delete-block, .view-detail, .edit-link-btn {
+            background: #ff5252;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: opacity 0.2s;
+        }
+        .view-detail { background: #2196f3; }
+        .edit-link-btn { background: #ff9800; font-size: 14px; }
+        .empty-day { text-align: center; color: #aaa; font-style: italic; padding: 16px; font-size: 12px; }
+        .add-day-btn {
+            background: #e0e0e0;
+            border: none;
+            padding: 8px;
+            border-radius: 30px;
+            width: 100%;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 4px;
+        }
+
+        .fullscreen-day {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a472a 0%, #2d5a3b 100%);
+            z-index: 1100;
+            overflow-y: auto;
+            padding: 12px;
+        }
+        .fullscreen-header {
+            background: white;
+            border-radius: 20px;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .fullscreen-nav { display: flex; align-items: center; gap: 10px; }
+        .nav-btn {
+            background: #4caf50;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .fullscreen-day-card {
+            background: white;
+            border-radius: 24px;
+            padding: 16px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .fullscreen-day-header {
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            color: white;
+            padding: 16px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        .day-name-title { font-size: 1.4rem; font-weight: bold; margin-bottom: 6px; word-break: break-word; }
+        .template-badge { background: rgba(255,255,255,0.2); display: inline-block; padding: 3px 10px; border-radius: 30px; font-size: 11px; margin-top: 6px; }
+        .dev-link { margin-top: 10px; font-size: 12px; }
+        .dev-link a { color: #FFD700; text-decoration: none; }
+        .edit-day-name-btn { background: rgba(255,255,255,0.25); border: none; color: white; padding: 4px 12px; border-radius: 30px; cursor: pointer; font-size: 11px; margin-top: 8px; }
+        .fullscreen-day-content { padding: 8px; max-height: 55vh; overflow-y: auto; }
+        .fullscreen-block {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 12px;
+            margin-bottom: 8px;
+            border-radius: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+        .fullscreen-template-block {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+        }
+        .fullscreen-block-info { flex: 1; min-width: 0; }
+        .fullscreen-block-name { font-weight: 700; color: #1565c0; font-size: 14px; word-break: break-word; }
+        .fullscreen-template-name { color: #e65100; }
+        .fullscreen-block-desc { font-size: 11px; color: #666; margin-top: 3px; }
+        .fullscreen-block-actions { display: flex; gap: 8px; flex-shrink: 0; }
+
+        .blocks-panel {
+            background: white;
+            border-radius: 24px;
+            padding: 16px;
+            position: sticky;
+            top: 10px;
+            max-height: calc(100vh - 20px);
+            overflow-y: auto;
+        }
+        .blocks-grid { display: flex; flex-direction: column; gap: 8px; }
+        .block-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 12px;
+            border-radius: 14px;
+            cursor: grab;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+        .block-item:active { cursor: grabbing; opacity: 0.8; }
+        .template-item {
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+        }
+        .block-item-info { flex: 1; min-width: 0; }
+        .block-item-name { font-weight: 600; font-size: 13px; word-break: break-word; }
+        .block-item-desc { font-size: 10px; opacity: 0.8; margin-top: 2px; }
+        .add-btn {
+            background: rgba(255,255,255,0.25);
+            border-radius: 30px;
+            padding: 4px 10px;
+            cursor: pointer;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 28px;
+            padding: 20px;
+            width: 100%;
+            max-width: 400px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .day-option, .template-option {
+            background: #f0f7ff;
+            padding: 12px;
+            border-radius: 14px;
+            margin-bottom: 8px;
+            text-align: center;
+            cursor: pointer;
+            word-break: break-word;
+        }
+
+        .confirm-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 4000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+        .confirm-card {
+            background: white;
+            border-radius: 28px;
+            padding: 24px;
+            max-width: 300px;
+            width: 100%;
+            text-align: center;
+        }
+        .confirm-card p { margin-bottom: 20px; font-size: 16px; }
+        .confirm-buttons { display: flex; gap: 12px; }
+        .confirm-buttons button {
+            flex: 1;
+            padding: 10px;
+            border-radius: 40px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .confirm-yes { background: #dc3545; color: white; }
+        .confirm-no { background: #e0e0e0; color: #333; }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 40px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1001;
+            font-size: 13px;
+            pointer-events: none;
+            text-align: center;
+            max-width: 90%;
+        }
+        .toast.show { opacity: 1; }
+
+        .template-buttons { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 10px; }
+        .template-btn { background: #ff9800; color: white; border: none; padding: 6px 10px; border-radius: 30px; cursor: pointer; font-size: 11px; }
+        .custom-event-input { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 8px; 
+            margin-top: 12px; 
+        }
+        .custom-event-input input, .custom-event-input textarea {
+            padding: 10px 12px;
+            border-radius: 30px;
+            border: 1px solid #ccc;
+            font-size: 13px;
+            width: 100%;
+            font-family: inherit;
+        }
+        .custom-event-input textarea {
+            border-radius: 20px;
+            resize: vertical;
+            min-height: 60px;
+        }
+        .custom-event-input button {
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .today-badge {
+            background: #ff9800;
+            color: white;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-left: 8px;
+            display: inline-block;
+        }
+
+        .link-input {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .link-input input {
+            flex: 1;
+            padding: 8px 12px;
+            border-radius: 30px;
+            border: 1px solid #ccc;
+            font-size: 13px;
+        }
+        .link-input button {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 8px; }
+            .day-name-title { font-size: 1.2rem; }
+            .fullscreen-block-name { font-size: 13px; }
+            .delete-block, .view-detail, .edit-link-btn { width: 36px; height: 36px; }
+            .squad-btn { padding: 6px 12px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="loginOverlay" class="login-overlay">
+    <div class="login-card">
+        <div class="logo">🏕️</div>
+        <h2>Табір Мрії</h2>
+        <p class="subtitle">Літній табір активного відпочинку</p>
+        
+        <div class="login-buttons">
+            <button class="student-login-btn" onclick="showStudentWelcome()">🧑‍🎓 Увійти як учень</button>
+            <button class="teacher-login-btn" onclick="showTeacherPassword()">👨‍🏫 Увійти як вчитель</button>
+        </div>
+        
+        <div id="teacherPasswordSection" class="password-section">
+            <input type="password" id="teacherCode" placeholder="Код вчителя" maxlength="4" inputmode="numeric">
+            <button onclick="checkTeacherCode()">Підтвердити</button>
+            <button class="back-btn" onclick="hideTeacherPassword()">⬅ Назад</button>
+            <div id="teacherError" class="login-error"></div>
+        </div>
+        
+        <div id="studentWelcomeSection" class="welcome-student" style="display: none;">
+            <div style="font-size: 32px;">👋</div>
+            <div style="font-weight: bold; margin: 10px 0;">Ласкаво просимо!</div>
+            <p>Оберіть ваш загін:</p>
+            <div class="squad-select-login">
+                <button onclick="enterAsStudent(1)">🏅 Загін 1</button>
+                <button onclick="enterAsStudent(2)">⭐ Загін 2</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="appContainer" style="display: none;">
+    <div class="header">
+        <div class="logo-area">
+            <div class="logo">🏕️</div>
+            <div class="title">
+                <h1>Табір Мрії</h1>
+                <p>14 днів пригод</p>
+            </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px;">
+            <span class="role-badge" id="roleBadge">👨‍🏫 Вчитель</span>
+            <button class="menu-btn" onclick="toggleMenu()">⚙️</button>
+            <button class="logout-btn" onclick="logout()">🚪</button>
+        </div>
+    </div>
+
+    <div class="squad-selector" id="squadSelector" style="display: none;">
+        <button class="squad-btn active" onclick="selectSquad(1)">🏅 Загін 1</button>
+        <button class="squad-btn" onclick="selectSquad(2)">⭐ Загін 2</button>
+    </div>
+
+    <div class="main-layout">
+        <div class="days-section" id="daysSection">
+            <div id="daysContainer" class="days-grid"></div>
+        </div>
+        <div class="blocks-panel" id="blocksPanel">
+            <h3 style="margin-bottom: 12px; font-size: 1rem;">📦 Готові заходи</h3>
+            <div id="blocksContainer" class="blocks-grid"></div>
+            <h3 style="margin: 15px 0 10px; font-size: 1rem;">📋 Шаблони днів</h3>
+            <div id="templatesContainer" class="blocks-grid"></div>
+        </div>
+    </div>
+</div>
+
+<div id="settingsMenu" class="settings-menu">
+    <button class="close-menu" onclick="toggleMenu()">✖</button>
+    <h3>⚙️ Налаштування</h3>
+    <button onclick="showResetPassword()">🗑️ Скинути всі дні</button>
+    <button onclick="loadData(); toggleMenu();">🔄 Оновити дані</button>
+    <button onclick="showHelp(); toggleMenu();">ℹ️ Довідка</button>
+</div>
+
+<div id="fullscreenContainer"></div>
+
+<div id="detailModal" class="modal">
+    <div class="modal-content">
+        <h3 id="detailTitle">📋 Деталі заходу</h3>
+        <div id="detailBody"></div>
+    </div>
+</div>
+
+<div id="editLinkModal" class="modal">
+    <div class="modal-content">
+        <h3>🔗 Редагувати посилання</h3>
+        <input type="url" id="editLinkInput" placeholder="https://..." style="width:100%; padding:12px; border-radius:30px; border:1px solid #ccc; margin:15px 0;">
+        <div style="display: flex; gap: 10px;">
+            <button onclick="saveEditedLink()" style="flex:1; padding:10px; border-radius:30px; background:#4caf50; color:white; border:none;">Зберегти</button>
+            <button onclick="closeEditLinkModal()" style="flex:1; padding:10px; border-radius:30px; background:#ccc; border:none;">Скасувати</button>
+        </div>
+    </div>
+</div>
+
+<div id="confirmDeleteModal" class="confirm-modal" style="display: none;">
+    <div class="confirm-card">
+        <p>❓ Ви впевнені, що хочете видалити цей захід?</p>
+        <div class="confirm-buttons">
+            <button class="confirm-yes" onclick="confirmDelete()">Так, видалити</button>
+            <button class="confirm-no" onclick="cancelDelete()">Скасувати</button>
+        </div>
+    </div>
+</div>
+
+<div id="toast" class="toast">✅</div>
+
+<script>
+    // ========== КОДИ ДОСТУПУ ==========
+    const TEACHER_CODE = "0023";
+    const ADMIN_RESET_CODE = "0230";
+    const CAMP_DAYS_COUNT = 14;
+    
+    // ========== ЗМІННІ ==========
+    let currentRole = null;
+    let currentSquad = 1;
+    let assignments = { 1: {}, 2: {} };
+    let dayInfo = { 1: {}, 2: {} };
+    let draggedItem = null;
+    let pendingSave = null;
+    let fullscreenDay = null;
+    let fullscreenSquad = null;
+    let pendingDelete = { squad: null, day: null, blockId: null };
+    let pendingItemForDay = null;
+    let editingLinkData = { squad: null, day: null, blockId: null };
+    
+    // ========== ДАТИ ТАБОРУ ==========
+    const startDate = new Date(2026, 5, 1);
+    const campDates = [];
+    let currentDayIndex = null;
+    
+    function generateCampDates() {
+        let date = new Date(startDate);
+        let count = 0;
+        while (count < CAMP_DAYS_COUNT) {
+            if (date.getDay() !== 0 && date.getDay() !== 6) {
+                campDates.push(new Date(date));
+                count++;
+            }
+            date.setDate(date.getDate() + 1);
+        }
+    }
+    generateCampDates();
+    
+    function formatDate(date) {
+        return `${date.getDate().toString().padStart(2,'0')}.${(date.getMonth()+1).toString().padStart(2,'0')}.${date.getFullYear()}`;
+    }
+    
+    function getTodayCampIndex() {
+        const today = new Date();
+        today.setHours(0,0,0,0);
+        for(let i=0; i<campDates.length; i++) {
+            if(campDates[i].toDateString() === today.toDateString()) return i+1;
+        }
+        return 1;
+    }
+    
+    // ========== ШАБЛОНИ ДНІВ ==========
+    const TEMPLATE_DEV_LINKS = {
+    "День знайомств": "https://docs.google.com/document/d/EXAMPLE__знайомств/edit?usp=sharing",
+    "День спорту": "https://docs.google.com/document/d/EXAMPLE__спорту/edit?usp=sharing",
+    "День творчості": "https://docs.google.com/document/d/EXAMPLE__творчості/edit?usp=sharing",
+    "День природи": "https://docs.google.com/document/d/EXAMPLE__природи/edit?usp=sharing",
+    "День казки": "https://docs.google.com/document/d/EXAMPLE__казки/edit?usp=sharing",
+    "День безпеки": "https://docs.google.com/document/d/EXAMPLE__безпеки/edit?usp=sharing",
+    "День народних традицій": "https://docs.google.com/document/d/EXAMPLE__народних_традицій/edit?usp=sharing",
+    "День талантів": "https://docs.google.com/document/d/EXAMPLE__талантів/edit?usp=sharing",
+    "День екології": "https://docs.google.com/document/d/EXAMPLE__екології/edit?usp=sharing",
+    "День дружби": "https://docs.google.com/document/d/EXAMPLE__дружби/edit?usp=sharing",
+    "День інтелекту": "https://docs.google.com/document/d/EXAMPLE__інтелекту/edit?usp=sharing",
+    "День музики": "https://docs.google.com/document/d/EXAMPLE__музики/edit?usp=sharing",
+    "День веселощів": "https://docs.google.com/document/d/EXAMPLE__веселощів/edit?usp=sharing",
+    "День прощання": "https://docs.google.com/document/d/EXAMPLE__прощання/edit?usp=sharing",
+};
+    
+    const DAY_TEMPLATES = {
+    "День знайомств": [
+        { name: "🎉 Урочисте відкриття табору", desc: "9:00", details: "Урочисте відкриття табору. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День знайомств"] },
+        { name: "👋 Ігри на знайомство", desc: "10:00", details: "Ігри на знайомство. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День знайомств"] },
+        { name: "🏵️ Створення загонових назв, девізів, емблем", desc: "11:00", details: "Створення загонових назв, девізів, емблем. Матеріали: папір, фломастери. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День знайомств"] },
+        { name: "🤸 Рухливі ігри на свіжому повітрі", desc: "12:00", details: "Рухливі ігри на свіжому повітрі. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День знайомств"] },
+    ],
+    "День спорту": [
+        { name: "🎉 Ранкова зарядка", desc: "9:00", details: "Ранкова зарядка. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День спорту"] },
+        { name: "👋 Веселі старти", desc: "10:00", details: "Веселі старти. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День спорту"] },
+        { name: "🏵️ Естафети з м’ячами, скакалками", desc: "11:00", details: "Естафети з м’ячами, скакалками. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День спорту"] },
+        { name: "🤸 Конкурс малюнків «Мій улюблений спорт»", desc: "12:00", details: "Конкурс малюнків «Мій улюблений спорт». Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День спорту"] },
+    ],
+    "День творчості": [
+        { name: "🎉 Виготовлення виробів із кольорового паперу", desc: "9:00", details: "Виготовлення виробів із кольорового паперу. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День творчості"] },
+        { name: "👋 Конкурс аплікацій", desc: "10:00", details: "Конкурс аплікацій. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День творчості"] },
+        { name: "🏵️ Малювання крейдою на асфальті", desc: "11:00", details: "Малювання крейдою на асфальті. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День творчості"] },
+        { name: "🤸 Міні-виставка робіт", desc: "12:00", details: "Міні-виставка робіт. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День творчості"] },
+    ],
+    "День природи": [
+        { name: "🎉 Прогулянка територією школи", desc: "9:00", details: "Прогулянка територією школи. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День природи"] },
+        { name: "👋 Збір природних матеріалів", desc: "10:00", details: "Збір природних матеріалів. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День природи"] },
+        { name: "🏵️ Створення композицій із листя, квітів", desc: "11:00", details: "Створення композицій із листя, квітів. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День природи"] },
+        { name: "🤸 Вікторина про природу", desc: "12:00", details: "Вікторина про природу. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День природи"] },
+    ],
+    "День казки": [
+        { name: "🎉 Читання казок", desc: "9:00", details: "Читання казок. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День казки"] },
+        { name: "👋 Інсценізація улюблених героїв", desc: "10:00", details: "Інсценізація улюблених героїв. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День казки"] },
+        { name: "🏵️ Конкурс костюмів із підручних матеріалів", desc: "11:00", details: "Конкурс костюмів із підручних матеріалів. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День казки"] },
+        { name: "🤸 Малювання казкових персонажів", desc: "12:00", details: "Малювання казкових персонажів. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День казки"] },
+    ],
+    "День безпеки": [
+        { name: "🎉 Бесіда про правила дорожнього руху", desc: "9:00", details: "Бесіда про правила дорожнього руху. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День безпеки"] },
+        { name: "👋 Конкурс плакатів «Безпечне літо»", desc: "10:00", details: "Конкурс плакатів «Безпечне літо». Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День безпеки"] },
+        { name: "🏵️ Рольові ігри", desc: "11:00", details: "Рольові ігри. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День безпеки"] },
+        { name: "🤸 Перегляд навчальних відео", desc: "12:00", details: "Перегляд навчальних відео. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День безпеки"] },
+    ],
+    "День народних традицій": [
+        { name: "🎉 Знайомство з українськими традиціями", desc: "9:00", details: "Знайомство з українськими традиціями. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День народних традицій"] },
+        { name: "👋 Народні ігри", desc: "10:00", details: "Народні ігри. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День народних традицій"] },
+        { name: "🏵️ Виготовлення оберегів", desc: "11:00", details: "Виготовлення оберегів. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День народних традицій"] },
+        { name: "🤸 Розучування народних пісень", desc: "12:00", details: "Розучування народних пісень. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День народних традицій"] },
+    ],
+    "День талантів": [
+        { name: "🎉 Співи, танці, декламація", desc: "9:00", details: "Співи, танці, декламація. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День талантів"] },
+        { name: "👋 Майстер-класи", desc: "10:00", details: "Майстер-класи. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День талантів"] },
+        { name: "🏵️ Конкурс талантів", desc: "11:00", details: "Конкурс талантів. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День талантів"] },
+        { name: "🤸 Нагородження учасників", desc: "12:00", details: "Нагородження учасників. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День талантів"] },
+    ],
+    "День екології": [
+        { name: "🎉 Прибирання території", desc: "9:00", details: "Прибирання території. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День екології"] },
+        { name: "👋 Виготовлення поробок із вторинної сировини", desc: "10:00", details: "Виготовлення поробок із вторинної сировини. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День екології"] },
+        { name: "🏵️ Екологічні ігри", desc: "11:00", details: "Екологічні ігри. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День екології"] },
+        { name: "🤸 Бесіда про сортування сміття", desc: "12:00", details: "Бесіда про сортування сміття. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День екології"] },
+    ],
+    "День дружби": [
+        { name: "🎉 Командні ігри", desc: "9:00", details: "Командні ігри. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День дружби"] },
+        { name: "👋 Створення «Дерева дружби»", desc: "10:00", details: "Створення «Дерева дружби». Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День дружби"] },
+        { name: "🏵️ Обмін побажаннями", desc: "11:00", details: "Обмін побажаннями. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День дружби"] },
+        { name: "🤸 Спільний колаж", desc: "12:00", details: "Спільний колаж. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День дружби"] },
+    ],
+    "День інтелекту": [
+        { name: "🎉 Вікторини", desc: "9:00", details: "Вікторини. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День інтелекту"] },
+        { name: "👋 Загадки", desc: "10:00", details: "Загадки. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День інтелекту"] },
+        { name: "🏵️ Настільні ігри", desc: "11:00", details: "Настільні ігри. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День інтелекту"] },
+        { name: "🤸 Квест у класі чи на подвір’ї", desc: "12:00", details: "Квест у класі чи на подвір’ї. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День інтелекту"] },
+    ],
+    "День музики": [
+        { name: "🎉 Караоке", desc: "9:00", details: "Караоке. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День музики"] },
+        { name: "👋 Ритмічні ігри", desc: "10:00", details: "Ритмічні ігри. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День музики"] },
+        { name: "🏵️ Виготовлення простих музичних інструментів", desc: "11:00", details: "Виготовлення простих музичних інструментів. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День музики"] },
+        { name: "🤸 Танцювальні конкурси", desc: "12:00", details: "Танцювальні конкурси. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День музики"] },
+    ],
+    "День веселощів": [
+        { name: "🎉 Гумористичні конкурси", desc: "9:00", details: "Гумористичні конкурси. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День веселощів"] },
+        { name: "👋 Ігри з водою", desc: "10:00", details: "Ігри з водою. Матеріали: за можливості. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День веселощів"] },
+        { name: "🏵️ Конкурс анекдотів", desc: "11:00", details: "Конкурс анекдотів. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День веселощів"] },
+        { name: "🤸 Дискотека", desc: "12:00", details: "Дискотека. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День веселощів"] },
+    ],
+    "День прощання": [
+        { name: "🎉 Підбиття підсумків", desc: "9:00", details: "Підбиття підсумків. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День прощання"] },
+        { name: "👋 Виставка найкращих робіт", desc: "10:00", details: "Виставка найкращих робіт. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День прощання"] },
+        { name: "🏵️ Святковий концерт", desc: "11:00", details: "Святковий концерт. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День прощання"] },
+        { name: "🤸 Вручення грамот та сувенірів", desc: "12:00", details: "Вручення грамот та сувенірів. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День прощання"] },
+    ],
+};
+
+    
+    // Готові окремі заходи з посиланнями
+    const BLOCKS = [
+        { id: "b1", name: "🏃 Ранкова зарядка", desc: "8:30", details: "Розминка, біг, загальні вправи.", link: "https://example.com/rankova-zaryadka" },
+        { id: "b2", name: "🍳 Сніданок", desc: "9:00", details: "Повноцінне харчування.", link: "https://example.com/snidanok" },
+        { id: "b3", name: "🎨 Майстерка", desc: "10:00", details: "Творчі заняття.", link: "https://example.com/maysterka" },
+        { id: "b4", name: "🍽️ Обід", desc: "13:30", details: "Суп, друге, компот.", link: "https://example.com/obid" },
+        { id: "b5", name: "💤 Тиха година", desc: "14:30", details: "Відпочинок, сон.", link: "https://example.com/tyha-godyna" },
+        { id: "b6", name: "🎭 Театр", desc: "15:45", details: "Акторська майстерність.", link: "https://example.com/teatr" },
+        { id: "b7", name: "⚽ Футбол", desc: "17:30", details: "Командна гра.", link: "https://example.com/futbol" },
+        { id: "b8", name: "🍬 Полуденок", desc: "18:45", details: "Легке перекушування.", link: "https://example.com/poludenok" },
+        { id: "b9", name: "🌿 Квест", desc: "19:30", details: "Командний пошук скарбів.", link: "https://example.com/kvest" },
+        { id: "b10", name: "🔥 Ватра", desc: "20:00", details: "Пісні під гітару.", link: "https://example.com/vatra" },
+        { id: "b11", name: "🧩 Ігри", desc: "16:00", details: "Настільні ігри.", link: "https://example.com/igry" }
+    ];
+
+    // API для Google Sheets
+    const API_URL = 'https://script.google.com/macros/s/AKfycbyN1LB9WI1pJY6YXdQeZGcv3mXwUZBwTrHmS1mvpP51O5E81Pf5IUK7Mx6CIrPhJR2qsg/exec';
+
+    async function loadData() {
+        showToast('🔄 Завантаження...');
+        try {
+            for (let s = 1; s <= 2; s++) {
+                for (let i = 1; i <= CAMP_DAYS_COUNT; i++) {
+                    if (!assignments[s]) assignments[s] = {};
+                    if (!dayInfo[s]) dayInfo[s] = {};
+                    assignments[s][i] = [];
+                    dayInfo[s][i] = { displayName: `День ${i}`, template: null, devLink: null };
+                }
+            }
+            
+            const response = await fetch(API_URL + '?t=' + Date.now());
+            const data = await response.json();
+            
+            if (Array.isArray(data)) {
+                for (let i = 1; i < data.length; i++) {
+                    const row = data[i];
+                    if (row && row[0]) {
+                        if (row[0].toString().startsWith('s')) {
+                            const match = row[0].match(/s(\d+)_d(\d+)/);
+                            if (match) {
+                                const squad = parseInt(match[1]);
+                                const day = parseInt(match[2]);
+                                if (row[1] && row[1] !== 'undefined') {
+                                    try { 
+                                        const parsed = JSON.parse(row[1]);
+                                        if (Array.isArray(parsed)) assignments[squad][day] = parsed;
+                                    } catch(e) {}
+                                }
+                            }
+                        } else if (row[0].toString().startsWith('info_s')) {
+                            const match = row[0].match(/info_s(\d+)_d(\d+)/);
+                            if (match) {
+                                const squad = parseInt(match[1]);
+                                const day = parseInt(match[2]);
+                                if (row[1]) {
+                                    try { 
+                                        const savedInfo = JSON.parse(row[1]);
+                                        if (savedInfo && savedInfo.displayName) dayInfo[squad][day] = savedInfo;
+                                    } catch(e) {}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            if (currentRole === 'student') {
+                document.getElementById('squadSelector').style.display = 'none';
+                document.getElementById('blocksPanel').style.display = 'none';
+                document.getElementById('daysSection').style.display = 'none';
+                const today = currentDayIndex;
+                setTimeout(() => {
+                    renderFullscreenDay(currentSquad, today);
+                }, 100);
+            } else {
+                document.getElementById('squadSelector').style.display = 'flex';
+                document.getElementById('blocksPanel').style.display = 'block';
+                document.getElementById('daysSection').style.display = 'block';
+                renderAll();
+            }
+            
+            showToast('✅ Дані завантажено');
+        } catch(e) { 
+            console.error(e);
+            showToast('⚠️ Локальний режим', false);
+            if (currentRole === 'student') {
+                const today = currentDayIndex;
+                setTimeout(() => {
+                    renderFullscreenDay(currentSquad, today);
+                }, 100);
+            } else {
+                renderAll();
+            }
+        }
+    }
+
+    async function saveOneDay(squad, day) {
+        try {
+            await fetch(API_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: `s${squad}_d${day}`, value: JSON.stringify(assignments[squad][day] || []) })
+            });
+            await fetch(API_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: `info_s${squad}_d${day}`, value: JSON.stringify(dayInfo[squad][day] || { displayName: `День ${day}` }) })
+            });
+        } catch(e) {}
+    }
+
+    function scheduleSave(squad, day) {
+        if (pendingSave) clearTimeout(pendingSave.timeout);
+        const timeout = setTimeout(async () => {
+            await saveOneDay(squad, day);
+            pendingSave = null;
+        }, 500);
+        pendingSave = { squad, day, timeout };
+    }
+    
+    function updateDayNameAfterAdd(squad, day, isTemplate, templateName) {
+        if (!dayInfo[squad][day]) {
+            dayInfo[squad][day] = { displayName: `День ${day}`, template: null, devLink: null };
+        }
+        
+        if (!isTemplate) {
+            if (!dayInfo[squad][day].template && dayInfo[squad][day].displayName === `День ${day}`) {
+                dayInfo[squad][day].displayName = `День ${day} + редагування`;
+                dayInfo[squad][day].template = "Вручну";
+                scheduleSave(squad, day);
+            }
+        }
+        
+        if (isTemplate && templateName) {
+            if (!dayInfo[squad][day].template || dayInfo[squad][day].displayName === `День ${day}`) {
+                dayInfo[squad][day].displayName = `День ${day} - ${templateName}`;
+                dayInfo[squad][day].template = templateName;
+                dayInfo[squad][day].devLink = TEMPLATE_DEV_LINKS[templateName] || null;
+                scheduleSave(squad, day);
+            } else if (dayInfo[squad][day].template && dayInfo[squad][day].template !== templateName) {
+                dayInfo[squad][day].displayName = `${dayInfo[squad][day].displayName} + ${templateName}`;
+                dayInfo[squad][day].template = dayInfo[squad][day].template + " + " + templateName;
+                scheduleSave(squad, day);
+            }
+        }
+    }
+    
+    function openEditLinkModal(squad, day, blockId, currentLink) {
+        editingLinkData = { squad, day, blockId };
+        const input = document.getElementById('editLinkInput');
+        input.value = currentLink || '';
+        document.getElementById('editLinkModal').style.display = 'flex';
+        input.focus();
+    }
+    
+    function saveEditedLink() {
+        const { squad, day, blockId } = editingLinkData;
+        const newLink = document.getElementById('editLinkInput').value.trim();
+        
+        if (squad && day && blockId) {
+            const blockIndex = assignments[squad][day].findIndex(b => b.id == blockId);
+            if (blockIndex !== -1) {
+                assignments[squad][day][blockIndex].link = newLink || null;
+                if (fullscreenDay === day && fullscreenSquad === squad) renderFullscreenDay(squad, day);
+                else if (currentRole === 'teacher') renderDays();
+                scheduleSave(squad, day);
+                showToast(newLink ? '✅ Посилання збережено' : '❌ Посилання видалено');
+            }
+        }
+        closeEditLinkModal();
+    }
+    
+    function closeEditLinkModal() {
+        editingLinkData = { squad: null, day: null, blockId: null };
+        document.getElementById('editLinkModal').style.display = 'none';
+        document.getElementById('editLinkInput').value = '';
+    }
+    
+    function showDaySelectorForItem(itemType, itemData) {
+        pendingItemForDay = { type: itemType, data: itemData };
+        
+        let options = '';
+        for (let i = 1; i <= CAMP_DAYS_COUNT; i++) {
+            const dateStr = campDates[i-1] ? formatDate(campDates[i-1]) : '-';
+            const displayName = dayInfo[currentSquad][i]?.displayName || `День ${i}`;
+            options += `<div class="day-option" onclick="selectDayForItem(${i})">
+                            📅 ${displayName}<br>
+                            <span style="font-size: 11px; color: #888;">${dateStr}</span>
+                        </div>`;
+        }
+        
+        const title = itemType === 'block' ? `Виберіть день для: ${itemData.name}` : `Виберіть день для шаблону: ${itemData}`;
+        document.getElementById('detailTitle').innerHTML = title;
+        document.getElementById('detailBody').innerHTML = `<div class="day-list">${options}<button onclick="closeDetailModal()" style="margin-top:15px; width:100%; padding:10px; border-radius:30px; background:#ccc; border:none;">Скасувати</button></div>`;
+        document.getElementById('detailModal').style.display = 'flex';
+    }
+    
+    function selectDayForItem(day) {
+        if (!pendingItemForDay) return;
+        
+        if (pendingItemForDay.type === 'block') {
+            addBlockToDay(currentSquad, day, pendingItemForDay.data);
+        } else if (pendingItemForDay.type === 'template') {
+            addTemplateToDay(currentSquad, day, pendingItemForDay.data);
+        }
+        
+        pendingItemForDay = null;
+        closeDetailModal();
+    }
+    
+    function addBlockToDay(squad, day, block) {
+        if (currentRole !== 'teacher') { showToast('⚠️ Тільки для вчителів', true); return; }
+        if (!assignments[squad][day]) assignments[squad][day] = [];
+        assignments[squad][day].push({ ...block, id: Date.now() + '_' + Math.random(), link: block.link || null });
+        
+        updateDayNameAfterAdd(squad, day, false, null);
+        
+        if (fullscreenDay === day && fullscreenSquad === squad) renderFullscreenDay(squad, day);
+        else if (currentRole === 'student') renderFullscreenDay(squad, day);
+        else renderDays();
+        scheduleSave(squad, day);
+        showToast(`➕ ${block.name} додано в ${dayInfo[squad][day]?.displayName || `День ${day}`}`);
+    }
+    
+    function addTemplateToDay(squad, day, templateName) {
+        if (currentRole !== 'teacher') { showToast('⚠️ Тільки для вчителів', true); return; }
+        const template = DAY_TEMPLATES[templateName];
+        if (!template) return;
+        
+        if (!assignments[squad][day]) assignments[squad][day] = [];
+        const newBlocks = template.map((block, idx) => ({ 
+            ...block, 
+            id: 'template_' + Date.now() + '_' + idx + '_' + Math.random(),
+            isTemplate: true,
+            link: block.link || TEMPLATE_DEV_LINKS[templateName] || null
+        }));
+        assignments[squad][day] = [...assignments[squad][day], ...newBlocks];
+        
+        updateDayNameAfterAdd(squad, day, true, templateName);
+        
+        if (fullscreenDay === day && fullscreenSquad === squad) renderFullscreenDay(squad, day);
+        else if (currentRole === 'student') renderFullscreenDay(squad, day);
+        else renderDays();
+        scheduleSave(squad, day);
+        showToast(`📋 Шаблон "${templateName}" додано в ${dayInfo[squad][day]?.displayName || `День ${day}`} (${newBlocks.length} заходів)`);
+    }
+    
+    function requestDeleteBlock(squad, day, blockId) {
+        pendingDelete = { squad, day, blockId };
+        document.getElementById('confirmDeleteModal').style.display = 'flex';
+    }
+    
+    function confirmDelete() {
+        const { squad, day, blockId } = pendingDelete;
+        if (squad && day && blockId) {
+            assignments[squad][day] = assignments[squad][day].filter(b => b.id != blockId);
+            if (fullscreenDay === day && fullscreenSquad === squad) renderFullscreenDay(squad, day);
+            else if (currentRole === 'student') renderFullscreenDay(squad, day);
+            else renderDays();
+            scheduleSave(squad, day);
+            showToast(`➖ Видалено`);
+        }
+        cancelDelete();
+    }
+    
+    function cancelDelete() {
+        pendingDelete = { squad: null, day: null, blockId: null };
+        document.getElementById('confirmDeleteModal').style.display = 'none';
+    }
+    
+    function addCustomBlockToDay(squad, day) {
+        if (currentRole !== 'teacher') { showToast('⚠️ Тільки для вчителів', true); return; }
+        const eventName = document.getElementById('customEventName')?.value.trim();
+        const eventTime = document.getElementById('customEventTime')?.value.trim();
+        const eventDetails = document.getElementById('customEventDetails')?.value.trim();
+        const eventLink = document.getElementById('customEventLink')?.value.trim();
+        
+        if (!eventName) {
+            showToast('❌ Введіть назву заходу', true);
+            return;
+        }
+        
+        const newBlock = {
+            id: 'custom_' + Date.now() + '_' + Math.random(),
+            name: eventName,
+            desc: eventTime || 'Час не вказано',
+            details: eventDetails || 'Захід доданий вручну',
+            link: eventLink || null
+        };
+        assignments[squad][day].push(newBlock);
+        
+        updateDayNameAfterAdd(squad, day, false, null);
+        
+        if (document.getElementById('customEventName')) document.getElementById('customEventName').value = '';
+        if (document.getElementById('customEventTime')) document.getElementById('customEventTime').value = '';
+        if (document.getElementById('customEventDetails')) document.getElementById('customEventDetails').value = '';
+        if (document.getElementById('customEventLink')) document.getElementById('customEventLink').value = '';
+        
+        if (fullscreenDay === day && fullscreenSquad === squad) renderFullscreenDay(squad, day);
+        else if (currentRole === 'student') renderFullscreenDay(squad, day);
+        else renderDays();
+        scheduleSave(squad, day);
+        showToast(`➕ ${eventName}`);
+    }
+    
+    function editDayName(squad, day) {
+        if (currentRole !== 'teacher') { showToast('⚠️ Тільки для вчителів', true); return; }
+        const currentName = dayInfo[squad][day]?.displayName || `День ${day}`;
+        const newName = prompt("Введіть назву дня:", currentName);
+        if (newName && newName.trim()) {
+            dayInfo[squad][day].displayName = newName.trim();
+            if (fullscreenDay === day && fullscreenSquad === squad) renderFullscreenDay(squad, day);
+            else if (currentRole === 'student') renderFullscreenDay(squad, day);
+            else renderDays();
+            scheduleSave(squad, day);
+            showToast(`✅ Назву дня змінено`);
+        }
+    }
+    
+    function applyFullTemplateToDay(squad, day, templateName) {
+        if (currentRole !== 'teacher') { showToast('⚠️ Тільки для вчителів', true); return; }
+        const template = DAY_TEMPLATES[templateName];
+        if (!template) return;
+        
+        const choice = confirm(`Шаблон "${templateName}" (${template.length} заходів).\n\nOK - замінити всі заходи\nСкасувати - додати до наявних`);
+        
+        if (choice) {
+            assignments[squad][day] = template.map((block, idx) => ({ 
+                ...block, 
+                id: 't_' + Date.now() + '_' + idx + '_' + Math.random(),
+                link: block.link || TEMPLATE_DEV_LINKS[templateName] || null
+            }));
+            dayInfo[squad][day] = {
+                displayName: `День ${day} - ${templateName}`,
+                template: templateName,
+                devLink: TEMPLATE_DEV_LINKS[templateName] || null
+            };
+            showToast(`✅ Шаблон застосовано`);
+        } else {
+            const existingNames = new Set((assignments[squad][day] || []).map(b => b.name));
+            const newBlocks = template.filter(block => !existingNames.has(block.name)).map((block, idx) => ({ 
+                ...block, 
+                id: 't_add_' + Date.now() + '_' + idx + '_' + Math.random(),
+                link: block.link || TEMPLATE_DEV_LINKS[templateName] || null
+            }));
+            assignments[squad][day] = [...assignments[squad][day], ...newBlocks];
+            if (!dayInfo[squad][day]?.template || dayInfo[squad][day].displayName === `День ${day}`) {
+                dayInfo[squad][day] = dayInfo[squad][day] || { displayName: `День ${day}` };
+                dayInfo[squad][day].displayName = `День ${day} - ${templateName} + редагування`;
+                dayInfo[squad][day].template = templateName + " + редагування";
+                dayInfo[squad][day].devLink = TEMPLATE_DEV_LINKS[templateName] || null;
+            }
+            showToast(`✅ Додано ${newBlocks.length} заходів`);
+        }
+        
+        if (fullscreenDay === day && fullscreenSquad === squad) renderFullscreenDay(squad, day);
+        else if (currentRole === 'student') renderFullscreenDay(squad, day);
+        else renderDays();
+        scheduleSave(squad, day);
+    }
+    
+    function showDetails(block, squad, day) {
+        const info = dayInfo[squad][day] || {};
+        let linkHtml = '';
+        if (block.link) {
+            linkHtml = `<p style="margin-top:10px;">🔗 <a href="${block.link}" target="_blank">Посилання на матеріали</a></p>`;
+        } else if (info.devLink && info.devLink !== '#' && block.id && block.id.toString().startsWith('template_')) {
+            linkHtml = `<p style="margin-top:10px;">📄 <a href="${info.devLink}" target="_blank">Посилання на розробку дня</a></p>`;
+        }
+        
+        let editButton = '';
+        if (currentRole === 'teacher') {
+            editButton = `<button onclick="event.stopPropagation(); openEditLinkModal(${squad}, ${day}, '${block.id}', '${block.link || ''}'); closeDetailModal();" style="margin-top:10px; width:100%; padding:10px; border-radius:30px; background:#ff9800; color:white; border:none; cursor:pointer;">🔗 Редагувати посилання</button>`;
+        }
+        
+        document.getElementById('detailTitle').innerHTML = `📋 ${escapeHtml(block.name)}`;
+        document.getElementById('detailBody').innerHTML = `
+            <p><strong>⏰ Час:</strong> ${escapeHtml(block.desc)}</p>
+            <p><strong>📖 Опис:</strong> ${escapeHtml(block.details || 'Опис відсутній')}</p>
+            ${linkHtml}
+            ${editButton}
+            <button onclick="closeDetailModal()" style="margin-top:15px; width:100%; padding:10px; border-radius:30px; background:#4caf50; color:white; border:none; cursor:pointer;">Закрити</button>
+        `;
+        document.getElementById('detailModal').style.display = 'flex';
+    }
+    
+    function renderFullscreenDay(squad, day) {
+        fullscreenSquad = squad;
+        fullscreenDay = day;
+        const container = document.getElementById('fullscreenContainer');
+        const dateStr = campDates[day-1] ? formatDate(campDates[day-1]) : 'Дата не визначена';
+        const blocks = assignments[squad][day] || [];
+        const info = dayInfo[squad][day] || { displayName: `День ${day}`, devLink: null };
+        const isToday = (currentRole === 'student' && day === currentDayIndex);
+        
+        let blocksHtml = '';
+        blocks.forEach(b => {
+            const isTemplate = b.id && b.id.toString().startsWith('template_');
+            blocksHtml += `
+                <div class="fullscreen-block ${isTemplate ? 'fullscreen-template-block' : ''}">
+                    <div class="fullscreen-block-info">
+                        <div class="fullscreen-block-name ${isTemplate ? 'fullscreen-template-name' : ''}">${escapeHtml(b.name)}</div>
+                        <div class="fullscreen-block-desc">${escapeHtml(b.desc || '')}</div>
+                    </div>
+                    <div class="fullscreen-block-actions">
+                        <button class="view-detail" onclick="showDetails(${JSON.stringify(b).replace(/"/g, '&quot;')}, ${squad}, ${day})">📖</button>
+                        ${currentRole === 'teacher' ? `<button class="delete-block" onclick="requestDeleteBlock(${squad}, ${day}, '${b.id}')">✖</button>` : ''}
+                        ${currentRole === 'teacher' ? `<button class="edit-link-btn" onclick="openEditLinkModal(${squad}, ${day}, '${b.id}', '${b.link || ''}')">🔗</button>` : ''}
+                    </div>
+                </div>
+            `;
+        });
+        
+        if (blocks.length === 0) blocksHtml = '<div class="empty-day">📌 Немає заходів. Виберіть шаблон або додайте вручну.</div>';
+        
+        let templateButtonsHtml = '';
+        let customEventHtml = '';
+        
+        if (currentRole === 'teacher') {
+            for (let tName of Object.keys(DAY_TEMPLATES)) {
+                templateButtonsHtml += `<button class="template-btn" onclick="applyFullTemplateToDay(${squad}, ${day}, '${tName.replace(/'/g, "\\'")}')">📋 ${tName.substring(0, 25)}</button>`;
+            }
+            customEventHtml = `
+                <div style="margin-top: 15px;">
+                    <button class="add-day-btn" onclick="showBlockSelector(${squad}, ${day})">➕ Додати готовий захід</button>
+                    <button class="add-day-btn" onclick="showTemplateSelector(${squad}, ${day})" style="background:#ff9800; margin-top:8px;">📋 Вибрати шаблон</button>
+                </div>
+                <div class="custom-event-input">
+                    <input type="text" id="customEventName" placeholder="Назва заходу *">
+                    <input type="text" id="customEventTime" placeholder="Час (напр. 15:00)">
+                    <textarea id="customEventDetails" placeholder="Опис заходу" rows="2"></textarea>
+                    <input type="url" id="customEventLink" placeholder="Посилання на матеріали (необов'язково)">
+                    <button onclick="addCustomBlockToDay(${squad}, ${day})">➕ Додати свій захід</button>
+                </div>
+                ${templateButtonsHtml ? `<div class="template-buttons">${templateButtonsHtml}</div>` : ''}
+            `;
+        }
+        
+        let devLinkHtml = '';
+        if (info.devLink && info.devLink !== '#') {
+            devLinkHtml = `<div class="dev-link">📄 <a href="${info.devLink}" target="_blank">Посилання на розробку заходів</a></div>`;
+        }
+        
+        container.innerHTML = `
+            <div class="fullscreen-day">
+                <div class="fullscreen-header">
+                    <div class="fullscreen-nav">
+                        <button class="nav-btn" onclick="prevDay()">◀</button>
+                        <span style="font-weight: bold;">🏅 Загін ${squad} - День ${day} ${isToday ? '<span class="today-badge">СЬОГОДНІ</span>' : ''}</span>
+                        <button class="nav-btn" onclick="nextDay()">▶</button>
+                    </div>
+                    <div>
+                        <span style="font-size: 12px;">${dateStr}</span>
+                        <button class="exit-full-btn" onclick="closeFullscreen()" style="margin-left: 10px; background:#dc3545; color:white; border:none; padding:5px 15px; border-radius:30px;">✖</button>
+                    </div>
+                </div>
+                <div class="fullscreen-day-card">
+                    <div class="fullscreen-day-header">
+                        <div class="day-name-title">${escapeHtml(info.displayName)}</div>
+                        ${devLinkHtml}
+                        ${currentRole === 'teacher' ? `<button class="edit-day-name-btn" onclick="editDayName(${squad}, ${day})">✏️ Редагувати назву</button>` : ''}
+                        <div style="font-size: 0.75rem; margin-top: 8px;">📊 ${blocks.length} заходів</div>
+                    </div>
+                    <div class="fullscreen-day-content">
+                        ${blocksHtml}
+                        ${customEventHtml}
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+    
+    function renderDays() {
+        if (currentRole !== 'teacher') return;
+        
+        const container = document.getElementById('daysContainer');
+        if (!container) return;
+        container.innerHTML = '';
+        
+        for (let day = 1; day <= CAMP_DAYS_COUNT; day++) {
+            const dateStr = campDates[day-1] ? formatDate(campDates[day-1]) : '-';
+            const info = dayInfo[currentSquad][day] || { displayName: `День ${day}` };
+            const blocks = assignments[currentSquad][day] || [];
+            
+            const card = document.createElement('div');
+            card.className = 'day-card';
+            card.onclick = () => renderFullscreenDay(currentSquad, day);
+            
+            let blocksHtml = '';
+            if (blocks.length === 0) {
+                blocksHtml = '<div class="empty-day">📌 Немає заходів</div>';
+            } else {
+                blocks.forEach(b => {
+                    const isTemplate = b.id && b.id.toString().startsWith('template_');
+                    blocksHtml += `
+                        <div class="block-chip ${isTemplate ? 'template-chip' : ''}">
+                            <div class="block-info">
+                                <div class="block-name ${isTemplate ? 'template-name' : ''}">${escapeHtml(b.name)}</div>
+                                <div class="block-desc">${escapeHtml(b.desc || '')}</div>
+                            </div>
+                            <div class="block-actions">
+                                <button class="view-detail" onclick="event.stopPropagation(); showDetails(${JSON.stringify(b).replace(/"/g, '&quot;')}, ${currentSquad}, ${day})">📖</button>
+                                <button class="delete-block" onclick="event.stopPropagation(); requestDeleteBlock(${currentSquad}, ${day}, '${b.id}')">✖</button>
+                                <button class="edit-link-btn" onclick="event.stopPropagation(); openEditLinkModal(${currentSquad}, ${day}, '${b.id}', '${b.link || ''}')">🔗</button>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            
+            card.innerHTML = `
+                <div class="day-header">
+                    <div>
+                        <div class="day-number">📅 ${escapeHtml(info.displayName)}</div>
+                        <div class="day-date">${dateStr}</div>
+                    </div>
+                    <div class="day-count">${blocks.length} заходів</div>
+                </div>
+                <div class="day-content" data-day="${day}">
+                    ${blocksHtml}
+                    <div class="add-to-day">
+                        <button class="add-day-btn" onclick="event.stopPropagation(); showBlockSelector(${currentSquad}, ${day})">➕ Додати захід</button>
+                        <button class="add-day-btn" onclick="event.stopPropagation(); showTemplateSelector(${currentSquad}, ${day})" style="background:#ff9800; margin-top:4px;">📋 Шаблон</button>
+                    </div>
+                </div>
+            `;
+            container.appendChild(card);
+        }
+        initDayDropZones();
+    }
+    
+    function showBlockSelector(squad, day) {
+        let options = BLOCKS.map(b => `<div class="day-option" onclick="addBlockToDay(${squad}, ${day}, ${JSON.stringify(b).replace(/"/g, '&quot;')}); closeDetailModal();">${escapeHtml(b.name)} (${escapeHtml(b.desc)})</div>`).join('');
+        document.getElementById('detailTitle').innerHTML = `📅 Виберіть захід для ${dayInfo[squad][day]?.displayName || `Дня ${day}`}`;
+        document.getElementById('detailBody').innerHTML = `<div>${options}<button onclick="closeDetailModal()" style="margin-top:15px; width:100%; padding:10px; border-radius:30px; background:#ccc; border:none;">Скасувати</button></div>`;
+        document.getElementById('detailModal').style.display = 'flex';
+    }
+    
+    function showTemplateSelector(squad, day) {
+        let options = '';
+        for (let [name, blocks] of Object.entries(DAY_TEMPLATES)) {
+            options += `<div class="template-option" onclick="applyFullTemplateToDay(${squad}, ${day}, '${name.replace(/'/g, "\\'")}'); closeDetailModal();">
+                            📋 ${escapeHtml(name)} (${blocks.length} заходів)
+                        </div>`;
+        }
+                document.getElementById('detailTitle').innerHTML = `📋 Виберіть шаблон для ${dayInfo[squad][day]?.displayName || `Дня ${day}`}`;
+        document.getElementById('detailBody').innerHTML = `<div>${options}<hr><p style="font-size:12px; color:#888;">OK = замінити всі заходи, Скасувати = додати до наявних</p><button onclick="closeDetailModal()" style="margin-top:15px; width:100%; padding:10px; border-radius:30px; background:#ccc; border:none;">Скасувати</button></div>`;
+        document.getElementById('detailModal').style.display = 'flex';
+    }
+    
+    function closeDetailModal() { 
+        document.getElementById('detailModal').style.display = 'none';
+        pendingItemForDay = null;
+    }
+    
+    function initDayDropZones() {
+        if (currentRole !== 'teacher') return;
+        
+        const dayContents = document.querySelectorAll('.day-content');
+        dayContents.forEach(zone => {
+            zone.removeEventListener('dragover', zone._dragoverHandler);
+            zone.removeEventListener('drop', zone._dropHandler);
+            
+            const dragoverHandler = (e) => {
+                e.preventDefault();
+                zone.style.backgroundColor = '#e8f5e9';
+            };
+            const dragleaveHandler = () => {
+                zone.style.backgroundColor = '';
+            };
+            const dropHandler = (e) => {
+                e.preventDefault();
+                zone.style.backgroundColor = '';
+                if (!draggedItem) return;
+                
+                const dayCard = zone.closest('.day-card');
+                if (!dayCard) return;
+                const dayText = dayCard.querySelector('.day-number')?.innerText || '';
+                const dayMatch = dayText.match(/День (\d+)/);
+                if (!dayMatch) return;
+                const day = parseInt(dayMatch[1]);
+                
+                if (draggedItem.type === 'block') {
+                    addBlockToDay(currentSquad, day, draggedItem.block);
+                } else if (draggedItem.type === 'template') {
+                    addTemplateToDay(currentSquad, day, draggedItem.name);
+                }
+            };
+            
+            zone._dragoverHandler = dragoverHandler;
+            zone._dropHandler = dropHandler;
+            
+            zone.addEventListener('dragover', dragoverHandler);
+            zone.addEventListener('dragleave', dragleaveHandler);
+            zone.addEventListener('drop', dropHandler);
+        });
+    }
+    
+    function renderBlocks() {
+        if (currentRole !== 'teacher') return;
+        
+        document.getElementById('blocksPanel').style.display = 'block';
+        
+        const blocksContainer = document.getElementById('blocksContainer');
+        blocksContainer.innerHTML = BLOCKS.map(block => `
+            <div class="block-item" draggable="true" data-type="block" data-block='${JSON.stringify(block)}'>
+                <div class="block-item-info">
+                    <div class="block-item-name">${escapeHtml(block.name)}</div>
+                    <div class="block-item-desc">${escapeHtml(block.desc)}</div>
+                </div>
+                <div class="add-btn" onclick="showDaySelectorForItem('block', ${JSON.stringify(block).replace(/"/g, '&quot;')})">➕</div>
+            </div>
+        `).join('');
+        
+        const templatesContainer = document.getElementById('templatesContainer');
+        templatesContainer.innerHTML = '';
+        for (let [name, blocks] of Object.entries(DAY_TEMPLATES)) {
+            const div = document.createElement('div');
+            div.className = 'block-item template-item';
+            div.setAttribute('draggable', 'true');
+            div.setAttribute('data-type', 'template');
+            div.setAttribute('data-template-name', name);
+            div.innerHTML = `
+                <div class="block-item-info">
+                    <div class="block-item-name">📋 ${escapeHtml(name)}</div>
+                    <div class="block-item-desc">${blocks.length} заходів</div>
+                </div>
+                <div class="add-btn" onclick="showDaySelectorForItem('template', '${name.replace(/'/g, "\\'")}')">➕</div>
+            `;
+            div.addEventListener('dragstart', (e) => {
+                draggedItem = { type: 'template', name: name };
+                e.dataTransfer.setData('text/plain', name);
+                e.target.style.opacity = '0.5';
+            });
+            div.addEventListener('dragend', (e) => {
+                e.target.style.opacity = '1';
+                draggedItem = null;
+            });
+            templatesContainer.appendChild(div);
+        }
+        
+        document.querySelectorAll('.block-item[data-type="block"]').forEach(el => {
+            el.addEventListener('dragstart', (e) => {
+                const block = JSON.parse(el.getAttribute('data-block'));
+                draggedItem = { type: 'block', block: block };
+                e.dataTransfer.setData('text/plain', JSON.stringify(block));
+                e.target.style.opacity = '0.5';
+            });
+            el.addEventListener('dragend', (e) => {
+                e.target.style.opacity = '1';
+                draggedItem = null;
+            });
+        });
+        
+        initDayDropZones();
+    }
+    
+    function renderAll() {
+        if (currentRole === 'teacher') {
+            renderDays();
+            renderBlocks();
+        }
+    }
+    
+    function selectSquad(squad) {
+        if (currentRole !== 'teacher') return;
+        currentSquad = squad;
+        document.querySelectorAll('.squad-btn').forEach((btn, idx) => {
+            if (idx + 1 === squad) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+        renderDays();
+    }
+    
+    function nextDay() {
+        if (!fullscreenSquad || !fullscreenDay) return;
+        let newDay = fullscreenDay + 1;
+        if (newDay > CAMP_DAYS_COUNT) newDay = 1;
+        renderFullscreenDay(fullscreenSquad, newDay);
+    }
+
+    function prevDay() {
+        if (!fullscreenSquad || !fullscreenDay) return;
+        let newDay = fullscreenDay - 1;
+        if (newDay < 1) newDay = CAMP_DAYS_COUNT;
+        renderFullscreenDay(fullscreenSquad, newDay);
+    }
+
+    function closeFullscreen() {
+        fullscreenDay = null;
+        fullscreenSquad = null;
+        document.getElementById('fullscreenContainer').innerHTML = '';
+        if (currentRole === 'teacher') {
+            renderAll();
+        } else if (currentRole === 'student') {
+            document.getElementById('fullscreenContainer').innerHTML = '<div style="text-align:center; padding:50px; color:white;">🏕️ Оберіть день з календаря вище</div>';
+        }
+    }
+    
+    async function resetAllData() {
+        if (currentRole !== 'teacher') { showToast('⚠️ Тільки для вчителів', true); return; }
+        const password = prompt('🔐 Введіть пароль адміністратора:');
+        if (password === ADMIN_RESET_CODE) {
+            if (confirm('Увага! Це видалить ВСІ заходи. Продовжити?')) {
+                for (let s = 1; s <= 2; s++) {
+                    for (let i = 1; i <= CAMP_DAYS_COUNT; i++) {
+                        assignments[s][i] = [];
+                        dayInfo[s][i] = { displayName: `День ${i}`, template: null, devLink: null };
+                    }
+                }
+                renderDays();
+                for (let s = 1; s <= 2; s++) {
+                    for (let i = 1; i <= CAMP_DAYS_COUNT; i++) {
+                        await saveOneDay(s, i);
+                    }
+                }
+                showToast('✅ Всі дні скинуто');
+            }
+        } else if (password !== null) {
+            showToast('❌ Невірний пароль', true);
+        }
+    }
+    
+    function showResetPassword() { resetAllData(); toggleMenu(); }
+    
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+    
+    function showToast(msg, isErr = false) {
+        const t = document.getElementById('toast');
+        if (!t) return;
+        t.textContent = msg;
+        t.style.background = isErr ? '#dc3545' : '#2e7d32';
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 2500);
+    }
+    
+    // ========== ФУНКЦІЇ ВХОДУ ==========
+    function showTeacherPassword() {
+        document.querySelector('.login-buttons').style.display = 'none';
+        document.getElementById('teacherPasswordSection').style.display = 'block';
+        document.getElementById('studentWelcomeSection').style.display = 'none';
+        document.getElementById('teacherCode').focus();
+    }
+    
+    function hideTeacherPassword() {
+        document.querySelector('.login-buttons').style.display = 'flex';
+        document.getElementById('teacherPasswordSection').style.display = 'none';
+        document.getElementById('teacherError').innerText = '';
+    }
+    
+    function showStudentWelcome() {
+        document.querySelector('.login-buttons').style.display = 'none';
+        document.getElementById('studentWelcomeSection').style.display = 'block';
+        document.getElementById('teacherPasswordSection').style.display = 'none';
+    }
+    
+    function checkTeacherCode() {
+        const code = document.getElementById('teacherCode').value;
+        if (code === TEACHER_CODE) {
+            currentRole = 'teacher';
+            document.getElementById('roleBadge').innerHTML = '👨‍🏫 Вчитель';
+            startApp();
+        } else {
+            document.getElementById('teacherError').innerText = 'Невірний код доступу';
+            document.getElementById('teacherCode').value = '';
+            document.getElementById('teacherCode').focus();
+        }
+    }
+    
+    document.getElementById('teacherCode')?.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            checkTeacherCode();
+        }
+    });
+    
+    function enterAsStudent(squad) {
+        currentRole = 'student';
+        currentSquad = squad;
+        document.getElementById('roleBadge').innerHTML = '🧑‍🎓 Учень';
+        currentDayIndex = getTodayCampIndex();
+        startApp();
+    }
+    
+    function startApp() {
+        document.getElementById('loginOverlay').style.display = 'none';
+        document.getElementById('appContainer').style.display = 'block';
+        loadData();
+    }
+    
+    function logout() {
+        currentRole = null;
+        fullscreenDay = null;
+        fullscreenSquad = null;
+        currentSquad = 1;
+        document.getElementById('fullscreenContainer').innerHTML = '';
+        document.getElementById('loginOverlay').style.display = 'flex';
+        document.getElementById('appContainer').style.display = 'none';
+        document.getElementById('teacherCode').value = '';
+        document.getElementById('teacherError').innerText = '';
+        document.querySelector('.login-buttons').style.display = 'flex';
+        document.getElementById('teacherPasswordSection').style.display = 'none';
+        document.getElementById('studentWelcomeSection').style.display = 'none';
+        cancelDelete();
+    }
+    
+    function toggleMenu() {
+        const menu = document.getElementById('settingsMenu');
+        if (menu) menu.classList.toggle('open');
+    }
+    
+    function showHelp() {
+        if (currentRole === 'teacher') {
+            alert('🏕️ Табір Мрії - Довідка для вчителя\n\n📌 Функціонал:\n• Обирайте загін (Загін 1 або Загін 2)\n• Натисніть на день для детального перегляду\n• ✏️ Редагуйте назву дня\n• 📋 Застосуйте готовий шаблон (заміна або додавання)\n• ➕ Додайте свій захід (назва, час, опис, ПОСИЛАННЯ)\n• 🔗 Кнопка 🔗 дозволяє змінити посилання для будь-якого заходу\n• 🖱️ Перетягуйте заходи та шаблони з панелі справа\n• 🟠 Помаранчеві елементи - цілі шаблони днів\n• При видаленні - підтвердження\n\n🔐 Код скидання всіх днів: 0230');
+        } else {
+            alert('🏕️ Табір Мрії\n\n🧑‍🎓 Учень:\n• Ви можете обрати загін при вході\n• Бачите розклад для обраного загону\n• Можете гортати дні стрілками ◀ ▶\n• Можете переглядати деталі заходів 📖\n• Якщо є посилання - воно відкривається в новій вкладці\n\n📅 Всього 14 днів табору');
+        }
+    }
+    
+    window.onclick = (e) => { 
+        if(e.target === document.getElementById('detailModal')) closeDetailModal(); 
+        if(e.target === document.getElementById('settingsMenu')) toggleMenu();
+        if(e.target === document.getElementById('confirmDeleteModal')) cancelDelete();
+        if(e.target === document.getElementById('editLinkModal')) closeEditLinkModal();
+    };
+</script>
+</body>
+</html>
