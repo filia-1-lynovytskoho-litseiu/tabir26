@@ -53,23 +53,23 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 22px;
+            font-size: 24px;
         }
         .title h1 {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: #2e7d32;
             margin: 0;
         }
         .title p {
-            font-size: 0.6rem;
+            font-size: 0.65rem;
             color: #666;
         }
         .role-badge {
             background: #4caf50;
             color: white;
-            padding: 4px 10px;
+            padding: 5px 12px;
             border-radius: 30px;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 500;
         }
         .menu-btn, .logout-btn {
@@ -78,12 +78,12 @@
             padding: 6px 12px;
             border-radius: 30px;
             cursor: pointer;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
         }
         .menu-btn {
             background: #e0e0e0;
-            font-size: 18px;
-            padding: 6px 10px;
+            font-size: 20px;
+            padding: 6px 12px;
         }
         .logout-btn {
             background: #6c757d;
@@ -121,16 +121,16 @@
             margin: 0 auto 16px;
             width: 70px;
             height: 70px;
-            font-size: 40px;
+            font-size: 44px;
         }
         .login-card h2 {
             color: #2e7d32;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 6px;
         }
         .login-card .subtitle {
             color: #666;
-            font-size: 13px;
+            font-size: 14px;
             margin-bottom: 20px;
         }
         .login-buttons {
@@ -215,7 +215,6 @@
             cursor: pointer;
         }
 
-        /* PWA Popup стилі */
         #installPopup {
             position: fixed;
             bottom: 20px;
@@ -240,26 +239,20 @@
         }
         #installPopup p {
             margin: 0;
-            font-size: 14px;
+            font-size: 15px;
             color: #333;
         }
         #installPopup button {
             margin: 0;
-            padding: 8px 20px;
+            padding: 8px 22px;
             border: none;
             border-radius: 40px;
             cursor: pointer;
             font-size: 14px;
             font-weight: 600;
         }
-        #installYes {
-            background: #4caf50;
-            color: white;
-        }
-        #installNo {
-            background: #e0e0e0;
-            color: #666;
-        }
+        #installYes { background: #4caf50; color: white; }
+        #installNo { background: #e0e0e0; color: #666; }
 
         .settings-menu {
             position: fixed;
@@ -279,6 +272,7 @@
             color: #2e7d32;
             padding-bottom: 10px;
             border-bottom: 2px solid #eee;
+            font-size: 1.2rem;
         }
         .settings-menu button {
             width: 100%;
@@ -288,9 +282,10 @@
             background: #f0f0f0;
             border: none;
             cursor: pointer;
+            font-size: 14px;
         }
         .settings-menu .danger { background: #dc3545; color: white; }
-        .close-menu { background: none !important; font-size: 24px; text-align: right; padding: 0 !important; }
+        .close-menu { background: none !important; font-size: 26px; text-align: right; padding: 0 !important; }
 
         .main-layout {
             display: flex;
@@ -300,41 +295,35 @@
         @media (min-width: 1024px) {
             .main-layout { flex-direction: row; }
             .days-section { flex: 2; min-width: 0; }
-            .blocks-panel { width: 320px; flex-shrink: 0; }
+            .blocks-panel { width: 340px; flex-shrink: 0; }
         }
 
         .squad-selector {
             background: white;
             border-radius: 50px;
-            padding: 6px 12px;
+            padding: 8px 16px;
             display: flex;
-            gap: 10px;
+            gap: 12px;
             margin-bottom: 16px;
             justify-content: center;
         }
         .squad-btn {
             flex: 1;
-            padding: 8px 16px;
+            padding: 10px 20px;
             border-radius: 40px;
             border: none;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
-            font-size: 14px;
+            font-size: 15px;
         }
-        .squad-btn.active {
-            background: #4caf50;
-            color: white;
-        }
-        .squad-btn:not(.active) {
-            background: #e0e0e0;
-            color: #666;
-        }
+        .squad-btn.active { background: #4caf50; color: white; }
+        .squad-btn:not(.active) { background: #e0e0e0; color: #666; }
 
         .days-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 14px;
         }
         @media (max-width: 700px) {
             .days-grid { grid-template-columns: 1fr; }
@@ -351,23 +340,23 @@
         .day-header {
             background: linear-gradient(135deg, #4caf50, #2e7d32);
             color: white;
-            padding: 8px 12px;
+            padding: 10px 14px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .day-number { font-weight: bold; font-size: 13px; word-break: break-word; flex: 1; }
-        .day-date { font-size: 9px; opacity: 0.9; margin-top: 2px; }
+        .day-number { font-weight: bold; font-size: 14px; word-break: break-word; flex: 1; }
+        .day-date { font-size: 10px; opacity: 0.9; margin-top: 2px; }
         .day-count {
             background: rgba(255,255,255,0.25);
-            padding: 2px 8px;
+            padding: 3px 10px;
             border-radius: 20px;
-            font-size: 11px;
+            font-size: 12px;
             white-space: nowrap;
             margin-left: 8px;
         }
         .day-content {
-            padding: 10px;
+            padding: 12px;
             background: #fefefe;
             margin: 8px;
             border-radius: 14px;
@@ -377,80 +366,54 @@
         .block-chip {
             background: linear-gradient(135deg, #e3f2fd, #bbdef5);
             border-left: 4px solid #2196f3;
-            padding: 8px 10px;
-            margin-bottom: 6px;
-            border-radius: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 8px;
-            cursor: grab;
-            user-select: none;
-        }
-        .block-chip:active { cursor: grabbing; }
-        .block-chip.dragging {
-            opacity: 0.3;
-            background: #ccc;
-            cursor: grabbing;
-        }
-        .block-chip.drag-over {
-            border-top: 3px solid #4caf50;
-            margin-top: -3px;
-        }
-        .fullscreen-block {
-            background: #e3f2fd;
-            border-left: 4px solid #2196f3;
-            padding: 12px;
+            padding: 10px 12px;
             margin-bottom: 8px;
-            border-radius: 14px;
+            border-radius: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 10px;
             cursor: grab;
             user-select: none;
+            transition: background 0.2s;
         }
-        .fullscreen-block:active { cursor: grabbing; }
-        .fullscreen-block.dragging {
-            opacity: 0.3;
-            background: #ccc;
-        }
-        .fullscreen-block.drag-over {
-            border-top: 3px solid #4caf50;
-            margin-top: -3px;
-        }
-        .template-chip {
+        .block-chip:active { cursor: grabbing; }
+        .block-chip.dragging { opacity: 0.3; background: #ccc; cursor: grabbing; }
+        .block-chip.drag-over { border-top: 3px solid #4caf50; margin-top: -3px; }
+        .block-chip.template-chip, .fullscreen-block.template-block {
             background: linear-gradient(135deg, #fff3e0, #ffe0b2);
             border-left: 4px solid #ff9800;
         }
         .block-info { flex: 1; min-width: 0; }
-        .block-name { font-weight: 700; color: #1565c0; font-size: 13px; word-break: break-word; }
+        .block-name { font-weight: 700; color: #1565c0; font-size: 14px; word-break: break-word; }
         .template-name { color: #e65100; }
-        .block-desc { font-size: 10px; color: #666; margin-top: 2px; }
-        .block-actions { display: flex; gap: 5px; flex-shrink: 0; }
-        .delete-block, .view-detail, .edit-link-btn {
+        .block-desc { font-size: 11px; color: #666; margin-top: 2px; }
+        .block-actions { display: flex; gap: 6px; flex-shrink: 0; }
+        .delete-block, .view-detail, .edit-link-btn, .edit-event-btn {
             background: #ff5252;
             color: white;
             border: none;
             border-radius: 50%;
-            width: 32px;
-            height: 32px;
+            width: 34px;
+            height: 34px;
             cursor: pointer;
-            font-size: 12px;
+            font-size: 14px;
             transition: opacity 0.2s;
         }
         .view-detail { background: #2196f3; }
         .edit-link-btn { background: #ff9800; font-size: 14px; }
-        .empty-day { text-align: center; color: #aaa; font-style: italic; padding: 16px; font-size: 12px; }
+        .edit-event-btn { background: #4caf50; font-size: 14px; }
+        .empty-day { text-align: center; color: #aaa; font-style: italic; padding: 20px; font-size: 13px; }
         .add-day-btn {
             background: #e0e0e0;
             border: none;
-            padding: 8px;
+            padding: 10px;
             border-radius: 30px;
             width: 100%;
-            font-size: 12px;
+            font-size: 13px;
             cursor: pointer;
-            margin-top: 4px;
+            margin-top: 6px;
+            font-weight: 500;
         }
 
         .fullscreen-day {
@@ -465,7 +428,7 @@
             padding: 12px;
         }
         .fullscreen-header {
-            background: white;
+            background: rgba(255,255,255,0.95);
             border-radius: 20px;
             padding: 12px 20px;
             margin-bottom: 16px;
@@ -473,24 +436,34 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
+            backdrop-filter: blur(10px);
         }
-        .fullscreen-nav { display: flex; align-items: center; gap: 10px; }
+        .fullscreen-nav { display: flex; align-items: center; gap: 12px; }
         .nav-btn {
             background: #4caf50;
             color: white;
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
-            font-size: 20px;
+            font-size: 22px;
             cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .nav-btn:hover { transform: scale(1.05); }
+        .fullscreen-date {
+            font-size: 14px;
+            color: #666;
+            background: #f0f0f0;
+            padding: 6px 16px;
+            border-radius: 30px;
         }
         .exit-full-btn {
             background: #dc3545;
             color: white;
             border: none;
-            padding: 8px 16px;
+            padding: 8px 20px;
             border-radius: 30px;
             cursor: pointer;
             font-size: 14px;
@@ -501,33 +474,86 @@
         }
         .fullscreen-day-card {
             background: white;
-            border-radius: 24px;
-            padding: 16px;
-            max-width: 800px;
+            border-radius: 28px;
+            padding: 20px;
+            max-width: 900px;
             margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
         .fullscreen-day-header {
             background: linear-gradient(135deg, #4caf50, #2e7d32);
             color: white;
-            padding: 16px;
+            padding: 20px;
             border-radius: 20px;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             text-align: center;
+            position: relative;
         }
-        .day-name-title { font-size: 1.4rem; font-weight: bold; margin-bottom: 6px; word-break: break-word; }
-        .template-badge { background: rgba(255,255,255,0.2); display: inline-block; padding: 3px 10px; border-radius: 30px; font-size: 11px; margin-top: 6px; }
-        .dev-link { margin-top: 10px; font-size: 12px; }
-        .dev-link a { color: #FFD700; text-decoration: none; }
-        .edit-day-name-btn { background: rgba(255,255,255,0.25); border: none; color: white; padding: 4px 12px; border-radius: 30px; cursor: pointer; font-size: 11px; margin-top: 8px; }
-        .fullscreen-day-content { padding: 8px; max-height: 55vh; overflow-y: auto; }
-        .fullscreen-template-block {
-            background: #fff3e0;
-            border-left: 4px solid #ff9800;
+        .day-name-title { 
+            font-size: 1.7rem; 
+            font-weight: bold; 
+            margin-bottom: 8px; 
+            word-break: break-word;
+            background: rgba(255,255,255,0.15);
+            display: inline-block;
+            padding: 4px 16px;
+            border-radius: 40px;
         }
+        .template-badge { background: rgba(255,255,255,0.2); display: inline-block; padding: 5px 14px; border-radius: 30px; font-size: 13px; margin-top: 8px; }
+        .dev-link { 
+            margin-top: 12px; 
+            font-size: 13px;
+            background: rgba(0,0,0,0.15);
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 30px;
+        }
+        .dev-link a { 
+            color: #FFD700; 
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .dev-link a:hover { text-decoration: underline; }
+        .edit-day-name-btn { 
+            background: rgba(255,255,255,0.2); 
+            border: none; 
+            color: white; 
+            padding: 6px 16px; 
+            border-radius: 30px; 
+            cursor: pointer; 
+            font-size: 13px; 
+            margin-top: 12px;
+            margin-left: 10px;
+            transition: background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .edit-day-name-btn:hover { background: rgba(255,255,255,0.35); }
+        .fullscreen-day-content { padding: 8px; max-height: 60vh; overflow-y: auto; }
+        .fullscreen-block {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            border-radius: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            cursor: grab;
+            user-select: none;
+            transition: background 0.2s;
+        }
+        .fullscreen-block:active { cursor: grabbing; }
+        .fullscreen-block.dragging { opacity: 0.3; background: #ccc; }
+        .fullscreen-block.drag-over { border-top: 3px solid #4caf50; margin-top: -3px; }
         .fullscreen-block-info { flex: 1; min-width: 0; }
-        .fullscreen-block-name { font-weight: 700; color: #1565c0; font-size: 14px; word-break: break-word; }
+        .fullscreen-block-name { font-weight: 700; color: #1565c0; font-size: 16px; word-break: break-word; }
         .fullscreen-template-name { color: #e65100; }
-        .fullscreen-block-desc { font-size: 11px; color: #666; margin-top: 3px; }
+        .fullscreen-block-desc { font-size: 12px; color: #666; margin-top: 3px; }
         .fullscreen-block-actions { display: flex; gap: 8px; flex-shrink: 0; }
 
         .blocks-panel {
@@ -543,29 +569,30 @@
         .block-item {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            padding: 10px 12px;
+            padding: 12px 14px;
             border-radius: 14px;
             cursor: grab;
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 8px;
+            transition: transform 0.1s;
         }
         .block-item:active { cursor: grabbing; opacity: 0.8; }
-        .template-item {
-            background: linear-gradient(135deg, #ff9800, #f57c00);
-        }
+        .template-item { background: linear-gradient(135deg, #ff9800, #f57c00); }
         .block-item-info { flex: 1; min-width: 0; }
-        .block-item-name { font-weight: 600; font-size: 13px; word-break: break-word; }
-        .block-item-desc { font-size: 10px; opacity: 0.8; margin-top: 2px; }
+        .block-item-name { font-weight: 600; font-size: 14px; word-break: break-word; }
+        .block-item-desc { font-size: 11px; opacity: 0.8; margin-top: 2px; }
         .add-btn {
             background: rgba(255,255,255,0.25);
             border-radius: 30px;
-            padding: 4px 10px;
+            padding: 5px 12px;
             cursor: pointer;
-            font-size: 12px;
+            font-size: 13px;
             flex-shrink: 0;
+            transition: background 0.2s;
         }
+        .add-btn:hover { background: rgba(255,255,255,0.4); }
 
         .modal {
             display: none;
@@ -583,40 +610,72 @@
         .modal-content {
             background: white;
             border-radius: 28px;
-            padding: 20px;
+            padding: 24px;
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
             max-height: 80vh;
             overflow-y: auto;
         }
+        .modal-content h3 {
+            margin-bottom: 16px;
+            color: #2e7d32;
+            font-size: 1.3rem;
+        }
+        .modal-content input, .modal-content textarea {
+            width: 100%;
+            padding: 12px 14px;
+            margin-bottom: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 30px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+        .modal-content textarea {
+            border-radius: 20px;
+            resize: vertical;
+            min-height: 80px;
+        }
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .modal-buttons button {
+            flex: 1;
+            padding: 12px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .modal-save { background: #4caf50; color: white; }
+        .modal-cancel { background: #e0e0e0; color: #666; }
+
         .day-option, .template-option {
             background: #f0f7ff;
-            padding: 12px;
+            padding: 14px;
             border-radius: 14px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             text-align: center;
             cursor: pointer;
             word-break: break-word;
+            transition: background 0.2s;
+            font-size: 14px;
         }
+        .day-option:hover, .template-option:hover { background: #e3f2fd; }
+        .cancel-option {
+            background: #f5f5f5;
+            color: #666;
+            margin-top: 10px;
+        }
+        .cancel-option:hover { background: #e0e0e0; }
 
-        .confirm-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.6);
-            z-index: 4000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 16px;
-        }
         .confirm-card {
             background: white;
             border-radius: 28px;
             padding: 24px;
-            max-width: 300px;
+            max-width: 320px;
             width: 100%;
             text-align: center;
         }
@@ -624,14 +683,13 @@
         .confirm-buttons { display: flex; gap: 12px; }
         .confirm-buttons button {
             flex: 1;
-            padding: 10px;
+            padding: 12px;
             border-radius: 40px;
             border: none;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 15px;
+            font-weight: 600;
         }
-        .confirm-yes { background: #dc3545; color: white; }
-        .confirm-no { background: #e0e0e0; color: #333; }
 
         .toast {
             position: fixed;
@@ -640,54 +698,27 @@
             transform: translateX(-50%);
             background: #333;
             color: white;
-            padding: 8px 20px;
+            padding: 10px 24px;
             border-radius: 40px;
             opacity: 0;
             transition: opacity 0.3s;
             z-index: 1001;
-            font-size: 13px;
+            font-size: 14px;
             pointer-events: none;
             text-align: center;
             max-width: 90%;
         }
         .toast.show { opacity: 1; }
 
-        .template-buttons { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 10px; }
-        .template-btn { background: #ff9800; color: white; border: none; padding: 6px 10px; border-radius: 30px; cursor: pointer; font-size: 11px; }
-        .custom-event-input { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 8px; 
-            margin-top: 12px; 
-        }
-        .custom-event-input input, .custom-event-input textarea {
-            padding: 10px 12px;
-            border-radius: 30px;
-            border: 1px solid #ccc;
-            font-size: 13px;
-            width: 100%;
-            font-family: inherit;
-        }
-        .custom-event-input textarea {
-            border-radius: 20px;
-            resize: vertical;
-            min-height: 60px;
-        }
-        .custom-event-input button {
-            background: #4caf50;
-            color: white;
-            border: none;
-            padding: 10px 16px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 14px;
-        }
+        .template-buttons { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 10px; }
+        .template-btn { background: #ff9800; color: white; border: none; padding: 8px 16px; border-radius: 30px; cursor: pointer; font-size: 13px; font-weight: 500; transition: transform 0.1s; }
+        .template-btn:active { transform: scale(0.97); }
 
         .today-badge {
             background: #ff9800;
             color: white;
-            font-size: 10px;
-            padding: 2px 8px;
+            font-size: 11px;
+            padding: 3px 10px;
             border-radius: 20px;
             margin-left: 8px;
             display: inline-block;
@@ -695,29 +726,37 @@
 
         .camp-status {
             text-align: center;
-            padding: 40px;
+            padding: 60px 40px;
             background: white;
             border-radius: 30px;
             margin: 20px;
         }
-        .camp-status h2 {
-            color: #2e7d32;
-            margin-bottom: 15px;
-        }
-        .camp-status p {
-            color: #666;
+        .camp-status h2 { color: #2e7d32; margin-bottom: 15px; font-size: 1.5rem; }
+        .camp-status p { color: #666; font-size: 16px; }
+
+        .empty-fullscreen {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
             font-size: 16px;
+            background: #fafafa;
+            border-radius: 20px;
+            margin: 20px 0;
         }
 
         @media (max-width: 600px) {
             body { padding: 8px; }
             .day-name-title { font-size: 1.2rem; }
-            .fullscreen-block-name { font-size: 13px; }
-            .delete-block, .view-detail, .edit-link-btn { width: 36px; height: 36px; }
-            .squad-btn { padding: 6px 12px; font-size: 13px; }
-            #installPopup { padding: 12px 18px; gap: 10px; }
-            #installPopup p { font-size: 12px; }
-            #installPopup button { padding: 6px 15px; font-size: 12px; }
+            .fullscreen-block-name { font-size: 14px; }
+            .delete-block, .view-detail, .edit-link-btn, .edit-event-btn { width: 38px; height: 38px; }
+            .squad-btn { padding: 8px 16px; font-size: 14px; }
+            .fullscreen-date { font-size: 12px; }
+            .exit-full-btn { padding: 6px 14px; font-size: 13px; }
+            .fullscreen-day-card { padding: 16px; }
+            .fullscreen-block { padding: 10px 12px; }
+            .camp-status { padding: 40px 20px; }
+            .edit-day-name-btn { font-size: 11px; padding: 4px 12px; }
+            .day-name-title { font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -742,8 +781,8 @@
         </div>
         
         <div id="studentWelcomeSection" class="welcome-student" style="display: none;">
-            <div style="font-size: 32px;">👋</div>
-            <div style="font-weight: bold; margin: 10px 0;">Ласкаво просимо!</div>
+            <div style="font-size: 36px;">👋</div>
+            <div style="font-weight: bold; margin: 10px 0; font-size: 18px;">Ласкаво просимо!</div>
             <p>Оберіть ваш загін:</p>
             <div class="squad-select-login">
                 <button onclick="enterAsStudent(1)">🏅 Загін 1</button>
@@ -779,15 +818,14 @@
             <div id="daysContainer" class="days-grid"></div>
         </div>
         <div class="blocks-panel" id="blocksPanel">
-            <h3 style="margin-bottom: 12px; font-size: 1rem;">📦 Готові заходи</h3>
+            <h3 style="margin-bottom: 12px; font-size: 1.1rem;">📦 Готові заходи</h3>
             <div id="blocksContainer" class="blocks-grid"></div>
-            <h3 style="margin: 15px 0 10px; font-size: 1rem;">📋 Шаблони днів</h3>
+            <h3 style="margin: 15px 0 10px; font-size: 1.1rem;">📋 Шаблони днів</h3>
             <div id="templatesContainer" class="blocks-grid"></div>
         </div>
     </div>
 </div>
 
-<!-- PWA Popup -->
 <div id="installPopup" style="display: none;">
     <p>📱 Встановити додаток "Табір «Супутник»" на пристрій?</p>
     <button id="installYes">Встановити</button>
@@ -811,23 +849,74 @@
     </div>
 </div>
 
-<div id="editLinkModal" class="modal">
+<div id="editEventModal" class="modal">
     <div class="modal-content">
-        <h3>🔗 Редагувати посилання</h3>
-        <input type="url" id="editLinkInput" placeholder="https://..." style="width:100%; padding:12px; border-radius:30px; border:1px solid #ccc; margin:15px 0;">
-        <div style="display: flex; gap: 10px;">
-            <button onclick="saveEditedLink()" style="flex:1; padding:10px; border-radius:30px; background:#4caf50; color:white; border:none;">Зберегти</button>
-            <button onclick="closeEditLinkModal()" style="flex:1; padding:10px; border-radius:30px; background:#ccc; border:none;">Скасувати</button>
+        <h3>✏️ Редагувати захід</h3>
+        <input type="text" id="editEventName" placeholder="Назва заходу">
+        <input type="text" id="editEventTime" placeholder="Час (напр. 10:00)">
+        <textarea id="editEventDetails" placeholder="Опис заходу" rows="3"></textarea>
+        <input type="url" id="editEventLink" placeholder="Посилання на матеріали">
+        <div class="modal-buttons">
+            <button onclick="saveEditedEvent()" class="modal-save">💾 Зберегти</button>
+            <button onclick="closeEditEventModal()" class="modal-cancel">Скасувати</button>
         </div>
     </div>
 </div>
 
-<div id="confirmDeleteModal" class="confirm-modal" style="display: none;">
+<div id="addEventModal" class="modal">
+    <div class="modal-content">
+        <h3>➕ Додати свій захід</h3>
+        <input type="text" id="addEventName" placeholder="Назва заходу *">
+        <input type="text" id="addEventTime" placeholder="Час (напр. 10:00)">
+        <textarea id="addEventDetails" placeholder="Опис заходу" rows="3"></textarea>
+        <input type="url" id="addEventLink" placeholder="Посилання на матеріали">
+        <div class="modal-buttons">
+            <button onclick="saveAddEvent()" class="modal-save">➕ Додати</button>
+            <button onclick="closeAddEventModal()" class="modal-cancel">Скасувати</button>
+        </div>
+    </div>
+</div>
+
+<div id="editLinkModal" class="modal">
+    <div class="modal-content">
+        <h3>🔗 Редагувати посилання</h3>
+        <input type="url" id="editLinkInput" placeholder="https://...">
+        <div class="modal-buttons">
+                        <button onclick="saveEditedLink()" class="modal-save">Зберегти</button>
+            <button onclick="closeEditLinkModal()" class="modal-cancel">Скасувати</button>
+        </div>
+    </div>
+</div>
+
+<div id="editDayNameModal" class="modal">
+    <div class="modal-content">
+        <h3>✏️ Редагувати назву дня</h3>
+        <input type="text" id="editDayNameInput" placeholder="Назва дня" style="font-size: 16px;">
+        <div class="modal-buttons">
+            <button onclick="saveEditedDayName()" class="modal-save">💾 Зберегти</button>
+            <button onclick="closeEditDayNameModal()" class="modal-cancel">Скасувати</button>
+        </div>
+    </div>
+</div>
+
+<div id="templateChoiceModal" class="modal">
+    <div class="modal-content">
+        <h3>📋 Застосування шаблону</h3>
+        <p id="templateChoiceMessage">Оберіть дію:</p>
+        <div class="modal-buttons">
+            <button id="templateReplaceBtn" class="modal-save">🔄 Замінити всі заходи</button>
+            <button id="templateAddBtn" style="background:#ff9800; color:white;" class="modal-save">➕ Додати до наявних</button>
+            <button id="templateCancelBtn" class="modal-cancel">❌ Скасувати</button>
+        </div>
+    </div>
+</div>
+
+<div id="confirmDeleteModal" style="display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:4000; display:flex; justify-content:center; align-items:center; padding:16px;">
     <div class="confirm-card">
         <p>❓ Ви впевнені, що хочете видалити цей захід?</p>
         <div class="confirm-buttons">
-            <button class="confirm-yes" onclick="confirmDelete()">Так, видалити</button>
-            <button class="confirm-no" onclick="cancelDelete()">Скасувати</button>
+            <button onclick="confirmDelete()" style="background:#dc3545; color:white;">Так, видалити</button>
+            <button onclick="cancelDelete()" style="background:#e0e0e0; color:#333;">Скасувати</button>
         </div>
     </div>
 </div>
@@ -840,7 +929,6 @@
     const ADMIN_RESET_CODE = "0230";
     const CAMP_DAYS_COUNT = 14;
     
-    // Дати початку та кінця табору
     const CAMP_START_DATE = new Date(2026, 5, 1);
     const CAMP_END_DATE = new Date(2026, 5, 18);
     
@@ -856,8 +944,10 @@
     let pendingDelete = { squad: null, day: null, blockId: null };
     let pendingItemForDay = null;
     let editingLinkData = { squad: null, day: null, blockId: null };
+    let editingEventData = { squad: null, day: null, blockId: null };
+    let pendingTemplateChoice = { squad: null, day: null, templateName: null };
+    let editingDayNameData = { squad: null, day: null };
     
-    // Змінні для сортування заходів
     let draggedBlockElement = null;
     let draggedBlockId = null;
     let draggedBlockDay = null;
@@ -906,221 +996,222 @@
         const today = new Date();
         today.setHours(0,0,0,0);
         for(let i=0; i<campDates.length; i++) {
-			if(campDates[i].toDateString() === today.toDateString()) return i+1;
+            if(campDates[i].toDateString() === today.toDateString()) return i+1;
         }
         return null;
     }
     
-    // ========== ШАБЛОНИ ДНІВ ==========
+    // ========== ШАБЛОНИ ДНІВ (скорочено для прикладу) ==========
     const TEMPLATE_DEV_LINKS = {
-        "День «Коло знайомств»": "https://docs.google.com/document/d/1UA1I-hUZNz8FMeANFSoeKW2N_viJ39ra08fHnK47KsE/edit?usp=sharing",
-        "День «День шифрувальників»": "https://docs.google.com/document/d/1bMUfMcb1cdxjXITEKfyEurJs8Ow0QVISE4f9WEuScjo/edit?usp=sharing",
-        "День «Що в коробці?»": "https://docs.google.com/document/d/EXAMPLE__що_в_коробці/edit?usp=sharing",
-        "День «Слідопити»": "https://docs.google.com/document/d/EXAMPLE__слідопити/edit?usp=sharing",
-        "День «Водний день (без шлангів)»": "https://docs.google.com/document/d/EXAMPLE__водний__без_шлангів/edit?usp=sharing",
-        "День «День мотузки та вузлів»": "https://docs.google.com/document/d/EXAMPLE___мотузки_та_вузлів/edit?usp=sharing",
-        "День «Тихий день»": "https://docs.google.com/document/d/EXAMPLE__тихий_/edit?usp=sharing",
-        "День «День прищіпок»": "https://docs.google.com/document/d/EXAMPLE___прищіпок/edit?usp=sharing",
-        "День «День тіней та світла»": "https://docs.google.com/document/d/EXAMPLE___тіней_та_світла/edit?usp=sharing",
-        "День «Папір & скотч»": "https://docs.google.com/document/d/EXAMPLE__папір__скотч/edit?usp=sharing",
-        "День «День гудзиків»": "https://docs.google.com/document/d/EXAMPLE___гудзиків/edit?usp=sharing",
-        "День «Йога та баланс»": "https://docs.google.com/document/d/EXAMPLE__йога_та_баланс/edit?usp=sharing",
-        "День «День перевдягань»": "https://docs.google.com/document/d/EXAMPLE___перевдягань/edit?usp=sharing",
-        "День «Підсумкова круговерть»": "https://docs.google.com/document/d/EXAMPLE__підсумкова_круговерть/edit?usp=sharing",
-        "День «Вітальний»": "https://docs.google.com/document/d/EXAMPLE__вітальний/edit?usp=sharing",
-        "День «Мотузковий турнір»": "https://docs.google.com/document/d/EXAMPLE__мотузковий_турнір/edit?usp=sharing",
-        "День «Театр експромту»": "https://docs.google.com/document/d/EXAMPLE__театр_експромту/edit?usp=sharing",
-        "День «Майстерня природи»": "https://docs.google.com/document/d/EXAMPLE__майстерня_природи/edit?usp=sharing",
-        "День «Креативний виклик»": "https://docs.google.com/document/d/EXAMPLE__креативний_виклик/edit?usp=sharing",
-        "День «Кольоровий день»": "https://docs.google.com/document/d/EXAMPLE__кольоровий_/edit?usp=sharing",
-        "День «Олімпіада підручних засобів»": "https://docs.google.com/document/d/EXAMPLE__олімпіада_підручних_засобів/edit?usp=sharing",
-        "День «Квест таємниць»": "https://docs.google.com/document/d/EXAMPLE__квест_таємниць/edit?usp=sharing",
-        "День «Екоград»": "https://docs.google.com/document/d/EXAMPLE__екоград/edit?usp=sharing",
-        "День «Розумники й розумниці»": "https://docs.google.com/document/d/EXAMPLE__розумники_й_розумниці/edit?usp=sharing",
-        "День «Фотодень без фотоапарата»": "https://docs.google.com/document/d/EXAMPLE__фото_без_фотоапарата/edit?usp=sharing",
-        "День «Ярмарок вигадок»": "https://docs.google.com/document/d/EXAMPLE__ярмарок_вигадок/edit?usp=sharing",
-        "День «День спогадів»": "https://docs.google.com/document/d/EXAMPLE___спогадів/edit?usp=sharing",
-        "День «Фінальне коло»": "https://docs.google.com/document/d/EXAMPLE__фінальне_коло/edit?usp=sharing",
-    };
+    "День «Коло знайомств»": "https://docs.google.com/document/d/EXAMPLE__коло_знайомств/edit?usp=sharing",
+    "День «День шифрувальників»": "https://docs.google.com/document/d/EXAMPLE___шифрувальників/edit?usp=sharing",
+    "День «Що в коробці?»": "https://docs.google.com/document/d/EXAMPLE__що_в_коробці/edit?usp=sharing",
+    "День «Слідопити»": "https://docs.google.com/document/d/EXAMPLE__слідопити/edit?usp=sharing",
+    "День «Водний день (без шлангів)»": "https://docs.google.com/document/d/EXAMPLE__водний__без_шлангів/edit?usp=sharing",
+    "День «День мотузки та вузлів»": "https://docs.google.com/document/d/EXAMPLE___мотузки_та_вузлів/edit?usp=sharing",
+    "День «Тихий день»": "https://docs.google.com/document/d/EXAMPLE__тихий_/edit?usp=sharing",
+    "День «День прищіпок»": "https://docs.google.com/document/d/EXAMPLE___прищіпок/edit?usp=sharing",
+    "День «День тіней та світла»": "https://docs.google.com/document/d/EXAMPLE___тіней_та_світла/edit?usp=sharing",
+    "День «Папір & скотч»": "https://docs.google.com/document/d/EXAMPLE__папір__скотч/edit?usp=sharing",
+    "День «День гудзиків»": "https://docs.google.com/document/d/EXAMPLE___гудзиків/edit?usp=sharing",
+    "День «Йога та баланс»": "https://docs.google.com/document/d/EXAMPLE__йога_та_баланс/edit?usp=sharing",
+    "День «День перевдягань»": "https://docs.google.com/document/d/EXAMPLE___перевдягань/edit?usp=sharing",
+    "День «Підсумкова круговерть»": "https://docs.google.com/document/d/EXAMPLE__підсумкова_круговерть/edit?usp=sharing",
+    "День «Вітальний»": "https://docs.google.com/document/d/EXAMPLE__вітальний/edit?usp=sharing",
+    "День «Мотузковий турнір»": "https://docs.google.com/document/d/EXAMPLE__мотузковий_турнір/edit?usp=sharing",
+    "День «Театр експромту»": "https://docs.google.com/document/d/EXAMPLE__театр_експромту/edit?usp=sharing",
+    "День «Майстерня природи»": "https://docs.google.com/document/d/EXAMPLE__майстерня_природи/edit?usp=sharing",
+    "День «Креативний виклик»": "https://docs.google.com/document/d/EXAMPLE__креативний_виклик/edit?usp=sharing",
+    "День «Кольоровий день»": "https://docs.google.com/document/d/EXAMPLE__кольоровий_/edit?usp=sharing",
+    "День «Олімпіада підручних засобів»": "https://docs.google.com/document/d/EXAMPLE__олімпіада_підручних_засобів/edit?usp=sharing",
+    "День «Квест таємниць»": "https://docs.google.com/document/d/EXAMPLE__квест_таємниць/edit?usp=sharing",
+    "День «Екоград»": "https://docs.google.com/document/d/EXAMPLE__екоград/edit?usp=sharing",
+    "День «Розумники й розумниці»": "https://docs.google.com/document/d/EXAMPLE__розумники_й_розумниці/edit?usp=sharing",
+    "День «Фотодень без фотоапарата»": "https://docs.google.com/document/d/EXAMPLE__фото_без_фотоапарата/edit?usp=sharing",
+    "День «Ярмарок вигадок»": "https://docs.google.com/document/d/EXAMPLE__ярмарок_вигадок/edit?usp=sharing",
+    "День «День спогадів»": "https://docs.google.com/document/d/EXAMPLE___спогадів/edit?usp=sharing",
+    "День «Фінальне коло»": "https://docs.google.com/document/d/EXAMPLE__фінальне_коло/edit?usp=sharing",
+};
     
     const DAY_TEMPLATES = {
-        "День «Коло знайомств»": [
-            { name: "🎉 Лінійка-шикування за кольором очей/взуття.", desc: "9:00", details: "Лінійка-шикування за кольором очей/взуття.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Коло знайомств»"] },
-            { name: "👋 Гра «Вітерець дме на того, хто…»", desc: "10:00", details: "Гра «Вітерець дме на того, хто…». Матеріали: рухливе знайомство. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Коло знайомств»"] },
-            { name: "🏵️ Майстерка «Ниточка дружби»", desc: "11:00", details: "Майстерка «Ниточка дружби». Матеріали: мотузка — спільна павутинка з іменами. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Коло знайомств»"] },
-            { name: "🤸 Руханка: «Годинник»", desc: "12:00", details: "Руханка: «Годинник». Матеріали: ведучий каже час — діти стукають/підстрибують. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Коло знайомств»"] },
-            { name: "🏃 Вечірнє коло: один жест «мені сьогодні…».", desc: "13:00", details: "Вечірнє коло: один жест «мені сьогодні…».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Коло знайомств»"] },
-        ],
-        "День «День шифрувальників»": [
-            { name: "🎉 Кожен шифрує своє ім'я жестом", desc: "9:00", details: "Кожен шифрує своє ім'я жестом. Матеріали: повторюють усі. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День шифрувальників»"] },
-            { name: "👋 Гра «Зіпсований телефон» із рухами.", desc: "10:00", details: "Гра «Зіпсований телефон» із рухами.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День шифрувальників»"] },
-            { name: "🏵️ Письмо без ручки: малювання пальцем на спині сусіда.", desc: "11:00", details: "Письмо без ручки: малювання пальцем на спині сусіда.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День шифрувальників»"] },
-            { name: "🤸 Скарб за шифром", desc: "12:00", details: "Скарб за шифром. Матеріали: сліди крейдою на асфальті. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День шифрувальників»"] },
-        ],
-        "День «Що в коробці?»": [
-            { name: "🎉 Гра «Таємничий мішок/коробка»", desc: "9:00", details: "Гра «Таємничий мішок/коробка». Матеріали: на дотик вгадати: ґудзик, шишка, скріпка. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Що в коробці?»"] },
-            { name: "👋 Конструювання з коробок: «Місто з нічого».", desc: "10:00", details: "Конструювання з коробок: «Місто з нічого».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Що в коробці?»"] },
-            { name: "🏵️ Естафета з коробками на голові", desc: "11:00", details: "Естафета з коробками на голові. Матеріали: не впустити. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Що в коробці?»"] },
-            { name: "🤸 Спільна казка: кожен додає речення і передає коробку.", desc: "12:00", details: "Спільна казка: кожен додає речення і передає коробку.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Що в коробці?»"] },
-        ],
-        "День «Слідопити»": [
-            { name: "🎉 Розпізнавання слідів", desc: "9:00", details: "Розпізнавання слідів. Матеріали: намальовані крейдою або відбитки з картоплі. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Слідопити»"] },
-            { name: "👋 Ланцюжок із зав'язаних очей: «Проведи друга»", desc: "10:00", details: "Ланцюжок із зав'язаних очей: «Проведи друга». Матеріали: голосом. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Слідопити»"] },
-            { name: "🏵️ Полювання на «клади»: записки під камінцями/лавками.", desc: "11:00", details: "Полювання на «клади»: записки під камінцями/лавками.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Слідопити»"] },
-            { name: "🤸 Руханка «Кроки велетня і гнома».", desc: "12:00", details: "Руханка «Кроки велетня і гнома».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Слідопити»"] },
-        ],
-        "День «Водний день (без шлангів)»": [
-            { name: "🎉 Переливання води ложкою в естафеті.", desc: "9:00", details: "Переливання води ложкою в естафеті.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Водний день (без шлангів)»"] },
-            { name: "👋 Мильні бульбашки з дроту та залишків мила/шампуню.", desc: "10:00", details: "Мильні бульбашки з дроту та залишків мила/шампуню.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Водний день (без шлангів)»"] },
-            { name: "🏵️ Гра «Крапля-річка-море»", desc: "11:00", details: "Гра «Крапля-річка-море». Матеріали: за командою групуватись. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Водний день (без шлангів)»"] },
-            { name: "🤸 Змагання «Хто голосніше капне»", desc: "12:00", details: "Змагання «Хто голосніше капне». Матеріали: камінці у воду у відрі. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Водний день (без шлангів)»"] },
-        ],
-        "День «День мотузки та вузлів»": [
-            { name: "🎉 Вправи: 3 простих вузли", desc: "9:00", details: "Вправи: 3 простих вузли. Матеріали: прямий, вісімка, булінь. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День мотузки та вузлів»"] },
-            { name: "👋 Гра «Рибалка»", desc: "10:00", details: "Гра «Рибалка». Матеріали: мотузка з гаком із дроту ловить пляшки. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День мотузки та вузлів»"] },
-            { name: "🏵️ Плетіння сітки для м'яча з мотузок.", desc: "11:00", details: "Плетіння сітки для м'яча з мотузок.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День мотузки та вузлів»"] },
-            { name: "🤸 Командна гра «Переправа через річку»", desc: "12:00", details: "Командна гра «Переправа через річку». Матеріали: мотузки на землі як містки. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День мотузки та вузлів»"] },
-        ],
-        "День «Тихий день»": [
-            { name: "🎉 Читання жестів: поясни фразу без слів.", desc: "9:00", details: "Читання жестів: поясни фразу без слів.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Тихий день»"] },
-            { name: "👋 Малювання обома руками одночасно.", desc: "10:00", details: "Малювання обома руками одночасно.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Тихий день»"] },
-            { name: "🏵️ Гра «Глухий телефон»", desc: "11:00", details: "Гра «Глухий телефон». Матеріали: емодзі пальцями на долоні. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Тихий день»"] },
-            { name: "🤸 Складання орігамі з газет", desc: "12:00", details: "Складання орігамі з газет. Матеріали: жабка, кораблик, шапка. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Тихий день»"] },
-        ],
-        "День «День прищіпок»": [
-            { name: "🎉 Прищіпкова естафета: перенести прищіпки на мотузку за 1 хв.", desc: "9:00", details: "Прищіпкова естафета: перенести прищіпки на мотузку за 1 хв.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День прищіпок»"] },
-            { name: "👋 Хто більше прищіпок повісить собі на одяг", desc: "10:00", details: "Хто більше прищіпок повісить собі на одяг. Матеріали: стрибаючи. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День прищіпок»"] },
-            { name: "🏵️ Фігура з прищіпок та картону", desc: "11:00", details: "Фігура з прищіпок та картону. Матеріали: тваринка. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День прищіпок»"] },
-            { name: "🤸 Гра «Акула та рибки»", desc: "12:00", details: "Гра «Акула та рибки». Матеріали: прищіпка — акула кусає за палець — вибуваєш. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День прищіпок»"] },
-        ],
-        "День «День тіней та світла»": [
-            { name: "🎉 Ляльковий театр тіней на простирадлі", desc: "9:00", details: "Ляльковий театр тіней на простирадлі. Матеріали: руки, фігурки з картону. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День тіней та світла»"] },
-            { name: "👋 Спостереження за тінню: хто довшу зробить.", desc: "10:00", details: "Спостереження за тінню: хто довшу зробить.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День тіней та світла»"] },
-            { name: "🏵️ Гра «Знайди свого близнюка за тінню».", desc: "11:00", details: "Гра «Знайди свого близнюка за тінню».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День тіней та світла»"] },
-            { name: "🤸 Малювання крейдою тіней предметів на асфальті.", desc: "12:00", details: "Малювання крейдою тіней предметів на асфальті.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День тіней та світла»"] },
-        ],
-        "День «Папір & скотч»": [
-            { name: "🎉 Конкурс на найвищу вежу з трубочок та скотчу.", desc: "9:00", details: "Конкурс на найвищу вежу з трубочок та скотчу.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Папір & скотч»"] },
-            { name: "👋 Гра «Мумія»", desc: "10:00", details: "Гра «Мумія». Матеріали: замотати товариша туалетним папером. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Папір & скотч»"] },
-            { name: "🏵️ Літальний апарат із паперу", desc: "11:00", details: "Літальний апарат із паперу. Матеріали: не літак — а дивна форма. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Папір & скотч»"] },
-            { name: "🤸 Скульптура зі зім'ятих газет та скотчу «Чудовисько табору».", desc: "12:00", details: "Скульптура зі зім'ятих газет та скотчу «Чудовисько табору».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Папір & скотч»"] },
-        ],
-        "День «День гудзиків»": [
-            { name: "🎉 Сортування гудзиків наосліп", desc: "9:00", details: "Сортування гудзиків наосліп. Матеріали: за розміром/фактурою. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День гудзиків»"] },
-            { name: "👋 Викладання візерунка", desc: "10:00", details: "Викладання візерунка. Матеріали: гірлянда на мотузку. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День гудзиків»"] },
-            { name: "🏵️ Гра «Гудзик-невидимка»", desc: "11:00", details: "Гра «Гудзик-невидимка». Матеріали: передати під столом, вгадати в кого. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День гудзиків»"] },
-            { name: "🤸 Естафета «Покоти гудзик по лінії».", desc: "12:00", details: "Естафета «Покоти гудзик по лінії».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День гудзиків»"] },
-        ],
-        "День «Йога та баланс»": [
-            { name: "🎉 Стійки: «ластівка», «цапля», «дерево»", desc: "9:00", details: "Стійки: «ластівка», «цапля», «дерево». Матеріали: з паличкою на пальці. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Йога та баланс»"] },
-            { name: "👋 Ходьба по мотузці на землі.", desc: "10:00", details: "Ходьба по мотузці на землі.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Йога та баланс»"] },
-            { name: "🏵️ Передай м'яч без рук", desc: "11:00", details: "Передай м'яч без рук. Матеріали: шия, підборіддя, ноги. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Йога та баланс»"] },
-            { name: "🤸 Конкурс «Хто довше простоїть на одній нозі із книжкою на голові».", desc: "12:00", details: "Конкурс «Хто довше простоїть на одній нозі із книжкою на голові».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Йога та баланс»"] },
-        ],
-        "День «День перевдягань»": [
-            { name: "🎉 Грим із крейди/соку буряка", desc: "9:00", details: "Грим із крейди/соку буряка. Матеріали: безпечний. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День перевдягань»"] },
-            { name: "👋 Дефіле у «вбранні з газет та пакетів».", desc: "10:00", details: "Дефіле у «вбранні з газет та пакетів».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День перевдягань»"] },
-            { name: "🏵️ Гра «Зміни голос» — вгадай, хто говорить.", desc: "11:00", details: "Гра «Зміни голос» — вгадай, хто говорить.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День перевдягань»"] },
-            { name: "🤸 Конкурс «Жартівлива піраміда»", desc: "12:00", details: "Конкурс «Жартівлива піраміда». Матеріали: лягають один на одного, тримаючи спину. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День перевдягань»"] },
-        ],
-        "День «Підсумкова круговерть»": [
-            { name: "🎉 Гра «Гаряча картопля»", desc: "9:00", details: "Гра «Гаряча картопля». Матеріали: передавати м'яч чи пляшку під музику, хто залишився — каже побажання. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Підсумкова круговерть»"] },
-            { name: "👋 Малюнок спільної долоні", desc: "10:00", details: "Малюнок спільної долоні. Матеріали: на великому папері кожен обводить руку. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Підсумкова круговерть»"] },
-            { name: "🏵️ Медалі з кришечок від пляшок на мотузочці.", desc: "11:00", details: "Медалі з кришечок від пляшок на мотузочці.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Підсумкова круговерть»"] },
-            { name: "🤸 Спільне «Дерево досягнень»: гілка з вузликами — кожен зав'язує на згадку.", desc: "12:00", details: "Спільне «Дерево досягнень»: гілка з вузликами — кожен зав'язує на згадку.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Підсумкова круговерть»"] },
-            { name: "🏃 Фінальний хоровод. Прощання без сліз", desc: "13:00", details: "Фінальний хоровод. Прощання без сліз. Матеріали: плескання в долоні під музику. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Підсумкова круговерть»"] },
-        ],
-        "День «Вітальний»": [
-            { name: "🎉 Ранкова лінійка та розподіл на загони", desc: "9:00", details: "Ранкова лінійка та розподіл на загони. Матеріали: емблема з паперу/скотчу. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Вітальний»"] },
-            { name: "👋 Гра «Снігова куля»", desc: "10:00", details: "Гра «Снігова куля». Матеріали: знайомство імен. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Вітальний»"] },
-            { name: "🏵️ Майстерка «Бейдж власноруч»", desc: "11:00", details: "Майстерка «Бейдж власноруч». Матеріали: картон, фломастери. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Вітальний»"] },
-            { name: "🤸 Руханка «Кольорові сигнали»", desc: "12:00", details: "Руханка «Кольорові сигнали». Матеріали: ведучий показує кольори — діти виконують дії. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Вітальний»"] },
-            { name: "🏃 Вечірнє коло: що сподобалось.", desc: "13:00", details: "Вечірнє коло: що сподобалось.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Вітальний»"] },
-        ],
-        "День «Мотузковий турнір»": [
-            { name: "🎉 Квест-знайомство з територією", desc: "9:00", details: "Квест-знайомство з територією. Матеріали: завдання: знайти листочки з підказками. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Мотузковий турнір»"] },
-                        { name: "👋 Ігри з мотузкою: «Павутинка»", desc: "10:00", details: "Ігри з мотузкою: «Павутинка». Матеріали: пролізти без торкання. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Мотузковий турнір»"] },
-            { name: "🏵️ Творчість з ниток: плетіння браслетів-«дружок».", desc: "11:00", details: "Творчість з ниток: плетіння браслетів-«дружок».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Мотузковий турнір»"] },
-            { name: "🤸 Рухлива гра «Вибивний м'яч».", desc: "12:00", details: "Рухлива гра «Вибивний м'яч».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Мотузковий турнір»"] },
-        ],
-        "День «Театр експромту»": [
-            { name: "🎉 Гра «Крокодил»", desc: "9:00", details: "Гра «Крокодил». Матеріали: пантоміми на картках. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Театр експромту»"] },
-            { name: "👋 Ляльки з пластикових ложок/паперових пакетів.", desc: "10:00", details: "Ляльки з пластикових ложок/паперових пакетів.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Театр експромту»"] },
-            { name: "🏵️ Експромт-вистава за казкою", desc: "11:00", details: "Експромт-вистава за казкою. Матеріали: розподіл ролей жестами. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Театр експромту»"] },
-            { name: "🤸 Конкурс «Звуконаслідування»", desc: "12:00", details: "Конкурс «Звуконаслідування». Матеріали: зобразити тварину/транспорт. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Театр експромту»"] },
-        ],
-        "День «Майстерня природи»": [
-            { name: "🎉 Збір природних матеріалів", desc: "9:00", details: "Збір природних матеріалів. Матеріали: листя, камінці, гілочки. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Майстерня природи»"] },
-            { name: "👋 Аплікації, мандали, «лісові чоловічки».", desc: "10:00", details: "Аплікації, мандали, «лісові чоловічки».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Майстерня природи»"] },
-            { name: "🏵️ Гра «Впізнай на дотик»", desc: "11:00", details: "Гра «Впізнай на дотик». Матеріали: мішечок із шишками, жолудями тощо. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Майстерня природи»"] },
-            { name: "🤸 Руханка «Море хвилюється раз».", desc: "12:00", details: "Руханка «Море хвилюється раз».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Майстерня природи»"] },
-        ],
-        "День «Креативний виклик»": [
-            { name: "🎉 Конкурс «Літак з паперу»", desc: "9:00", details: "Конкурс «Літак з паперу». Матеріали: на дальність/точність. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Креативний виклик»"] },
-            { name: "👋 Будівництво вежі з трубочок/газет", desc: "10:00", details: "Будівництво вежі з трубочок/газет. Матеріали: стейплер, скотч. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Креативний виклик»"] },
-            { name: "🏵️ Гра «Що змінилось?»", desc: "11:00", details: "Гра «Що змінилось?». Матеріали: розвиток пам'яті. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Креативний виклик»"] },
-            { name: "🤸 Естафета з м'ячем у парах.", desc: "12:00", details: "Естафета з м'ячем у парах.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Креативний виклик»"] },
-        ],
-        "День «Кольоровий день»": [
-            { name: "🎉 Кожен загін обирає колір і фарбує одяг стрічками/крейдою.", desc: "9:00", details: "Кожен загін обирає колір і фарбує одяг стрічками/крейдою.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Кольоровий день»"] },
-            { name: "👋 Малюнок крейдою на асфальті «Веселка».", desc: "10:00", details: "Малюнок крейдою на асфальті «Веселка».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Кольоровий день»"] },
-            { name: "🏵️ Гра «Знайди предмет кольору…»", desc: "11:00", details: "Гра «Знайди предмет кольору…». Матеріали: пошук у таборі. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Кольоровий день»"] },
-            { name: "🤸 Дискотека з кольоровими салютами з паперу.", desc: "12:00", details: "Дискотека з кольоровими салютами з паперу.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Кольоровий день»"] },
-        ],
-        "День «Олімпіада підручних засобів»": [
-            { name: "🎉 Стрибки в мішках", desc: "9:00", details: "Стрибки в мішках. Матеріали: звичайні пакети або наволочки. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Олімпіада підручних засобів»"] },
-            { name: "👋 Біг з яйцем на ложці", desc: "10:00", details: "Біг з яйцем на ложці. Матеріали: варене яйце або кулька. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Олімпіада підручних засобів»"] },
-            { name: "🏵️ Кидання «списів» з гілок.", desc: "11:00", details: "Кидання «списів» з гілок.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Олімпіада підручних засобів»"] },
-            { name: "🤸 Перетягування канату", desc: "12:00", details: "Перетягування канату. Матеріали: мотузка + вузли. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Олімпіада підручних засобів»"] },
-        ],
-        "День «Квест таємниць»": [
-            { name: "🎉 Станції на подвір'ї: лабіринт з мотузок, загадка з ліхтариком, шифр", desc: "9:00", details: "Станції на подвір'ї: лабіринт з мотузок, загадка з ліхтариком, шифр. Матеріали: ключ – алфавіт на папері. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Квест таємниць»"] },
-            { name: "👋 Схований «скарб»", desc: "10:00", details: "Схований «скарб». Матеріали: солодощі. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Квест таємниць»"] },
-            { name: "🏵️ Завершення: спільне фото-спогад.", desc: "11:00", details: "Завершення: спільне фото-спогад.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Квест таємниць»"] },
-        ],
-        "День «Екоград»": [
-            { name: "🎉 Сортування сміття", desc: "9:00", details: "Сортування сміття. Матеріали: навчальне. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Екоград»"] },
-            { name: "👋 Вироби з пластикових пляшок", desc: "10:00", details: "Вироби з пластикових пляшок. Матеріали: годівнички, квіти. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Екоград»"] },
-            { name: "🏵️ Естафета «Перенеси воду ложкою».", desc: "11:00", details: "Естафета «Перенеси воду ложкою».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Екоград»"] },
-            { name: "🤸 Бесіда-гра «Чистота навколо нас».", desc: "12:00", details: "Бесіда-гра «Чистота навколо нас».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Екоград»"] },
-        ],
-        "День «Розумники й розумниці»": [
-            { name: "🎉 Вікторина «Що я бачив у таборі?»", desc: "9:00", details: "Вікторина «Що я бачив у таборі?». Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Розумники й розумниці»"] },
-            { name: "👋 Ребуси, лабіринти, головоломки на папері.", desc: "10:00", details: "Ребуси, лабіринти, головоломки на папері.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Розумники й розумниці»"] },
-            { name: "🏵️ Гра «Ти — моє дзеркало»", desc: "11:00", details: "Гра «Ти — моє дзеркало». Матеріали: повторення рухів. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Розумники й розумниці»"] },
-            { name: "🤸 Ігрове коло «Правда чи ні»", desc: "12:00", details: "Ігрове коло «Правда чи ні». Матеріали: цікаві факти. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Розумники й розумниці»"] },
-        ],
-        "День «Фотодень без фотоапарата»": [
-            { name: "🎉 Кожен загін малює «живу фотографію»", desc: "9:00", details: "Кожен загін малює «живу фотографію». Матеріали: пантоміма моменту. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Фотодень без фотоапарата»"] },
-            { name: "👋 Конкурс «Живі картини» за відомими полотнами.", desc: "10:00", details: "Конкурс «Живі картини» за відомими полотнами.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Фотодень без фотоапарата»"] },
-            { name: "🏵️ Виготовлення рамок для «фото» з картону та гілок.", desc: "11:00", details: "Виготовлення рамок для «фото» з картону та гілок.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Фотодень без фотоапарата»"] },
-            { name: "🤸 Руханка «Копіюй рух ведучого».", desc: "12:00", details: "Руханка «Копіюй рух ведучого».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Фотодень без фотоапарата»"] },
-        ],
-        "День «Ярмарок вигадок»": [
-            { name: "🎉 Саморобні іграшки", desc: "9:00", details: "Саморобні іграшки. Матеріали: мотузочки, ґудзики, папір. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Ярмарок вигадок»"] },
-            { name: "👋 Аукціон навичок: кожна дитина вчить інших чогось простого", desc: "10:00", details: "Аукціон навичок: кожна дитина вчить інших чогось простого. Матеріали: скласти серветку, зав'язати вузол. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Ярмарок вигадок»"] },
-            { name: "🏵️ Музика з підручних засобів", desc: "11:00", details: "Музика з підручних засобів. Матеріали: пляшки з водою, палички. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Ярмарок вигадок»"] },
-            { name: "🤸 Спільна пісня під уявну гітару.", desc: "12:00", details: "Спільна пісня під уявну гітару.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Ярмарок вигадок»"] },
-        ],
-        "День «День спогадів»": [
-            { name: "🎉 Виготовлення стінгазети «Наш табір»", desc: "9:00", details: "Виготовлення стінгазети «Наш табір». Матеріали: малюнки, листочки, долоньки. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День спогадів»"] },
-            { name: "👋 Гра «Знайди друга»", desc: "10:00", details: "Гра «Знайди друга». Матеріали: опис прикмет. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День спогадів»"] },
-            { name: "🏵️ Атракціони: «Попкорн з повітряної кульки»", desc: "11:00", details: "Атракціони: «Попкорн з повітряної кульки». Матеріали: жартівливий конкурс куль. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День спогадів»"] },
-            { name: "🤸 Вогнище без вогню", desc: "12:00", details: "Вогнище без вогню. Матеріали: коло з камінців, розповіді про найсмішніший момент. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День спогадів»"] },
-        ],
-        "День «Фінальне коло»": [
-            { name: "🎉 Ранок компліментів", desc: "9:00", details: "Ранок компліментів. Матеріали: написати на листочку сусіду. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Фінальне коло»"] },
-            { name: "👋 Загальна естафета «Веселі старти»", desc: "10:00", details: "Загальна естафета «Веселі старти». Матеріали: коробки, м'ячі, мотузки. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Фінальне коло»"] },
-            { name: "🏵️ Вручення саморобних медалей", desc: "11:00", details: "Вручення саморобних медалей. Матеріали: з картону та фольги. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Фінальне коло»"] },
-            { name: "🤸 Спільний флешмоб під музику.", desc: "12:00", details: "Спільний флешмоб під музику.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Фінальне коло»"] },
-            { name: "🏃 Прощання: висадка «дерева побажань»", desc: "13:00", details: "Прощання: висадка «дерева побажань». Матеріали: гілка з листочками-побажаннями. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Фінальне коло»"] },
-        ],
-    };
+    "День «Коло знайомств»": [
+        { name: "🎉 Лінійка-шикування за кольором очей/взуття.", desc: "9:00", details: "Лінійка-шикування за кольором очей/взуття.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Коло знайомств»"] },
+        { name: "👋 Гра «Вітерець дме на того, хто…»", desc: "10:00", details: "Гра «Вітерець дме на того, хто…». Матеріали: рухливе знайомство. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Коло знайомств»"] },
+        { name: "🏵️ Майстерка «Ниточка дружби»", desc: "11:00", details: "Майстерка «Ниточка дружби». Матеріали: мотузка — спільна павутинка з іменами. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Коло знайомств»"] },
+        { name: "🤸 Руханка: «Годинник»", desc: "12:00", details: "Руханка: «Годинник». Матеріали: ведучий каже час — діти стукають/підстрибують. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Коло знайомств»"] },
+        { name: "🏃 Вечірнє коло: один жест «мені сьогодні…».", desc: "14:00", details: "Вечірнє коло: один жест «мені сьогодні…».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Коло знайомств»"] },
+    ],
+    "День «День шифрувальників»": [
+        { name: "🎉 Кожен шифрує своє ім'я жестом", desc: "9:00", details: "Кожен шифрує своє ім'я жестом. Матеріали: повторюють усі. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День шифрувальників»"] },
+        { name: "👋 Гра «Зіпсований телефон» із рухами.", desc: "10:00", details: "Гра «Зіпсований телефон» із рухами.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День шифрувальників»"] },
+        { name: "🏵️ Письмо без ручки: малювання пальцем на спині сусіда.", desc: "11:00", details: "Письмо без ручки: малювання пальцем на спині сусіда.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День шифрувальників»"] },
+        { name: "🤸 Скарб за шифром", desc: "12:00", details: "Скарб за шифром. Матеріали: сліди крейдою на асфальті. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День шифрувальників»"] },
+    ],
+    "День «Що в коробці?»": [
+        { name: "🎉 Гра «Таємничий мішок/коробка»", desc: "9:00", details: "Гра «Таємничий мішок/коробка». Матеріали: на дотик вгадати: ґудзик, шишка, скріпка. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Що в коробці?»"] },
+        { name: "👋 Конструювання з коробок: «Місто з нічого».", desc: "10:00", details: "Конструювання з коробок: «Місто з нічого».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Що в коробці?»"] },
+        { name: "🏵️ Естафета з коробками на голові", desc: "11:00", details: "Естафета з коробками на голові. Матеріали: не впустити. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Що в коробці?»"] },
+        { name: "🤸 Спільна казка: кожен додає речення і передає коробку.", desc: "12:00", details: "Спільна казка: кожен додає речення і передає коробку.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Що в коробці?»"] },
+    ],
+    "День «Слідопити»": [
+        { name: "🎉 Розпізнавання слідів", desc: "9:00", details: "Розпізнавання слідів. Матеріали: намальовані крейдою або відбитки з картоплі. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Слідопити»"] },
+        { name: "👋 Ланцюжок із зав'язаних очей: «Проведи друга»", desc: "10:00", details: "Ланцюжок із зав'язаних очей: «Проведи друга». Матеріали: голосом. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Слідопити»"] },
+        { name: "🏵️ Полювання на «клади»: записки під камінцями/лавками.", desc: "11:00", details: "Полювання на «клади»: записки під камінцями/лавками.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Слідопити»"] },
+        { name: "🤸 Руханка «Кроки велетня і гнома».", desc: "12:00", details: "Руханка «Кроки велетня і гнома».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Слідопити»"] },
+    ],
+    "День «Водний день (без шлангів)»": [
+        { name: "🎉 Переливання води ложкою в естафеті.", desc: "9:00", details: "Переливання води ложкою в естафеті.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Водний день (без шлангів)»"] },
+        { name: "👋 Мильні бульбашки з дроту та залишків мила/шампуню.", desc: "10:00", details: "Мильні бульбашки з дроту та залишків мила/шампуню.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Водний день (без шлангів)»"] },
+        { name: "🏵️ Гра «Крапля-річка-море»", desc: "11:00", details: "Гра «Крапля-річка-море». Матеріали: за командою групуватись. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Водний день (без шлангів)»"] },
+        { name: "🤸 Змагання «Хто голосніше капне»", desc: "12:00", details: "Змагання «Хто голосніше капне». Матеріали: камінці у воду у відрі. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Водний день (без шлангів)»"] },
+    ],
+    "День «День мотузки та вузлів»": [
+        { name: "🎉 Вправи: 3 простих вузли", desc: "9:00", details: "Вправи: 3 простих вузли. Матеріали: прямий, вісімка, булінь. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День мотузки та вузлів»"] },
+        { name: "👋 Гра «Рибалка»", desc: "10:00", details: "Гра «Рибалка». Матеріали: мотузка з гаком із дроту ловить пляшки. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День мотузки та вузлів»"] },
+        { name: "🏵️ Плетіння сітки для м'яча з мотузок.", desc: "11:00", details: "Плетіння сітки для м'яча з мотузок.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День мотузки та вузлів»"] },
+        { name: "🤸 Командна гра «Переправа через річку»", desc: "12:00", details: "Командна гра «Переправа через річку». Матеріали: мотузки на землі як містки. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День мотузки та вузлів»"] },
+    ],
+    "День «Тихий день»": [
+        { name: "🎉 Читання жестів: поясни фразу без слів.", desc: "9:00", details: "Читання жестів: поясни фразу без слів.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Тихий день»"] },
+        { name: "👋 Малювання обома руками одночасно.", desc: "10:00", details: "Малювання обома руками одночасно.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Тихий день»"] },
+        { name: "🏵️ Гра «Глухий телефон»", desc: "11:00", details: "Гра «Глухий телефон». Матеріали: емодзі пальцями на долоні. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Тихий день»"] },
+        { name: "🤸 Складання орігамі з газет", desc: "12:00", details: "Складання орігамі з газет. Матеріали: жабка, кораблик, шапка. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Тихий день»"] },
+    ],
+    "День «День прищіпок»": [
+        { name: "🎉 Прищіпкова естафета: перенести прищіпки на мотузку за 1 хв.", desc: "9:00", details: "Прищіпкова естафета: перенести прищіпки на мотузку за 1 хв.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День прищіпок»"] },
+        { name: "👋 Хто більше прищіпок повісить собі на одяг", desc: "10:00", details: "Хто більше прищіпок повісить собі на одяг. Матеріали: стрибаючи. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День прищіпок»"] },
+        { name: "🏵️ Фігура з прищіпок та картону", desc: "11:00", details: "Фігура з прищіпок та картону. Матеріали: тваринка. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День прищіпок»"] },
+        { name: "🤸 Гра «Акула та рибки»", desc: "12:00", details: "Гра «Акула та рибки». Матеріали: прищіпка — акула кусає за палець — вибуваєш. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День прищіпок»"] },
+    ],
+    "День «День тіней та світла»": [
+        { name: "🎉 Ляльковий театр тіней на простирадлі", desc: "9:00", details: "Ляльковий театр тіней на простирадлі. Матеріали: руки, фігурки з картону. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День тіней та світла»"] },
+        { name: "👋 Спостереження за тінню: хто довшу зробить.", desc: "10:00", details: "Спостереження за тінню: хто довшу зробить.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День тіней та світла»"] },
+        { name: "🏵️ Гра «Знайди свого близнюка за тінню».", desc: "11:00", details: "Гра «Знайди свого близнюка за тінню».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День тіней та світла»"] },
+        { name: "🤸 Малювання крейдою тіней предметів на асфальті.", desc: "12:00", details: "Малювання крейдою тіней предметів на асфальті.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День тіней та світла»"] },
+    ],
+    "День «Папір & скотч»": [
+        { name: "🎉 Конкурс на найвищу вежу з трубочок та скотчу.", desc: "9:00", details: "Конкурс на найвищу вежу з трубочок та скотчу.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Папір & скотч»"] },
+        { name: "👋 Гра «Мумія»", desc: "10:00", details: "Гра «Мумія». Матеріали: замотати товариша туалетним папером. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Папір & скотч»"] },
+        { name: "🏵️ Літальний апарат із паперу", desc: "11:00", details: "Літальний апарат із паперу. Матеріали: не літак — а дивна форма. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Папір & скотч»"] },
+        { name: "🤸 Скульптура зі зім'ятих газет та скотчу «Чудовисько табору».", desc: "12:00", details: "Скульптура зі зім'ятих газет та скотчу «Чудовисько табору».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Папір & скотч»"] },
+    ],
+    "День «День гудзиків»": [
+        { name: "🎉 Сортування гудзиків наосліп", desc: "9:00", details: "Сортування гудзиків наосліп. Матеріали: за розміром/фактурою. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День гудзиків»"] },
+        { name: "👋 Викладання візерунка", desc: "10:00", details: "Викладання візерунка. Матеріали: гірлянда на мотузку. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День гудзиків»"] },
+        { name: "🏵️ Гра «Гудзик-невидимка»", desc: "11:00", details: "Гра «Гудзик-невидимка». Матеріали: передати під столом, вгадати в кого. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День гудзиків»"] },
+        { name: "🤸 Естафета «Покоти гудзик по лінії».", desc: "12:00", details: "Естафета «Покоти гудзик по лінії».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День гудзиків»"] },
+    ],
+    "День «Йога та баланс»": [
+        { name: "🎉 Стійки: «ластівка», «цапля», «дерево»", desc: "9:00", details: "Стійки: «ластівка», «цапля», «дерево». Матеріали: з паличкою на пальці. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Йога та баланс»"] },
+        { name: "👋 Ходьба по мотузці на землі.", desc: "10:00", details: "Ходьба по мотузці на землі.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Йога та баланс»"] },
+        { name: "🏵️ Передай м'яч без рук", desc: "11:00", details: "Передай м'яч без рук. Матеріали: шия, підборіддя, ноги. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Йога та баланс»"] },
+        { name: "🤸 Конкурс «Хто довше простоїть на одній нозі із книжкою на голові».", desc: "12:00", details: "Конкурс «Хто довше простоїть на одній нозі із книжкою на голові».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Йога та баланс»"] },
+    ],
+    "День «День перевдягань»": [
+        { name: "🎉 Грим із крейди/соку буряка", desc: "9:00", details: "Грим із крейди/соку буряка. Матеріали: безпечний. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День перевдягань»"] },
+        { name: "👋 Дефіле у «вбранні з газет та пакетів».", desc: "10:00", details: "Дефіле у «вбранні з газет та пакетів».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День перевдягань»"] },
+        { name: "🏵️ Гра «Зміни голос» — вгадай, хто говорить.", desc: "11:00", details: "Гра «Зміни голос» — вгадай, хто говорить.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День перевдягань»"] },
+        { name: "🤸 Конкурс «Жартівлива піраміда»", desc: "12:00", details: "Конкурс «Жартівлива піраміда». Матеріали: лягають один на одного, тримаючи спину. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День перевдягань»"] },
+    ],
+    "День «Підсумкова круговерть»": [
+        { name: "🎉 Гра «Гаряча картопля»", desc: "9:00", details: "Гра «Гаряча картопля». Матеріали: передавати м'яч чи пляшку під музику, хто залишився — каже побажання. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Підсумкова круговерть»"] },
+        { name: "👋 Малюнок спільної долоні", desc: "10:00", details: "Малюнок спільної долоні. Матеріали: на великому папері кожен обводить руку. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Підсумкова круговерть»"] },
+        { name: "🏵️ Медалі з кришечок від пляшок на мотузочці.", desc: "11:00", details: "Медалі з кришечок від пляшок на мотузочці.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Підсумкова круговерть»"] },
+        { name: "🤸 Спільне «Дерево досягнень»: гілка з вузликами — кожен зав'язує на згадку.", desc: "12:00", details: "Спільне «Дерево досягнень»: гілка з вузликами — кожен зав'язує на згадку.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Підсумкова круговерть»"] },
+        { name: "🏃 Фінальний хоровод. Прощання без сліз", desc: "14:00", details: "Фінальний хоровод. Прощання без сліз. Матеріали: плескання в долоні під музику. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Підсумкова круговерть»"] },
+    ],
+    "День «Вітальний»": [
+        { name: "🎉 Ранкова лінійка та розподіл на загони", desc: "9:00", details: "Ранкова лінійка та розподіл на загони. Матеріали: емблема з паперу/скотчу. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Вітальний»"] },
+        { name: "👋 Гра «Снігова куля»", desc: "10:00", details: "Гра «Снігова куля». Матеріали: знайомство імен. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Вітальний»"] },
+        { name: "🏵️ Майстерка «Бейдж власноруч»", desc: "11:00", details: "Майстерка «Бейдж власноруч». Матеріали: картон, фломастери. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Вітальний»"] },
+        { name: "🤸 Руханка «Кольорові сигнали»", desc: "12:00", details: "Руханка «Кольорові сигнали». Матеріали: ведучий показує кольори — діти виконують дії. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Вітальний»"] },
+        { name: "🏃 Вечірнє коло: що сподобалось.", desc: "14:00", details: "Вечірнє коло: що сподобалось.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Вітальний»"] },
+    ],
+    "День «Мотузковий турнір»": [
+        { name: "🎉 Квест-знайомство з територією", desc: "9:00", details: "Квест-знайомство з територією. Матеріали: завдання: знайти листочки з підказками. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Мотузковий турнір»"] },
+        { name: "👋 Ігри з мотузкою: «Павутинка»", desc: "10:00", details: "Ігри з мотузкою: «Павутинка». Матеріали: пролізти без торкання. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Мотузковий турнір»"] },
+        { name: "🏵️ Творчість з ниток: плетіння браслетів-«дружок».", desc: "11:00", details: "Творчість з ниток: плетіння браслетів-«дружок».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Мотузковий турнір»"] },
+        { name: "🤸 Рухлива гра «Вибивний м'яч».", desc: "12:00", details: "Рухлива гра «Вибивний м'яч».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Мотузковий турнір»"] },
+    ],
+    "День «Театр експромту»": [
+        { name: "🎉 Гра «Крокодил»", desc: "9:00", details: "Гра «Крокодил». Матеріали: пантоміми на картках. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Театр експромту»"] },
+        { name: "👋 Ляльки з пластикових ложок/паперових пакетів.", desc: "10:00", details: "Ляльки з пластикових ложок/паперових пакетів.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Театр експромту»"] },
+        { name: "🏵️ Експромт-вистава за казкою", desc: "11:00", details: "Експромт-вистава за казкою. Матеріали: розподіл ролей жестами. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Театр експромту»"] },
+        { name: "🤸 Конкурс «Звуконаслідування»", desc: "12:00", details: "Конкурс «Звуконаслідування». Матеріали: зобразити тварину/транспорт. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Театр експромту»"] },
+    ],
+    "День «Майстерня природи»": [
+        { name: "🎉 Збір природних матеріалів", desc: "9:00", details: "Збір природних матеріалів. Матеріали: листя, камінці, гілочки. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Майстерня природи»"] },
+        { name: "👋 Аплікації, мандали, «лісові чоловічки».", desc: "10:00", details: "Аплікації, мандали, «лісові чоловічки».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Майстерня природи»"] },
+        { name: "🏵️ Гра «Впізнай на дотик»", desc: "11:00", details: "Гра «Впізнай на дотик». Матеріали: мішечок із шишками, жолудями тощо. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Майстерня природи»"] },
+        { name: "🤸 Руханка «Море хвилюється раз».", desc: "12:00", details: "Руханка «Море хвилюється раз».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Майстерня природи»"] },
+    ],
+    "День «Креативний виклик»": [
+        { name: "🎉 Конкурс «Літак з паперу»", desc: "9:00", details: "Конкурс «Літак з паперу». Матеріали: на дальність/точність. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Креативний виклик»"] },
+        { name: "👋 Будівництво вежі з трубочок/газет", desc: "10:00", details: "Будівництво вежі з трубочок/газет. Матеріали: стейплер, скотч. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Креативний виклик»"] },
+        { name: "🏵️ Гра «Що змінилось?»", desc: "11:00", details: "Гра «Що змінилось?». Матеріали: розвиток пам'яті. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Креативний виклик»"] },
+        { name: "🤸 Естафета з м'ячем у парах.", desc: "12:00", details: "Естафета з м'ячем у парах.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Креативний виклик»"] },
+    ],
+    "День «Кольоровий день»": [
+        { name: "🎉 Кожен загін обирає колір і фарбує одяг стрічками/крейдою.", desc: "9:00", details: "Кожен загін обирає колір і фарбує одяг стрічками/крейдою.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Кольоровий день»"] },
+        { name: "👋 Малюнок крейдою на асфальті «Веселка».", desc: "10:00", details: "Малюнок крейдою на асфальті «Веселка».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Кольоровий день»"] },
+        { name: "🏵️ Гра «Знайди предмет кольору…»", desc: "11:00", details: "Гра «Знайди предмет кольору…». Матеріали: пошук у таборі. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Кольоровий день»"] },
+        { name: "🤸 Дискотека з кольоровими салютами з паперу.", desc: "12:00", details: "Дискотека з кольоровими салютами з паперу.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Кольоровий день»"] },
+    ],
+    "День «Олімпіада підручних засобів»": [
+        { name: "🎉 Стрибки в мішках", desc: "9:00", details: "Стрибки в мішках. Матеріали: звичайні пакети або наволочки. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Олімпіада підручних засобів»"] },
+        { name: "👋 Біг з яйцем на ложці", desc: "10:00", details: "Біг з яйцем на ложці. Матеріали: варене яйце або кулька. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Олімпіада підручних засобів»"] },
+        { name: "🏵️ Кидання «списів» з гілок.", desc: "11:00", details: "Кидання «списів» з гілок.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Олімпіада підручних засобів»"] },
+        { name: "🤸 Перетягування канату", desc: "12:00", details: "Перетягування канату. Матеріали: мотузка + вузли. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Олімпіада підручних засобів»"] },
+    ],
+    "День «Квест таємниць»": [
+        { name: "🎉 Станції на подвір'ї: лабіринт з мотузок, загадка з ліхтариком, шифр", desc: "9:00", details: "Станції на подвір'ї: лабіринт з мотузок, загадка з ліхтариком, шифр. Матеріали: ключ – алфавіт на папері. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Квест таємниць»"] },
+        { name: "👋 Схований «скарб»", desc: "10:00", details: "Схований «скарб». Матеріали: солодощі. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Квест таємниць»"] },
+        { name: "🏵️ Завершення: спільне фото-спогад.", desc: "11:00", details: "Завершення: спільне фото-спогад.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Квест таємниць»"] },
+    ],
+    "День «Екоград»": [
+        { name: "🎉 Сортування сміття", desc: "9:00", details: "Сортування сміття. Матеріали: навчальне. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Екоград»"] },
+        { name: "👋 Вироби з пластикових пляшок", desc: "10:00", details: "Вироби з пластикових пляшок. Матеріали: годівнички, квіти. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Екоград»"] },
+        { name: "🏵️ Естафета «Перенеси воду ложкою».", desc: "11:00", details: "Естафета «Перенеси воду ложкою».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Екоград»"] },
+        { name: "🤸 Бесіда-гра «Чистота навколо нас».", desc: "12:00", details: "Бесіда-гра «Чистота навколо нас».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Екоград»"] },
+    ],
+    "День «Розумники й розумниці»": [
+        { name: "🎉 Вікторина «Що я бачив у таборі?»", desc: "9:00", details: "Вікторина «Що я бачив у таборі?». Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Розумники й розумниці»"] },
+        { name: "👋 Ребуси, лабіринти, головоломки на папері.", desc: "10:00", details: "Ребуси, лабіринти, головоломки на папері.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Розумники й розумниці»"] },
+        { name: "🏵️ Гра «Ти — моє дзеркало»", desc: "11:00", details: "Гра «Ти — моє дзеркало». Матеріали: повторення рухів. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Розумники й розумниці»"] },
+        { name: "🤸 Ігрове коло «Правда чи ні»", desc: "12:00", details: "Ігрове коло «Правда чи ні». Матеріали: цікаві факти. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Розумники й розумниці»"] },
+    ],
+    "День «Фотодень без фотоапарата»": [
+        { name: "🎉 Кожен загін малює «живу фотографію»", desc: "9:00", details: "Кожен загін малює «живу фотографію». Матеріали: пантоміма моменту. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Фотодень без фотоапарата»"] },
+        { name: "👋 Конкурс «Живі картини» за відомими полотнами.", desc: "10:00", details: "Конкурс «Живі картини» за відомими полотнами.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Фотодень без фотоапарата»"] },
+        { name: "🏵️ Виготовлення рамок для «фото» з картону та гілок.", desc: "11:00", details: "Виготовлення рамок для «фото» з картону та гілок.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Фотодень без фотоапарата»"] },
+        { name: "🤸 Руханка «Копіюй рух ведучого».", desc: "12:00", details: "Руханка «Копіюй рух ведучого».. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Фотодень без фотоапарата»"] },
+    ],
+    "День «Ярмарок вигадок»": [
+        { name: "🎉 Саморобні іграшки", desc: "9:00", details: "Саморобні іграшки. Матеріали: мотузочки, ґудзики, папір. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Ярмарок вигадок»"] },
+        { name: "👋 Аукціон навичок: кожна дитина вчить інших чогось простого", desc: "10:00", details: "Аукціон навичок: кожна дитина вчить інших чогось простого. Матеріали: скласти серветку, зав'язати вузол. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Ярмарок вигадок»"] },
+        { name: "🏵️ Музика з підручних засобів", desc: "11:00", details: "Музика з підручних засобів. Матеріали: пляшки з водою, палички. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Ярмарок вигадок»"] },
+        { name: "🤸 Спільна пісня під уявну гітару.", desc: "12:00", details: "Спільна пісня під уявну гітару.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Ярмарок вигадок»"] },
+    ],
+    "День «День спогадів»": [
+        { name: "🎉 Виготовлення стінгазети «Наш табір»", desc: "9:00", details: "Виготовлення стінгазети «Наш табір». Матеріали: малюнки, листочки, долоньки. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День спогадів»"] },
+        { name: "👋 Гра «Знайди друга»", desc: "10:00", details: "Гра «Знайди друга». Матеріали: опис прикмет. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День спогадів»"] },
+        { name: "🏵️ Атракціони: «Попкорн з повітряної кульки»", desc: "11:00", details: "Атракціони: «Попкорн з повітряної кульки». Матеріали: жартівливий конкурс куль. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День спогадів»"] },
+        { name: "🤸 Вогнище без вогню", desc: "12:00", details: "Вогнище без вогню. Матеріали: коло з камінців, розповіді про найсмішніший момент. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «День спогадів»"] },
+    ],
+    "День «Фінальне коло»": [
+        { name: "🎉 Ранок компліментів", desc: "9:00", details: "Ранок компліментів. Матеріали: написати на листочку сусіду. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Фінальне коло»"] },
+        { name: "👋 Загальна естафета «Веселі старти»", desc: "10:00", details: "Загальна естафета «Веселі старти». Матеріали: коробки, м'ячі, мотузки. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Фінальне коло»"] },
+        { name: "🏵️ Вручення саморобних медалей", desc: "11:00", details: "Вручення саморобних медалей. Матеріали: з картону та фольги. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Фінальне коло»"] },
+        { name: "🤸 Спільний флешмоб під музику.", desc: "12:00", details: "Спільний флешмоб під музику.. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Фінальне коло»"] },
+        { name: "🏃 Прощання: висадка «дерева побажань»", desc: "14:00", details: "Прощання: висадка «дерева побажань». Матеріали: гілка з листочками-побажаннями. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День «Фінальне коло»"] },
+    ],
+};
+
     
-    // Готові окремі заходи з посиланнями
+    // Готові окремі заходи
     const BLOCKS = [
         { id: "b1", name: "🏃 Ранкова зарядка", desc: "8:30", details: "Розминка, біг, загальні вправи.", link: "https://example.com/rankova-zaryadka" },
-	{ id: "b12", name: "🎤 Лінійка", desc: "8:40", details: "Оголошення повідосмлень та підведення підсумків.", link: "https://example.com/liniyka" },
+        { id: "b12", name: "🎤 Лінійка", desc: "8:40", details: "Оголошення повідомлень та підведення підсумків.", link: "https://example.com/liniyka" },
         { id: "b2", name: "🍳 Сніданок", desc: "9:00", details: "Повноцінне харчування.", link: "https://example.com/snidanok" },
         { id: "b3", name: "🎨 Майстерка", desc: "10:00", details: "Творчі заняття.", link: "https://example.com/maysterka" },
         { id: "b4", name: "🍽️ Обід", desc: "12:00", details: "Суп, друге, компот.", link: "https://example.com/obid" },
@@ -1133,9 +1224,9 @@
         { id: "b11", name: "🧩 Ігри на логіку", desc: "10:00", details: "Настільні ігри.", link: "https://example.com/igry" }
     ];
 
-    // API для Google Sheets
     const API_URL = 'https://script.google.com/macros/s/AKfycbyN1LB9WI1pJY6YXdQeZGcv3mXwUZBwTrHmS1mvpP51O5E81Pf5IUK7Mx6CIrPhJR2qsg/exec';
 
+    // ========== ОСНОВНІ ФУНКЦІЇ ==========
     async function loadData() {
         showToast('🔄 Завантаження...');
         try {
@@ -1226,7 +1317,6 @@
                 document.getElementById('daysSection').style.display = 'block';
                 renderAll();
             }
-            
             showToast('✅ Дані завантажено');
         } catch(e) { 
             console.error(e);
@@ -1309,124 +1399,200 @@
         }
     }
     
-    // ========== ФУНКЦІЇ СОРТУВАННЯ ЗАХОДІВ ==========
-    function initSortableBlocks() {
-        if (currentRole !== 'teacher') return;
-        
-        const selectors = '.block-chip, .fullscreen-block';
-        const blocks = document.querySelectorAll(selectors);
-        
-        blocks.forEach(block => {
-            block.setAttribute('draggable', 'true');
-            
-            block.removeEventListener('dragstart', handleBlockDragStart);
-            block.removeEventListener('dragend', handleBlockDragEnd);
-            block.removeEventListener('dragover', handleBlockDragOver);
-            block.removeEventListener('dragleave', handleBlockDragLeave);
-            block.removeEventListener('drop', handleBlockDrop);
-            
-            block.addEventListener('dragstart', handleBlockDragStart);
-            block.addEventListener('dragend', handleBlockDragEnd);
-            block.addEventListener('dragover', handleBlockDragOver);
-            block.addEventListener('dragleave', handleBlockDragLeave);
-            block.addEventListener('drop', handleBlockDrop);
-        });
+    // ========== РЕДАГУВАННЯ НАЗВИ ДНЯ (ЧЕРЕЗ МОДАЛЬНЕ ВІКНО) ==========
+    function openEditDayNameModal(squad, day) {
+        editingDayNameData = { squad, day };
+        const currentName = dayInfo[squad][day]?.displayName || `День ${day}`;
+        document.getElementById('editDayNameInput').value = currentName;
+        document.getElementById('editDayNameModal').style.display = 'flex';
+        document.getElementById('editDayNameInput').focus();
     }
     
-    function handleBlockDragStart(e) {
-        draggedBlockElement = this;
-        draggedBlockId = this.getAttribute('data-block-id');
-                draggedBlockDay = parseInt(this.getAttribute('data-day'));
-        draggedBlockSquad = parseInt(this.getAttribute('data-squad'));
-        e.dataTransfer.setData('text/plain', draggedBlockId);
-        this.classList.add('dragging');
-        e.dataTransfer.effectAllowed = 'move';
-    }
-    
-    function handleBlockDragEnd(e) {
-        if (draggedBlockElement) {
-            draggedBlockElement.classList.remove('dragging');
+    function saveEditedDayName() {
+        const { squad, day } = editingDayNameData;
+        const newName = document.getElementById('editDayNameInput').value.trim();
+        if (!newName) {
+            showToast('❌ Назва дня не може бути порожньою', true);
+            return;
         }
-        document.querySelectorAll('.block-chip, .fullscreen-block').forEach(el => {
-            el.classList.remove('drag-over');
-        });
-        draggedBlockElement = null;
-        draggedBlockId = null;
-        draggedBlockDay = null;
-        draggedBlockSquad = null;
-    }
-    
-    function handleBlockDragOver(e) {
-        e.preventDefault();
-        if (!draggedBlockElement) return;
-        const targetBlock = this;
-        if (targetBlock === draggedBlockElement) return;
-        
-        const targetDay = parseInt(targetBlock.getAttribute('data-day'));
-        const targetSquad = parseInt(targetBlock.getAttribute('data-squad'));
-        
-        if (targetDay !== draggedBlockDay || targetSquad !== draggedBlockSquad) return;
-        
-        e.dataTransfer.dropEffect = 'move';
-        targetBlock.classList.add('drag-over');
-    }
-    
-    function handleBlockDragLeave(e) {
-        this.classList.remove('drag-over');
-    }
-    
-    function handleBlockDrop(e) {
-        e.preventDefault();
-        this.classList.remove('drag-over');
-        
-        if (!draggedBlockElement) return;
-        if (this === draggedBlockElement) return;
-        
-        const targetDay = parseInt(this.getAttribute('data-day'));
-        const targetSquad = parseInt(this.getAttribute('data-squad'));
-        
-        if (targetDay !== draggedBlockDay || targetSquad !== draggedBlockSquad) return;
-        
-        const blocksArray = assignments[targetSquad][targetDay];
-        if (!blocksArray) return;
-        
-        const draggedIndex = blocksArray.findIndex(b => b.id == draggedBlockId);
-        const targetIndex = blocksArray.findIndex(b => b.id == this.getAttribute('data-block-id'));
-        
-        if (draggedIndex === -1 || targetIndex === -1) return;
-        if (draggedIndex === targetIndex) return;
-        
-        const [movedItem] = blocksArray.splice(draggedIndex, 1);
-        blocksArray.splice(targetIndex, 0, movedItem);
-        
-        if (fullscreenDay === targetDay && fullscreenSquad === targetSquad) {
-            renderFullscreenDay(targetSquad, targetDay);
+        dayInfo[squad][day].displayName = newName;
+        if (fullscreenDay === day && fullscreenSquad === squad) {
+            renderFullscreenDay(squad, day);
         } else {
             renderDays();
         }
-        
-        scheduleSave(targetSquad, targetDay);
-        showToast('🔄 Порядок заходів змінено');
+        scheduleSave(squad, day);
+        showToast(`✅ Назву дня змінено на "${newName}"`);
+        closeEditDayNameModal();
     }
     
+    function closeEditDayNameModal() {
+        editingDayNameData = { squad: null, day: null };
+        document.getElementById('editDayNameModal').style.display = 'none';
+        document.getElementById('editDayNameInput').value = '';
+    }
+    
+    // ========== РЕДАГУВАННЯ ЗАХОДУ ==========
+    function openEditEventModal(squad, day, blockId) {
+        const block = assignments[squad][day].find(b => b.id == blockId);
+        if (!block) return;
+        editingEventData = { squad, day, blockId };
+        document.getElementById('editEventName').value = block.name || '';
+        document.getElementById('editEventTime').value = block.desc || '';
+        document.getElementById('editEventDetails').value = block.details || '';
+        document.getElementById('editEventLink').value = block.link || '';
+        document.getElementById('editEventModal').style.display = 'flex';
+    }
+    
+    function saveEditedEvent() {
+        const { squad, day, blockId } = editingEventData;
+        const newName = document.getElementById('editEventName').value.trim();
+        if (!newName) {
+            showToast('❌ Назва заходу обов\'язкова', true);
+            return;
+        }
+        const blockIndex = assignments[squad][day].findIndex(b => b.id == blockId);
+        if (blockIndex !== -1) {
+            assignments[squad][day][blockIndex].name = newName;
+            assignments[squad][day][blockIndex].desc = document.getElementById('editEventTime').value.trim() || 'Час не вказано';
+            assignments[squad][day][blockIndex].details = document.getElementById('editEventDetails').value.trim() || 'Опис відсутній';
+            assignments[squad][day][blockIndex].link = document.getElementById('editEventLink').value.trim() || null;
+            if (fullscreenDay === day && fullscreenSquad === squad) renderFullscreenDay(squad, day);
+            else renderDays();
+            scheduleSave(squad, day);
+            showToast('✅ Захід оновлено');
+        }
+        closeEditEventModal();
+    }
+    
+    function closeEditEventModal() {
+        editingEventData = { squad: null, day: null, blockId: null };
+        document.getElementById('editEventModal').style.display = 'none';
+    }
+    
+    // ========== ДОДАВАННЯ СВОГО ЗАХОДУ ==========
+    let pendingAddEventDay = null;
+    let pendingAddEventSquad = null;
+    
+    function openAddEventModal(squad, day) {
+        pendingAddEventSquad = squad;
+        pendingAddEventDay = day;
+        document.getElementById('addEventModal').style.display = 'flex';
+        document.getElementById('addEventName').focus();
+    }
+    
+    function saveAddEvent() {
+        const eventName = document.getElementById('addEventName').value.trim();
+        if (!eventName) {
+            showToast('❌ Введіть назву заходу', true);
+            return;
+        }
+        const newBlock = {
+            id: 'custom_' + Date.now() + '_' + Math.random(),
+            name: eventName,
+            desc: document.getElementById('addEventTime').value.trim() || 'Час не вказано',
+            details: document.getElementById('addEventDetails').value.trim() || 'Захід доданий вручну',
+            link: document.getElementById('addEventLink').value.trim() || null
+        };
+        assignments[pendingAddEventSquad][pendingAddEventDay].push(newBlock);
+        updateDayNameAfterAdd(pendingAddEventSquad, pendingAddEventDay, false, null);
+        if (fullscreenDay === pendingAddEventDay && fullscreenSquad === pendingAddEventSquad) {
+            renderFullscreenDay(pendingAddEventSquad, pendingAddEventDay);
+        } else {
+            renderDays();
+        }
+        scheduleSave(pendingAddEventSquad, pendingAddEventDay);
+        showToast(`➕ ${eventName} додано`);
+        closeAddEventModal();
+    }
+    
+    function closeAddEventModal() {
+        pendingAddEventSquad = null;
+        pendingAddEventDay = null;
+        document.getElementById('addEventModal').style.display = 'none';
+    }
+    
+    // ========== ВИБІР ШАБЛОНУ З ТРЬОМА ВАРІАНТАМИ ==========
+    function showTemplateChoiceModal(squad, day, templateName) {
+        pendingTemplateChoice = { squad, day, templateName };
+        document.getElementById('templateChoiceMessage').innerHTML = `Шаблон <strong>${templateName}</strong> (${DAY_TEMPLATES[templateName].length} заходів)<br><br>Оберіть дію:`;
+        document.getElementById('templateChoiceModal').style.display = 'flex';
+    }
+    
+    function executeTemplateChoice(action) {
+        const { squad, day, templateName } = pendingTemplateChoice;
+        if (!squad || !day || !templateName) return;
+        
+        const template = DAY_TEMPLATES[templateName];
+        if (!template) return;
+        
+        if (action === 'replace') {
+            assignments[squad][day] = template.map((block, idx) => ({ 
+                ...block, 
+                id: 't_' + Date.now() + '_' + idx + '_' + Math.random(),
+                link: block.link || TEMPLATE_DEV_LINKS[templateName] || null
+            }));
+            dayInfo[squad][day] = {
+                displayName: `День ${day} - ${templateName}`,
+                template: templateName,
+                devLink: TEMPLATE_DEV_LINKS[templateName] || null
+            };
+            showToast(`✅ Шаблон "${templateName}" застосовано (заміна)`);
+        } else if (action === 'add') {
+            const existingNames = new Set((assignments[squad][day] || []).map(b => b.name));
+            const newBlocks = template.filter(block => !existingNames.has(block.name)).map((block, idx) => ({ 
+                ...block, 
+                id: 't_add_' + Date.now() + '_' + idx + '_' + Math.random(),
+                link: block.link || TEMPLATE_DEV_LINKS[templateName] || null
+            }));
+            assignments[squad][day] = [...(assignments[squad][day] || []), ...newBlocks];
+            if (!dayInfo[squad][day]?.template || dayInfo[squad][day].displayName === `День ${day}`) {
+                dayInfo[squad][day] = dayInfo[squad][day] || { displayName: `День ${day}` };
+                dayInfo[squad][day].displayName = `День ${day} - ${templateName} + редагування`;
+                dayInfo[squad][day].template = templateName + " + редагування";
+                dayInfo[squad][day].devLink = TEMPLATE_DEV_LINKS[templateName] || null;
+            }
+            showToast(`✅ Додано ${newBlocks.length} заходів з шаблону`);
+        } else {
+            showToast('❌ Дію скасовано');
+            closeTemplateChoiceModal();
+            return;
+        }
+        
+        if (fullscreenDay === day && fullscreenSquad === squad) {
+            renderFullscreenDay(squad, day);
+        } else {
+            renderDays();
+        }
+        scheduleSave(squad, day);
+        closeTemplateChoiceModal();
+    }
+    
+    function closeTemplateChoiceModal() {
+        pendingTemplateChoice = { squad: null, day: null, templateName: null };
+        document.getElementById('templateChoiceModal').style.display = 'none';
+    }
+    
+    document.getElementById('templateReplaceBtn')?.addEventListener('click', () => executeTemplateChoice('replace'));
+    document.getElementById('templateAddBtn')?.addEventListener('click', () => executeTemplateChoice('add'));
+    document.getElementById('templateCancelBtn')?.addEventListener('click', () => executeTemplateChoice('cancel'));
+    
+    // ========== ІНШІ ФУНКЦІЇ ==========
     function openEditLinkModal(squad, day, blockId, currentLink) {
         editingLinkData = { squad, day, blockId };
-        const input = document.getElementById('editLinkInput');
-        input.value = currentLink || '';
+        document.getElementById('editLinkInput').value = currentLink || '';
         document.getElementById('editLinkModal').style.display = 'flex';
-        input.focus();
     }
     
     function saveEditedLink() {
         const { squad, day, blockId } = editingLinkData;
         const newLink = document.getElementById('editLinkInput').value.trim();
-        
         if (squad && day && blockId) {
             const blockIndex = assignments[squad][day].findIndex(b => b.id == blockId);
             if (blockIndex !== -1) {
                 assignments[squad][day][blockIndex].link = newLink || null;
                 if (fullscreenDay === day && fullscreenSquad === squad) renderFullscreenDay(squad, day);
-                else if (currentRole === 'teacher') renderDays();
+                else renderDays();
                 scheduleSave(squad, day);
                 showToast(newLink ? '✅ Посилання збережено' : '❌ Посилання видалено');
             }
@@ -1437,12 +1603,10 @@
     function closeEditLinkModal() {
         editingLinkData = { squad: null, day: null, blockId: null };
         document.getElementById('editLinkModal').style.display = 'none';
-        document.getElementById('editLinkInput').value = '';
     }
     
     function showDaySelectorForItem(itemType, itemData) {
         pendingItemForDay = { type: itemType, data: itemData };
-        
         let options = '';
         for (let i = 1; i <= CAMP_DAYS_COUNT; i++) {
             const dateStr = campDates[i-1] ? formatDate(campDates[i-1]) : '-';
@@ -1452,61 +1616,47 @@
                             <span style="font-size: 11px; color: #888;">${dateStr}</span>
                         </div>`;
         }
-        
+        options += `<div class="day-option cancel-option" onclick="closeDetailModal()">❌ Скасувати</div>`;
         const title = itemType === 'block' ? `Виберіть день для: ${itemData.name}` : `Виберіть день для шаблону: ${itemData}`;
         document.getElementById('detailTitle').innerHTML = title;
-        document.getElementById('detailBody').innerHTML = `<div class="day-list">${options}<button onclick="closeDetailModal()" style="margin-top:15px; width:100%; padding:10px; border-radius:30px; background:#ccc; border:none;">Скасувати</button></div>`;
+        document.getElementById('detailBody').innerHTML = `<div class="day-list">${options}</div>`;
         document.getElementById('detailModal').style.display = 'flex';
     }
     
     function selectDayForItem(day) {
         if (!pendingItemForDay) return;
-        
         if (pendingItemForDay.type === 'block') {
             addBlockToDay(currentSquad, day, pendingItemForDay.data);
         } else if (pendingItemForDay.type === 'template') {
-            addTemplateToDay(currentSquad, day, pendingItemForDay.data);
+            showTemplateChoiceModal(currentSquad, day, pendingItemForDay.data);
         }
-        
         pendingItemForDay = null;
         closeDetailModal();
     }
     
-    function addBlockToDay(squad, day, block) {
+    function addBlockToDay(squad, day, block, insertBeforeElement = null) {
         if (currentRole !== 'teacher') { showToast('⚠️ Тільки для вчителів', true); return; }
         if (!assignments[squad][day]) assignments[squad][day] = [];
-        assignments[squad][day].push({ ...block, id: Date.now() + '_' + Math.random(), link: block.link || null });
+        
+        const newBlock = { ...block, id: Date.now() + '_' + Math.random(), link: block.link || null };
+        
+        if (insertBeforeElement && insertBeforeElement.getAttribute) {
+            const targetId = insertBeforeElement.getAttribute('data-block-id');
+            const targetIndex = assignments[squad][day].findIndex(b => b.id == targetId);
+            if (targetIndex !== -1) {
+                assignments[squad][day].splice(targetIndex, 0, newBlock);
+            } else {
+                assignments[squad][day].push(newBlock);
+            }
+        } else {
+            assignments[squad][day].push(newBlock);
+        }
         
         updateDayNameAfterAdd(squad, day, false, null);
-        
         if (fullscreenDay === day && fullscreenSquad === squad) renderFullscreenDay(squad, day);
-        else if (currentRole === 'student') renderFullscreenDay(squad, day);
         else renderDays();
         scheduleSave(squad, day);
         showToast(`➕ ${block.name} додано в ${dayInfo[squad][day]?.displayName || `День ${day}`}`);
-    }
-    
-    function addTemplateToDay(squad, day, templateName) {
-        if (currentRole !== 'teacher') { showToast('⚠️ Тільки для вчителів', true); return; }
-        const template = DAY_TEMPLATES[templateName];
-        if (!template) return;
-        
-        if (!assignments[squad][day]) assignments[squad][day] = [];
-        const newBlocks = template.map((block, idx) => ({ 
-            ...block, 
-            id: 'template_' + Date.now() + '_' + idx + '_' + Math.random(),
-            isTemplate: true,
-            link: block.link || TEMPLATE_DEV_LINKS[templateName] || null
-        }));
-        assignments[squad][day] = [...assignments[squad][day], ...newBlocks];
-        
-        updateDayNameAfterAdd(squad, day, true, templateName);
-        
-        if (fullscreenDay === day && fullscreenSquad === squad) renderFullscreenDay(squad, day);
-        else if (currentRole === 'student') renderFullscreenDay(squad, day);
-        else renderDays();
-        scheduleSave(squad, day);
-        showToast(`📋 Шаблон "${templateName}" додано в ${dayInfo[squad][day]?.displayName || `День ${day}`} (${newBlocks.length} заходів)`);
     }
     
     function requestDeleteBlock(squad, day, blockId) {
@@ -1519,7 +1669,6 @@
         if (squad && day && blockId) {
             assignments[squad][day] = assignments[squad][day].filter(b => b.id != blockId);
             if (fullscreenDay === day && fullscreenSquad === squad) renderFullscreenDay(squad, day);
-            else if (currentRole === 'student') renderFullscreenDay(squad, day);
             else renderDays();
             scheduleSave(squad, day);
             showToast(`➖ Видалено`);
@@ -1532,109 +1681,19 @@
         document.getElementById('confirmDeleteModal').style.display = 'none';
     }
     
-    function addCustomBlockToDay(squad, day) {
-        if (currentRole !== 'teacher') { showToast('⚠️ Тільки для вчителів', true); return; }
-        const eventName = document.getElementById('customEventName')?.value.trim();
-        const eventTime = document.getElementById('customEventTime')?.value.trim();
-        const eventDetails = document.getElementById('customEventDetails')?.value.trim();
-        const eventLink = document.getElementById('customEventLink')?.value.trim();
-        
-        if (!eventName) {
-            showToast('❌ Введіть назву заходу', true);
-            return;
-        }
-        
-        const newBlock = {
-            id: 'custom_' + Date.now() + '_' + Math.random(),
-            name: eventName,
-            desc: eventTime || 'Час не вказано',
-            details: eventDetails || 'Захід доданий вручну',
-            link: eventLink || null
-        };
-        assignments[squad][day].push(newBlock);
-        
-        updateDayNameAfterAdd(squad, day, false, null);
-        
-        if (document.getElementById('customEventName')) document.getElementById('customEventName').value = '';
-        if (document.getElementById('customEventTime')) document.getElementById('customEventTime').value = '';
-        if (document.getElementById('customEventDetails')) document.getElementById('customEventDetails').value = '';
-        if (document.getElementById('customEventLink')) document.getElementById('customEventLink').value = '';
-        
-        if (fullscreenDay === day && fullscreenSquad === squad) renderFullscreenDay(squad, day);
-        else if (currentRole === 'student') renderFullscreenDay(squad, day);
-        else renderDays();
-        scheduleSave(squad, day);
-        showToast(`➕ ${eventName}`);
-    }
-    
-    function editDayName(squad, day) {
-        if (currentRole !== 'teacher') { showToast('⚠️ Тільки для вчителів', true); return; }
-        const currentName = dayInfo[squad][day]?.displayName || `День ${day}`;
-        const newName = prompt("Введіть назву дня:", currentName);
-        if (newName && newName.trim()) {
-            dayInfo[squad][day].displayName = newName.trim();
-            if (fullscreenDay === day && fullscreenSquad === squad) renderFullscreenDay(squad, day);
-            else if (currentRole === 'student') renderFullscreenDay(squad, day);
-            else renderDays();
-            scheduleSave(squad, day);
-            showToast(`✅ Назву дня змінено`);
-        }
-    }
-    
-    function applyFullTemplateToDay(squad, day, templateName) {
-        if (currentRole !== 'teacher') { showToast('⚠️ Тільки для вчителів', true); return; }
-        const template = DAY_TEMPLATES[templateName];
-        if (!template) return;
-        
-        const choice = confirm(`Шаблон "${templateName}" (${template.length} заходів).\n\nOK - замінити всі заходи\nСкасувати - додати до наявних`);
-        
-        if (choice) {
-            assignments[squad][day] = template.map((block, idx) => ({ 
-                ...block, 
-                id: 't_' + Date.now() + '_' + idx + '_' + Math.random(),
-                link: block.link || TEMPLATE_DEV_LINKS[templateName] || null
-            }));
-            dayInfo[squad][day] = {
-                displayName: `День ${day} - ${templateName}`,
-                template: templateName,
-                devLink: TEMPLATE_DEV_LINKS[templateName] || null
-            };
-            showToast(`✅ Шаблон застосовано`);
-        } else {
-            const existingNames = new Set((assignments[squad][day] || []).map(b => b.name));
-            const newBlocks = template.filter(block => !existingNames.has(block.name)).map((block, idx) => ({ 
-                ...block, 
-                id: 't_add_' + Date.now() + '_' + idx + '_' + Math.random(),
-                link: block.link || TEMPLATE_DEV_LINKS[templateName] || null
-            }));
-            assignments[squad][day] = [...assignments[squad][day], ...newBlocks];
-            if (!dayInfo[squad][day]?.template || dayInfo[squad][day].displayName === `День ${day}`) {
-                dayInfo[squad][day] = dayInfo[squad][day] || { displayName: `День ${day}` };
-                dayInfo[squad][day].displayName = `День ${day} - ${templateName} + редагування`;
-                dayInfo[squad][day].template = templateName + " + редагування";
-                dayInfo[squad][day].devLink = TEMPLATE_DEV_LINKS[templateName] || null;
-            }
-            showToast(`✅ Додано ${newBlocks.length} заходів`);
-        }
-        
-        if (fullscreenDay === day && fullscreenSquad === squad) renderFullscreenDay(squad, day);
-        else if (currentRole === 'student') renderFullscreenDay(squad, day);
-        else renderDays();
-        scheduleSave(squad, day);
-    }
-    
+    // ========== ПОКАЗ ДЕТАЛІВ ==========
     function showDetails(block, squad, day) {
         const info = dayInfo[squad][day] || {};
         let linkHtml = '';
         if (block.link) {
-            linkHtml = `<p style="margin-top:10px;">🔗 <a href="${block.link}" target="_blank">Посилання на матеріали</a></p>`;
+                        linkHtml = `<p style="margin-top:10px;">🔗 <a href="${block.link}" target="_blank" style="display:inline-flex; align-items:center; gap:5px; background:#f0f7ff; padding:8px 16px; border-radius:30px; text-decoration:none; color:#2196f3;">📎 Посилання на матеріали</a></p>`;
         } else if (info.devLink && info.devLink !== '#' && block.id && block.id.toString().startsWith('template_')) {
-            linkHtml = `<p style="margin-top:10px;">📄 <a href="${info.devLink}" target="_blank">Посилання на розробку дня</a></p>`;
+            linkHtml = `<p style="margin-top:10px;">📄 <a href="${info.devLink}" target="_blank" style="display:inline-flex; align-items:center; gap:5px; background:#fff3e0; padding:8px 16px; border-radius:30px; text-decoration:none; color:#e65100;">📋 Посилання на розробку дня</a></p>`;
         }
         
         let editButton = '';
         if (currentRole === 'teacher') {
-            editButton = `<button onclick="event.stopPropagation(); openEditLinkModal(${squad}, ${day}, '${block.id}', '${block.link || ''}'); closeDetailModal();" style="margin-top:10px; width:100%; padding:10px; border-radius:30px; background:#ff9800; color:white; border:none; cursor:pointer;">🔗 Редагувати посилання</button>`;
+            editButton = `<button onclick="event.stopPropagation(); openEditEventModal(${squad}, ${day}, '${block.id}'); closeDetailModal();" style="margin-top:10px; width:100%; padding:12px; border-radius:30px; background:#4caf50; color:white; border:none; cursor:pointer; font-weight:600;">✏️ Редагувати захід</button>`;
         }
         
         document.getElementById('detailTitle').innerHTML = `📋 ${escapeHtml(block.name)}`;
@@ -1643,11 +1702,17 @@
             <p><strong>📖 Опис:</strong> ${escapeHtml(block.details || 'Опис відсутній')}</p>
             ${linkHtml}
             ${editButton}
-            <button onclick="closeDetailModal()" style="margin-top:15px; width:100%; padding:10px; border-radius:30px; background:#4caf50; color:white; border:none; cursor:pointer;">Закрити</button>
+            <button onclick="closeDetailModal()" style="margin-top:15px; width:100%; padding:12px; border-radius:30px; background:#2196f3; color:white; border:none; cursor:pointer; font-weight:600;">Закрити</button>
         `;
         document.getElementById('detailModal').style.display = 'flex';
     }
     
+    function closeDetailModal() { 
+        document.getElementById('detailModal').style.display = 'none';
+        pendingItemForDay = null;
+    }
+    
+    // ========== ВІДОБРАЖЕННЯ ДНЯ НА ВЕСЬ ЕКРАН ==========
     function renderFullscreenDay(squad, day) {
         fullscreenSquad = squad;
         fullscreenDay = day;
@@ -1658,54 +1723,40 @@
         const isToday = (currentRole === 'student' && day === currentDayIndex);
         
         let blocksHtml = '';
-        blocks.forEach(b => {
-            const isTemplate = b.id && b.id.toString().startsWith('template_');
-            blocksHtml += `
-                <div class="fullscreen-block ${isTemplate ? 'fullscreen-template-block' : ''}"
-                     data-block-id="${b.id}"
-                     data-day="${day}"
-                     data-squad="${squad}">
-                    <div class="fullscreen-block-info">
-                        <div class="fullscreen-block-name ${isTemplate ? 'fullscreen-template-name' : ''}">${escapeHtml(b.name)}</div>
-                        <div class="fullscreen-block-desc">${escapeHtml(b.desc || '')}</div>
+        if (blocks.length === 0) {
+            blocksHtml = '<div class="empty-fullscreen">📌 Немає заходів. Виберіть шаблон або додайте вручну.</div>';
+        } else {
+            blocks.forEach(b => {
+                const isTemplate = b.id && b.id.toString().startsWith('template_');
+                blocksHtml += `
+                    <div class="fullscreen-block ${isTemplate ? 'template-block' : ''}"
+                         data-block-id="${b.id}"
+                         data-day="${day}"
+                         data-squad="${squad}">
+                        <div class="fullscreen-block-info">
+                            <div class="fullscreen-block-name ${isTemplate ? 'fullscreen-template-name' : ''}">${escapeHtml(b.name)}</div>
+                            <div class="fullscreen-block-desc">${escapeHtml(b.desc || '')}</div>
+                        </div>
+                        <div class="fullscreen-block-actions">
+                            <button class="view-detail" onclick="showDetails(${JSON.stringify(b).replace(/"/g, '&quot;')}, ${squad}, ${day})">📖</button>
+                            ${currentRole === 'teacher' ? `<button class="edit-event-btn" onclick="openEditEventModal(${squad}, ${day}, '${b.id}')">✏️</button>` : ''}
+                            ${currentRole === 'teacher' ? `<button class="delete-block" onclick="requestDeleteBlock(${squad}, ${day}, '${b.id}')">✖</button>` : ''}
+                        </div>
                     </div>
-                    <div class="fullscreen-block-actions">
-                        <button class="view-detail" onclick="showDetails(${JSON.stringify(b).replace(/"/g, '&quot;')}, ${squad}, ${day})">📖</button>
-                        ${currentRole === 'teacher' ? `<button class="delete-block" onclick="requestDeleteBlock(${squad}, ${day}, '${b.id}')">✖</button>` : ''}
-                        ${currentRole === 'teacher' ? `<button class="edit-link-btn" onclick="openEditLinkModal(${squad}, ${day}, '${b.id}', '${b.link || ''}')">🔗</button>` : ''}
-                    </div>
-                </div>
-            `;
-        });
-        
-        if (blocks.length === 0) blocksHtml = '<div class="empty-day">📌 Немає заходів. Виберіть шаблон або додайте вручну.</div>';
-        
-        let templateButtonsHtml = '';
-        let customEventHtml = '';
-        
-        if (currentRole === 'teacher') {
-            for (let tName of Object.keys(DAY_TEMPLATES)) {
-                templateButtonsHtml += `<button class="template-btn" onclick="applyFullTemplateToDay(${squad}, ${day}, '${tName.replace(/'/g, "\\'")}')">📋 ${tName.substring(0, 25)}</button>`;
-            }
-            customEventHtml = `
-                <div style="margin-top: 15px;">
-                    <button class="add-day-btn" onclick="showBlockSelector(${squad}, ${day})">➕ Додати готовий захід</button>
-                    <button class="add-day-btn" onclick="showTemplateSelector(${squad}, ${day})" style="background:#ff9800; margin-top:8px;">📋 Вибрати шаблон</button>
-                </div>
-                <div class="custom-event-input">
-                    <input type="text" id="customEventName" placeholder="Назва заходу *">
-                    <input type="text" id="customEventTime" placeholder="Час (напр. 15:00)">
-                    <textarea id="customEventDetails" placeholder="Опис заходу" rows="2"></textarea>
-                    <input type="url" id="customEventLink" placeholder="Посилання на матеріали (необов'язково)">
-                    <button onclick="addCustomBlockToDay(${squad}, ${day})">➕ Додати свій захід</button>
-                </div>
-                ${templateButtonsHtml ? `<div class="template-buttons">${templateButtonsHtml}</div>` : ''}
-            `;
+                `;
+            });
         }
         
         let devLinkHtml = '';
         if (info.devLink && info.devLink !== '#') {
-            devLinkHtml = `<div class="dev-link">📄 <a href="${info.devLink}" target="_blank">Посилання на розробку заходів</a></div>`;
+            devLinkHtml = `<div class="dev-link"><a href="${info.devLink}" target="_blank">📄 Посилання на розробку заходів</a></div>`;
+        }
+        
+        let templateButtonsHtml = '';
+        if (currentRole === 'teacher') {
+            for (let tName of Object.keys(DAY_TEMPLATES)) {
+                templateButtonsHtml += `<button class="template-btn" onclick="showTemplateChoiceModal(${squad}, ${day}, '${tName.replace(/'/g, "\\'")}')">📋 ${tName.substring(0, 25)}</button>`;
+            }
         }
         
         container.innerHTML = `
@@ -1713,11 +1764,11 @@
                 <div class="fullscreen-header">
                     <div class="fullscreen-nav">
                         <button class="nav-btn" onclick="prevDay()">◀</button>
-                        <span style="font-weight: bold;">🏅 Загін ${squad} - День ${day} ${isToday ? '<span class="today-badge">СЬОГОДНІ</span>' : ''}</span>
+                        <span style="font-weight: bold; font-size: 1.1rem;">🏅 Загін ${squad} - День ${day} ${isToday ? '<span class="today-badge">СЬОГОДНІ</span>' : ''}</span>
                         <button class="nav-btn" onclick="nextDay()">▶</button>
                     </div>
-                    <div>
-                        <span style="font-size: 12px;">${dateStr}</span>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span class="fullscreen-date">${dateStr}</span>
                         <button class="exit-full-btn" onclick="closeFullscreen()">✖ Вийти</button>
                     </div>
                 </div>
@@ -1725,36 +1776,39 @@
                     <div class="fullscreen-day-header">
                         <div class="day-name-title">${escapeHtml(info.displayName)}</div>
                         ${devLinkHtml}
-                        ${currentRole === 'teacher' ? `<button class="edit-day-name-btn" onclick="editDayName(${squad}, ${day})">✏️ Редагувати назву</button>` : ''}
-                        <div style="font-size: 0.75rem; margin-top: 8px;">📊 ${blocks.length} заходів</div>
+                        ${currentRole === 'teacher' ? `<button class="edit-day-name-btn" onclick="openEditDayNameModal(${squad}, ${day})">✏️ Редагувати назву</button>` : ''}
+                        <div style="font-size: 0.8rem; margin-top: 8px;">📊 ${blocks.length} заходів</div>
                     </div>
                     <div class="fullscreen-day-content">
                         ${blocksHtml}
-                        ${customEventHtml}
+                        ${currentRole === 'teacher' ? `
+                            <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                                <button class="add-day-btn" onclick="showBlockSelector(${squad}, ${day})" style="background:#2196f3; color:white; flex:1;">➕ Готовий захід</button>
+                                <button class="add-day-btn" onclick="openAddEventModal(${squad}, ${day})" style="background:#4caf50; color:white; flex:1;">✏️ Свій захід</button>
+                                <button class="add-day-btn" onclick="showTemplateSelector(${squad}, ${day})" style="background:#ff9800; color:white; flex:1;">📋 Шаблон</button>
+                            </div>
+                            ${templateButtonsHtml ? `<div class="template-buttons" style="margin-top: 15px;">${templateButtonsHtml}</div>` : ''}
+                        ` : ''}
                     </div>
                 </div>
             </div>
         `;
-        
         setTimeout(() => initSortableBlocks(), 50);
     }
     
+    // ========== ВІДОБРАЖЕННЯ ДНІВ ==========
     function renderDays() {
         if (currentRole !== 'teacher') return;
-        
         const container = document.getElementById('daysContainer');
         if (!container) return;
         container.innerHTML = '';
-        
         for (let day = 1; day <= CAMP_DAYS_COUNT; day++) {
             const dateStr = campDates[day-1] ? formatDate(campDates[day-1]) : '-';
             const info = dayInfo[currentSquad][day] || { displayName: `День ${day}` };
             const blocks = assignments[currentSquad][day] || [];
-            
             const card = document.createElement('div');
             card.className = 'day-card';
             card.onclick = () => renderFullscreenDay(currentSquad, day);
-            
             let blocksHtml = '';
             if (blocks.length === 0) {
                 blocksHtml = '<div class="empty-day">📌 Немає заходів</div>';
@@ -1772,14 +1826,13 @@
                             </div>
                             <div class="block-actions">
                                 <button class="view-detail" onclick="event.stopPropagation(); showDetails(${JSON.stringify(b).replace(/"/g, '&quot;')}, ${currentSquad}, ${day})">📖</button>
+                                <button class="edit-event-btn" onclick="event.stopPropagation(); openEditEventModal(${currentSquad}, ${day}, '${b.id}')">✏️</button>
                                 <button class="delete-block" onclick="event.stopPropagation(); requestDeleteBlock(${currentSquad}, ${day}, '${b.id}')">✖</button>
-                                <button class="edit-link-btn" onclick="event.stopPropagation(); openEditLinkModal(${currentSquad}, ${day}, '${b.id}', '${b.link || ''}')">🔗</button>
                             </div>
                         </div>
                     `;
                 });
             }
-            
             card.innerHTML = `
                 <div class="day-header">
                     <div>
@@ -1791,8 +1844,9 @@
                 <div class="day-content" data-day="${day}">
                     ${blocksHtml}
                     <div class="add-to-day">
-                        <button class="add-day-btn" onclick="event.stopPropagation(); showBlockSelector(${currentSquad}, ${day})">➕ Додати захід</button>
-                        <button class="add-day-btn" onclick="event.stopPropagation(); showTemplateSelector(${currentSquad}, ${day})" style="background:#ff9800; margin-top:4px;">📋 Шаблон</button>
+                        <button class="add-day-btn" onclick="event.stopPropagation(); showBlockSelector(${currentSquad}, ${day})" style="background:#2196f3; color:white;">➕ Готовий захід</button>
+                        <button class="add-day-btn" onclick="event.stopPropagation(); openAddEventModal(${currentSquad}, ${day})" style="background:#4caf50; color:white; margin-top:4px;">✏️ Свій захід</button>
+                        <button class="add-day-btn" onclick="event.stopPropagation(); showTemplateSelector(${currentSquad}, ${day})" style="background:#ff9800; color:white; margin-top:4px;">📋 Шаблон</button>
                     </div>
                 </div>
             `;
@@ -1802,38 +1856,117 @@
         setTimeout(() => initSortableBlocks(), 50);
     }
     
+    // ========== ВИБІРНИКИ ==========
     function showBlockSelector(squad, day) {
         let options = BLOCKS.map(b => `<div class="day-option" onclick="addBlockToDay(${squad}, ${day}, ${JSON.stringify(b).replace(/"/g, '&quot;')}); closeDetailModal();">${escapeHtml(b.name)} (${escapeHtml(b.desc)})</div>`).join('');
+        options += `<div class="day-option cancel-option" onclick="closeDetailModal()">❌ Скасувати</div>`;
         document.getElementById('detailTitle').innerHTML = `📅 Виберіть захід для ${dayInfo[squad][day]?.displayName || `Дня ${day}`}`;
-        document.getElementById('detailBody').innerHTML = `<div>${options}<button onclick="closeDetailModal()" style="margin-top:15px; width:100%; padding:10px; border-radius:30px; background:#ccc; border:none;">Скасувати</button></div>`;
+        document.getElementById('detailBody').innerHTML = `<div>${options}</div>`;
         document.getElementById('detailModal').style.display = 'flex';
     }
     
     function showTemplateSelector(squad, day) {
         let options = '';
-        for (let [name, blocks] of Object.entries(DAY_TEMPLATES)) {
-            options += `<div class="template-option" onclick="applyFullTemplateToDay(${squad}, ${day}, '${name.replace(/'/g, "\\'")}'); closeDetailModal();">
-                            📋 ${escapeHtml(name)} (${blocks.length} заходів)
+        for (let [name] of Object.entries(DAY_TEMPLATES)) {
+            options += `<div class="template-option" onclick="showTemplateChoiceModal(${squad}, ${day}, '${name.replace(/'/g, "\\'")}'); closeDetailModal();">
+                            📋 ${escapeHtml(name)}
                         </div>`;
         }
+        options += `<div class="day-option cancel-option" onclick="closeDetailModal()">❌ Скасувати</div>`;
         document.getElementById('detailTitle').innerHTML = `📋 Виберіть шаблон для ${dayInfo[squad][day]?.displayName || `Дня ${day}`}`;
-        document.getElementById('detailBody').innerHTML = `<div>${options}<hr><p style="font-size:12px; color:#888;">OK = замінити всі заходи, Скасувати = додати до наявних</p><button onclick="closeDetailModal()" style="margin-top:15px; width:100%; padding:10px; border-radius:30px; background:#ccc; border:none;">Скасувати</button></div>`;
+        document.getElementById('detailBody').innerHTML = `<div>${options}</div>`;
         document.getElementById('detailModal').style.display = 'flex';
     }
     
-    function closeDetailModal() { 
-        document.getElementById('detailModal').style.display = 'none';
-        pendingItemForDay = null;
+    // ========== DRAG & DROP ==========
+    function initSortableBlocks() {
+        if (currentRole !== 'teacher') return;
+        const selectors = '.block-chip, .fullscreen-block';
+        const blocks = document.querySelectorAll(selectors);
+        blocks.forEach(block => {
+            block.setAttribute('draggable', 'true');
+            block.removeEventListener('dragstart', handleBlockDragStart);
+            block.removeEventListener('dragend', handleBlockDragEnd);
+            block.removeEventListener('dragover', handleBlockDragOver);
+            block.removeEventListener('dragleave', handleBlockDragLeave);
+            block.removeEventListener('drop', handleBlockDrop);
+            block.addEventListener('dragstart', handleBlockDragStart);
+            block.addEventListener('dragend', handleBlockDragEnd);
+            block.addEventListener('dragover', handleBlockDragOver);
+            block.addEventListener('dragleave', handleBlockDragLeave);
+            block.addEventListener('drop', handleBlockDrop);
+        });
+    }
+    
+    function handleBlockDragStart(e) {
+        draggedBlockElement = this;
+        draggedBlockId = this.getAttribute('data-block-id');
+        draggedBlockDay = parseInt(this.getAttribute('data-day'));
+        draggedBlockSquad = parseInt(this.getAttribute('data-squad'));
+        e.dataTransfer.setData('text/plain', draggedBlockId);
+        this.classList.add('dragging');
+        e.dataTransfer.effectAllowed = 'move';
+    }
+    
+    function handleBlockDragEnd(e) {
+        if (draggedBlockElement) draggedBlockElement.classList.remove('dragging');
+        document.querySelectorAll('.block-chip, .fullscreen-block').forEach(el => el.classList.remove('drag-over'));
+        draggedBlockElement = null;
+        draggedBlockId = null;
+        draggedBlockDay = null;
+        draggedBlockSquad = null;
+    }
+    
+    function handleBlockDragOver(e) {
+        e.preventDefault();
+        if (!draggedBlockElement) return;
+        const targetBlock = this;
+        if (targetBlock === draggedBlockElement) return;
+        const targetDay = parseInt(targetBlock.getAttribute('data-day'));
+        const targetSquad = parseInt(targetBlock.getAttribute('data-squad'));
+        if (targetDay !== draggedBlockDay || targetSquad !== draggedBlockSquad) return;
+        e.dataTransfer.dropEffect = 'move';
+        targetBlock.classList.add('drag-over');
+    }
+    
+    function handleBlockDragLeave(e) {
+        this.classList.remove('drag-over');
+    }
+    
+    function handleBlockDrop(e) {
+        e.preventDefault();
+        this.classList.remove('drag-over');
+        if (!draggedBlockElement) return;
+        if (this === draggedBlockElement) return;
+        const targetDay = parseInt(this.getAttribute('data-day'));
+        const targetSquad = parseInt(this.getAttribute('data-squad'));
+        if (targetDay !== draggedBlockDay || targetSquad !== draggedBlockSquad) return;
+        
+        const blocksArray = assignments[targetSquad][targetDay];
+        if (!blocksArray) return;
+        const draggedIndex = blocksArray.findIndex(b => b.id == draggedBlockId);
+        const targetIndex = blocksArray.findIndex(b => b.id == this.getAttribute('data-block-id'));
+        if (draggedIndex === -1 || targetIndex === -1) return;
+        if (draggedIndex === targetIndex) return;
+        
+        const [movedItem] = blocksArray.splice(draggedIndex, 1);
+        blocksArray.splice(targetIndex, 0, movedItem);
+        
+        if (fullscreenDay === targetDay && fullscreenSquad === targetSquad) {
+            renderFullscreenDay(targetSquad, targetDay);
+        } else {
+            renderDays();
+        }
+        scheduleSave(targetSquad, targetDay);
+        showToast('🔄 Порядок заходів змінено');
     }
     
     function initDayDropZones() {
         if (currentRole !== 'teacher') return;
-        
         const dayContents = document.querySelectorAll('.day-content');
         dayContents.forEach(zone => {
             zone.removeEventListener('dragover', zone._dragoverHandler);
             zone.removeEventListener('drop', zone._dropHandler);
-            
             const dragoverHandler = (e) => {
                 e.preventDefault();
                 zone.style.backgroundColor = '#e8f5e9';
@@ -1845,7 +1978,6 @@
                 e.preventDefault();
                 zone.style.backgroundColor = '';
                 if (!draggedItem) return;
-                
                 const dayCard = zone.closest('.day-card');
                 if (!dayCard) return;
                 const dayText = dayCard.querySelector('.day-number')?.innerText || '';
@@ -1853,27 +1985,35 @@
                 if (!dayMatch) return;
                 const day = parseInt(dayMatch[1]);
                 
+                let insertBeforeElement = null;
+                const mouseY = e.clientY;
+                const children = zone.querySelectorAll('.block-chip');
+                for (let child of children) {
+                    const rect = child.getBoundingClientRect();
+                    if (mouseY < rect.top + rect.height / 2) {
+                        insertBeforeElement = child;
+                        break;
+                    }
+                }
+                
                 if (draggedItem.type === 'block') {
-                    addBlockToDay(currentSquad, day, draggedItem.block);
+                    addBlockToDay(currentSquad, day, draggedItem.block, insertBeforeElement);
                 } else if (draggedItem.type === 'template') {
-                    addTemplateToDay(currentSquad, day, draggedItem.name);
+                    showTemplateChoiceModal(currentSquad, day, draggedItem.name);
                 }
             };
-            
             zone._dragoverHandler = dragoverHandler;
             zone._dropHandler = dropHandler;
-            
             zone.addEventListener('dragover', dragoverHandler);
             zone.addEventListener('dragleave', dragleaveHandler);
             zone.addEventListener('drop', dropHandler);
         });
     }
     
+    // ========== ПАНЕЛЬ ==========
     function renderBlocks() {
         if (currentRole !== 'teacher') return;
-        
         document.getElementById('blocksPanel').style.display = 'block';
-        
         const blocksContainer = document.getElementById('blocksContainer');
         blocksContainer.innerHTML = BLOCKS.map(block => `
             <div class="block-item" draggable="true" data-type="block" data-block='${JSON.stringify(block)}'>
@@ -1887,7 +2027,7 @@
         
         const templatesContainer = document.getElementById('templatesContainer');
         templatesContainer.innerHTML = '';
-        for (let [name, blocks] of Object.entries(DAY_TEMPLATES)) {
+        for (let [name] of Object.entries(DAY_TEMPLATES)) {
             const div = document.createElement('div');
             div.className = 'block-item template-item';
             div.setAttribute('draggable', 'true');
@@ -1896,7 +2036,6 @@
             div.innerHTML = `
                 <div class="block-item-info">
                     <div class="block-item-name">📋 ${escapeHtml(name)}</div>
-                    <div class="block-item-desc">${blocks.length} заходів</div>
                 </div>
                 <div class="add-btn" onclick="showDaySelectorForItem('template', '${name.replace(/'/g, "\\'")}')">➕</div>
             `;
@@ -1924,7 +2063,6 @@
                 draggedItem = null;
             });
         });
-        
         initDayDropZones();
     }
     
@@ -1951,14 +2089,14 @@
         if (newDay > CAMP_DAYS_COUNT) newDay = 1;
         renderFullscreenDay(fullscreenSquad, newDay);
     }
-
+    
     function prevDay() {
         if (!fullscreenSquad || !fullscreenDay) return;
         let newDay = fullscreenDay - 1;
         if (newDay < 1) newDay = CAMP_DAYS_COUNT;
         renderFullscreenDay(fullscreenSquad, newDay);
     }
-
+    
     function closeFullscreen() {
         fullscreenDay = null;
         fullscreenSquad = null;
@@ -1976,8 +2114,6 @@
                         <button onclick="logout()" style="margin-top:20px; padding:12px 30px; border-radius:30px; background:#4caf50; color:white; border:none; cursor:pointer;">Повернутися</button>
                     </div>
                 `;
-            } else {
-                document.getElementById('fullscreenContainer').innerHTML = '<div style="text-align:center; padding:50px; color:white;">🏕️ Оберіть день з календаря вище</div>';
             }
         }
     }
@@ -2030,7 +2166,7 @@
     // ========== ФУНКЦІЇ ВХОДУ ==========
     function showTeacherPassword() {
         document.querySelector('.login-buttons').style.display = 'none';
-                document.getElementById('teacherPasswordSection').style.display = 'block';
+        document.getElementById('teacherPasswordSection').style.display = 'block';
         document.getElementById('studentWelcomeSection').style.display = 'none';
         document.getElementById('teacherCode').focus();
     }
@@ -2104,44 +2240,35 @@
     
     function showHelp() {
         if (currentRole === 'teacher') {
-            alert('🏕️ Табір «Супутник» - Довідка для вчителя\n\n📌 Функціонал:\n• Обирайте загін (Загін 1 або Загін 2)\n• Натисніть на день для детального перегляду\n• ✏️ Редагуйте назву дня\n• 📋 Застосуйте готовий шаблон (заміна або додавання)\n• ➕ Додайте свій захід (назва, час, опис, ПОСИЛАННЯ)\n• 🔗 Кнопка 🔗 дозволяє змінити посилання для будь-якого заходу\n• 🖱️ Перетягуйте заходи та шаблони з панелі справа\n• 🟠 Помаранчеві елементи - цілі шаблони днів\n• 🔄 Перетягуйте заходи в середині дня для зміни порядку');
+            alert('🏕️ Табір «Супутник» - Довідка\n\n📌 Для вчителя:\n• Обирайте загін\n• 🖱️ Клік на день - детальний перегляд\n• ✏️ Редагуйте назву дня (через кнопку)\n• ✏️ Редагуйте заходи (назва, час, опис, посилання)\n• 📋 3 варіанти роботи з шаблоном: Замінити / Додати / Скасувати\n• 🖱️ Перетягуйте заходи мишею для зміни порядку\n• 🔗 Кнопка 🔗 - змінити посилання');
         } else {
-            alert('🏕️ Табір «Супутник»\n\n🧑‍🎓 Учень:\n• Ви можете обрати загін при вході\n• Бачите розклад для обраного загону\n• Можете гортати дні стрілками ◀ ▶\n• Можете переглядати деталі заходів 📖\n• Якщо є посилання - воно відкривається в новій вкладці\n\n📅 Всього 14 днів табору');
+            alert('🏕️ Табір «Супутник»\n\n🧑‍🎓 Учень:\n• Оберіть загін при вході\n• Гортайте дні стрілками ◀ ▶\n• Переглядайте деталі заходів 📖\n• Посилання відкриваються в новій вкладці\n\n📅 14 днів табору');
         }
     }
     
-    // ========== PWA ВСТАНОВЛЕННЯ (ЗАВЖДИ ПРОПОНУЄ) ==========
+    // ========== PWA ==========
     let deferredPrompt;
-    
     window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
-        
         const popup = document.getElementById("installPopup");
         if (popup) popup.style.display = "flex";
     });
     
-    const installYesBtn = document.getElementById("installYes");
-    if (installYesBtn) {
-        installYesBtn.addEventListener("click", async () => {
-            const popup = document.getElementById("installPopup");
-            if (popup) popup.style.display = "none";
+    document.getElementById("installYes")?.addEventListener("click", async () => {
+        const popup = document.getElementById("installPopup");
+        if (popup) popup.style.display = "none";
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            await deferredPrompt.userChoice;
+            deferredPrompt = null;
+        }
+    });
     
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                await deferredPrompt.userChoice;
-                deferredPrompt = null;
-            }
-        });
-    }
-    
-    const installNoBtn = document.getElementById("installNo");
-    if (installNoBtn) {
-        installNoBtn.addEventListener("click", () => {
-            const popup = document.getElementById("installPopup");
-            if (popup) popup.style.display = "none";
-        });
-    }
+    document.getElementById("installNo")?.addEventListener("click", () => {
+        const popup = document.getElementById("installPopup");
+        if (popup) popup.style.display = "none";
+    });
     
     window.addEventListener('appinstalled', () => {
         const popup = document.getElementById("installPopup");
@@ -2153,7 +2280,15 @@
         if(e.target === document.getElementById('settingsMenu')) toggleMenu();
         if(e.target === document.getElementById('confirmDeleteModal')) cancelDelete();
         if(e.target === document.getElementById('editLinkModal')) closeEditLinkModal();
+        if(e.target === document.getElementById('editEventModal')) closeEditEventModal();
+        if(e.target === document.getElementById('addEventModal')) closeAddEventModal();
+        if(e.target === document.getElementById('editDayNameModal')) closeEditDayNameModal();
+        if(e.target === document.getElementById('templateChoiceModal')) closeTemplateChoiceModal();
     };
+    
+    // Прибираємо помилкове відкриття confirmDeleteModal при завантаженні
+    document.getElementById('confirmDeleteModal').style.display = 'none';
 </script>
 </body>
 </html>
+           
