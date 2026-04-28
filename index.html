@@ -906,7 +906,8 @@
         const today = new Date();
         today.setHours(0,0,0,0);
         for(let i=0; i<campDates.length; i++) {
-                    }
+			if(campDates[i].toDateString() === today.toDateString()) return i+1;
+        }
         return null;
     }
     
@@ -1119,6 +1120,7 @@
     // Готові окремі заходи з посиланнями
     const BLOCKS = [
         { id: "b1", name: "🏃 Ранкова зарядка", desc: "8:30", details: "Розминка, біг, загальні вправи.", link: "https://example.com/rankova-zaryadka" },
+	{ id: "b12", name: "🎤 Лінійка", desc: "8:40", details: "Оголошення повідосмлень та підведення підсумків.", link: "https://example.com/liniyka" },
         { id: "b2", name: "🍳 Сніданок", desc: "9:00", details: "Повноцінне харчування.", link: "https://example.com/snidanok" },
         { id: "b3", name: "🎨 Майстерка", desc: "10:00", details: "Творчі заняття.", link: "https://example.com/maysterka" },
         { id: "b4", name: "🍽️ Обід", desc: "12:00", details: "Суп, друге, компот.", link: "https://example.com/obid" },
