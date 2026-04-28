@@ -1972,58 +1972,45 @@
         }
     }
     
-    // ========== PWA ВСТАНОВЛЕННЯ ==========
-    let deferredPrompt;
+// ========== PWA ВСТАНОВЛЕННЯ (ЗАВЖДИ ПРОПОНУЄ) ==========
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
     
-    function isAppInstalled() {
-        return window.matchMedia('(display-mode: standalone)').matches ||
-               window.navigator.standalone === true ||
-               localStorage.getItem("pwaInstalled") === "true";
-    }
-    
-    if (!isAppInstalled()) {
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-    
-            if (!localStorage.getItem("installDismissed")) {
-                const popup = document.getElementById("installPopup");
-                if (popup) popup.style.display = "flex";
-            }
-        });
-    
-        const installYes = document.getElementById("installYes");
-        if (installYes) {
-            installYes.addEventListener("click", async () => {
-                const popup = document.getElementById("installPopup");
-                if (popup) popup.style.display = "none";
-    
-                if (deferredPrompt) {
-                    deferredPrompt.prompt();
-                    const { outcome } = await deferredPrompt.userChoice;
-                    if (outcome === 'accepted') {
-                        localStorage.setItem("pwaInstalled", "true");
-                    }
-                    deferredPrompt = null;
-                }
-            });
+    // ЗАВЖДИ ПОКАЗУЄМО БАНЕР (без перевірок)
+    const popup = document.getElementById("installPopup");
+    if (popup) popup.style.display = "flex";
+});
+
+const installYes = document.getElementById("installYes");
+if (installYes) {
+    installYes.addEventListener("click", async () => {
+        const popup = document.getElementById("installPopup");
+        if (popup) popup.style.display = "none";
+
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            await deferredPrompt.userChoice;
+            deferredPrompt = null;
         }
-    
-        const installNo = document.getElementById("installNo");
-        if (installNo) {
-            installNo.addEventListener("click", () => {
-                const popup = document.getElementById("installPopup");
-                if (popup) popup.style.display = "none";
-                localStorage.setItem("installDismissed", "true");
-            });
-        }
-    
-        window.addEventListener('appinstalled', () => {
-            localStorage.setItem("pwaInstalled", "true");
-            const popup = document.getElementById("installPopup");
-            if (popup) popup.style.display = "none";
-        });
-    }
+    });
+}
+
+const installNo = document.getElementById("installNo");
+if (installNo) {
+    installNo.addEventListener("click", () => {
+        const popup = document.getElementById("installPopup");
+        if (popup) popup.style.display = "none";
+        // НІЧОГО НЕ ЗБЕРІГАЄМО - банер з'явиться знову при наступному заході
+    });
+}
+
+window.addEventListener('appinstalled', () => {
+    const popup = document.getElementById("installPopup");
+    if (popup) popup.style.display = "none";
+});
     
     window.onclick = (e) => { 
         if(e.target === document.getElementById('detailModal')) closeDetailModal(); 
