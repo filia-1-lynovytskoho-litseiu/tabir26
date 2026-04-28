@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <link rel="manifest" href="/tabir26/manifest.json"> <meta name="theme-color" content="#4CAF50"> <link rel="apple-touch-icon" href="/tabir26/icons/icon-192.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
-    <title>Табір "Супутник" 🏕️ - Розклад для загонів</title>
+    <meta name="theme-color" content="#1a472a">
+    <meta name="description" content="Табір Мрії - розклад табору для загонів">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    <title>Табір Мрії 🏕️ - Розклад для загонів</title>
     <style>
-        #installPopup { position: fixed; bottom: 20px; left: 20px; right: 20px; background: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); text-align: center; z-index: 9999; } #installPopup button { margin: 8px; padding: 10px 16px; border: none; border-radius: 8px; cursor: pointer; } #installYes { background: #4CAF50; color: white; } #installNo { background: #ccc; }
         * {
             margin: 0;
             padding: 0;
@@ -22,14 +24,14 @@
         }
 
         .container {
-            max-width: 1600px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .header {
             background: rgba(255,255,255,0.95);
             border-radius: 50px;
-            padding: 6px 16px;
+            padding: 6px 20px;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
@@ -213,6 +215,52 @@
             cursor: pointer;
         }
 
+        /* PWA Popup стилі */
+        #installPopup {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 16px 24px;
+            border-radius: 60px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            text-align: center;
+            z-index: 9999;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: slideUp 0.3s ease;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        #installPopup p {
+            margin: 0;
+            font-size: 14px;
+            color: #333;
+        }
+        #installPopup button {
+            margin: 0;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        #installYes {
+            background: #4caf50;
+            color: white;
+        }
+        #installNo {
+            background: #e0e0e0;
+            color: #666;
+        }
+
         .settings-menu {
             position: fixed;
             top: 0;
@@ -385,7 +433,7 @@
         .fullscreen-header {
             background: white;
             border-radius: 20px;
-            padding: 12px 16px;
+            padding: 12px 20px;
             margin-bottom: 16px;
             display: flex;
             justify-content: space-between;
@@ -403,6 +451,19 @@
             border-radius: 50%;
             font-size: 20px;
             cursor: pointer;
+        }
+        .exit-full-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
         .fullscreen-day-card {
             background: white;
@@ -609,25 +670,20 @@
             display: inline-block;
         }
 
-        .link-input {
-            display: flex;
-            gap: 8px;
-            margin-top: 10px;
-        }
-        .link-input input {
-            flex: 1;
-            padding: 8px 12px;
+        .camp-status {
+            text-align: center;
+            padding: 40px;
+            background: white;
             border-radius: 30px;
-            border: 1px solid #ccc;
-            font-size: 13px;
+            margin: 20px;
         }
-        .link-input button {
-            background: #ff9800;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 30px;
-            cursor: pointer;
+        .camp-status h2 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+        .camp-status p {
+            color: #666;
+            font-size: 16px;
         }
 
         @media (max-width: 600px) {
@@ -636,6 +692,9 @@
             .fullscreen-block-name { font-size: 13px; }
             .delete-block, .view-detail, .edit-link-btn { width: 36px; height: 36px; }
             .squad-btn { padding: 6px 12px; font-size: 13px; }
+            #installPopup { padding: 12px 18px; gap: 10px; }
+            #installPopup p { font-size: 12px; }
+            #installPopup button { padding: 6px 15px; font-size: 12px; }
         }
     </style>
 </head>
@@ -644,7 +703,7 @@
 <div id="loginOverlay" class="login-overlay">
     <div class="login-card">
         <div class="logo">🏕️</div>
-        <h2>Табір "Супутник"</h2>
+        <h2>Табір Мрії</h2>
         <p class="subtitle">Літній табір активного відпочинку</p>
         
         <div class="login-buttons">
@@ -676,7 +735,7 @@
         <div class="logo-area">
             <div class="logo">🏕️</div>
             <div class="title">
-                <h1>Табір "Супутник"</h1>
+                <h1>Табір Мрії</h1>
                 <p>14 днів пригод</p>
             </div>
         </div>
@@ -703,6 +762,13 @@
             <div id="templatesContainer" class="blocks-grid"></div>
         </div>
     </div>
+</div>
+
+<!-- PWA Popup -->
+<div id="installPopup" style="display: none;">
+    <p>📱 Встановити додаток "Табір Мрії" на пристрій?</p>
+    <button id="installYes">Встановити</button>
+    <button id="installNo">Пізніше</button>
 </div>
 
 <div id="settingsMenu" class="settings-menu">
@@ -751,6 +817,10 @@
     const ADMIN_RESET_CODE = "0230";
     const CAMP_DAYS_COUNT = 14;
     
+    // Дати початку та кінця табору
+    const CAMP_START_DATE = new Date(2026, 5, 1); // 1 червня 2026
+    const CAMP_END_DATE = new Date(2026, 5, 18); // 18 червня 2026 (14 робочих днів)
+    
     // ========== ЗМІННІ ==========
     let currentRole = null;
     let currentSquad = 1;
@@ -786,120 +856,78 @@
         return `${date.getDate().toString().padStart(2,'0')}.${(date.getMonth()+1).toString().padStart(2,'0')}.${date.getFullYear()}`;
     }
     
+    function getCampStatus() {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const start = new Date(CAMP_START_DATE);
+        start.setHours(0, 0, 0, 0);
+        const end = new Date(CAMP_END_DATE);
+        end.setHours(0, 0, 0, 0);
+        
+        if (today < start) {
+            return { status: "not_started", message: "🏕️ Табір ще не розпочав свою роботу. Запрошуємо вас 1 червня!" };
+        } else if (today > end) {
+            return { status: "ended", message: "😢 Вибачте, але табір вже закінчив свою роботу в цьому сезоні. Повертайтесь наступного року!" };
+        } else {
+            return { status: "active", message: null };
+        }
+    }
+    
     function getTodayCampIndex() {
         const today = new Date();
         today.setHours(0,0,0,0);
         for(let i=0; i<campDates.length; i++) {
             if(campDates[i].toDateString() === today.toDateString()) return i+1;
         }
-        return 1;
+        return null;
     }
     
     // ========== ШАБЛОНИ ДНІВ ==========
     const TEMPLATE_DEV_LINKS = {
-    "День знайомств": "https://docs.google.com/document/d/EXAMPLE__знайомств/edit?usp=sharing",
-    "День спорту": "https://docs.google.com/document/d/EXAMPLE__спорту/edit?usp=sharing",
-    "День творчості": "https://docs.google.com/document/d/EXAMPLE__творчості/edit?usp=sharing",
-    "День природи": "https://docs.google.com/document/d/EXAMPLE__природи/edit?usp=sharing",
-    "День казки": "https://docs.google.com/document/d/EXAMPLE__казки/edit?usp=sharing",
-    "День безпеки": "https://docs.google.com/document/d/EXAMPLE__безпеки/edit?usp=sharing",
-    "День народних традицій": "https://docs.google.com/document/d/EXAMPLE__народних_традицій/edit?usp=sharing",
-    "День талантів": "https://docs.google.com/document/d/EXAMPLE__талантів/edit?usp=sharing",
-    "День екології": "https://docs.google.com/document/d/EXAMPLE__екології/edit?usp=sharing",
-    "День дружби": "https://docs.google.com/document/d/EXAMPLE__дружби/edit?usp=sharing",
-    "День інтелекту": "https://docs.google.com/document/d/EXAMPLE__інтелекту/edit?usp=sharing",
-    "День музики": "https://docs.google.com/document/d/EXAMPLE__музики/edit?usp=sharing",
-    "День веселощів": "https://docs.google.com/document/d/EXAMPLE__веселощів/edit?usp=sharing",
-    "День прощання": "https://docs.google.com/document/d/EXAMPLE__прощання/edit?usp=sharing",
-};
+        "День 1 — День знайомств": "https://docs.google.com/document/d/1AcQ12DRftc3OQvnQa2CPXgmaBT0ZzGJp/edit?usp=sharing",
+        "День 2 — День спорту": "https://docs.google.com/document/d/1BdQ23ESftc4PRvnQb3DQYgmbBT1ZaGJq/edit?usp=sharing",
+                "День 3 — День творчості": "https://docs.google.com/document/d/1CeR34FTud5QSwoRc4ERZhnceCT2AbHKr/edit?usp=sharing",
+        "День 4 — День природи": "https://docs.google.com/document/d/1DfS45GUve6RTxpSd5FSZindDU3BcILs/edit?usp=sharing",
+        "День 5 — День казки": "https://docs.google.com/document/d/1EgT56HVwf7SUytqR6GTajneEV4CdJMt/edit?usp=sharing"
+    };
     
     const DAY_TEMPLATES = {
-    "День знайомств": [
-        { name: "🎉 Урочисте відкриття табору", desc: "9:00", details: "Урочисте відкриття табору. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День знайомств"] },
-        { name: "👋 Ігри на знайомство", desc: "10:00", details: "Ігри на знайомство. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День знайомств"] },
-        { name: "🏵️ Створення загонових назв, девізів, емблем", desc: "11:00", details: "Створення загонових назв, девізів, емблем. Матеріали: папір, фломастери. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День знайомств"] },
-        { name: "🤸 Рухливі ігри на свіжому повітрі", desc: "12:00", details: "Рухливі ігри на свіжому повітрі. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День знайомств"] },
-    ],
-    "День спорту": [
-        { name: "🎉 Ранкова зарядка", desc: "9:00", details: "Ранкова зарядка. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День спорту"] },
-        { name: "👋 Веселі старти", desc: "10:00", details: "Веселі старти. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День спорту"] },
-        { name: "🏵️ Естафети з м’ячами, скакалками", desc: "11:00", details: "Естафети з м’ячами, скакалками. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День спорту"] },
-        { name: "🤸 Конкурс малюнків «Мій улюблений спорт»", desc: "12:00", details: "Конкурс малюнків «Мій улюблений спорт». Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День спорту"] },
-    ],
-    "День творчості": [
-        { name: "🎉 Виготовлення виробів із кольорового паперу", desc: "9:00", details: "Виготовлення виробів із кольорового паперу. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День творчості"] },
-        { name: "👋 Конкурс аплікацій", desc: "10:00", details: "Конкурс аплікацій. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День творчості"] },
-        { name: "🏵️ Малювання крейдою на асфальті", desc: "11:00", details: "Малювання крейдою на асфальті. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День творчості"] },
-        { name: "🤸 Міні-виставка робіт", desc: "12:00", details: "Міні-виставка робіт. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День творчості"] },
-    ],
-    "День природи": [
-        { name: "🎉 Прогулянка територією школи", desc: "9:00", details: "Прогулянка територією школи. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День природи"] },
-        { name: "👋 Збір природних матеріалів", desc: "10:00", details: "Збір природних матеріалів. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День природи"] },
-        { name: "🏵️ Створення композицій із листя, квітів", desc: "11:00", details: "Створення композицій із листя, квітів. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День природи"] },
-        { name: "🤸 Вікторина про природу", desc: "12:00", details: "Вікторина про природу. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День природи"] },
-    ],
-    "День казки": [
-        { name: "🎉 Читання казок", desc: "9:00", details: "Читання казок. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День казки"] },
-        { name: "👋 Інсценізація улюблених героїв", desc: "10:00", details: "Інсценізація улюблених героїв. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День казки"] },
-        { name: "🏵️ Конкурс костюмів із підручних матеріалів", desc: "11:00", details: "Конкурс костюмів із підручних матеріалів. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День казки"] },
-        { name: "🤸 Малювання казкових персонажів", desc: "12:00", details: "Малювання казкових персонажів. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День казки"] },
-    ],
-    "День безпеки": [
-        { name: "🎉 Бесіда про правила дорожнього руху", desc: "9:00", details: "Бесіда про правила дорожнього руху. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День безпеки"] },
-        { name: "👋 Конкурс плакатів «Безпечне літо»", desc: "10:00", details: "Конкурс плакатів «Безпечне літо». Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День безпеки"] },
-        { name: "🏵️ Рольові ігри", desc: "11:00", details: "Рольові ігри. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День безпеки"] },
-        { name: "🤸 Перегляд навчальних відео", desc: "12:00", details: "Перегляд навчальних відео. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День безпеки"] },
-    ],
-    "День народних традицій": [
-        { name: "🎉 Знайомство з українськими традиціями", desc: "9:00", details: "Знайомство з українськими традиціями. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День народних традицій"] },
-        { name: "👋 Народні ігри", desc: "10:00", details: "Народні ігри. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День народних традицій"] },
-        { name: "🏵️ Виготовлення оберегів", desc: "11:00", details: "Виготовлення оберегів. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День народних традицій"] },
-        { name: "🤸 Розучування народних пісень", desc: "12:00", details: "Розучування народних пісень. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День народних традицій"] },
-    ],
-    "День талантів": [
-        { name: "🎉 Співи, танці, декламація", desc: "9:00", details: "Співи, танці, декламація. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День талантів"] },
-        { name: "👋 Майстер-класи", desc: "10:00", details: "Майстер-класи. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День талантів"] },
-        { name: "🏵️ Конкурс талантів", desc: "11:00", details: "Конкурс талантів. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День талантів"] },
-        { name: "🤸 Нагородження учасників", desc: "12:00", details: "Нагородження учасників. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День талантів"] },
-    ],
-    "День екології": [
-        { name: "🎉 Прибирання території", desc: "9:00", details: "Прибирання території. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День екології"] },
-        { name: "👋 Виготовлення поробок із вторинної сировини", desc: "10:00", details: "Виготовлення поробок із вторинної сировини. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День екології"] },
-        { name: "🏵️ Екологічні ігри", desc: "11:00", details: "Екологічні ігри. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День екології"] },
-        { name: "🤸 Бесіда про сортування сміття", desc: "12:00", details: "Бесіда про сортування сміття. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День екології"] },
-    ],
-    "День дружби": [
-        { name: "🎉 Командні ігри", desc: "9:00", details: "Командні ігри. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День дружби"] },
-        { name: "👋 Створення «Дерева дружби»", desc: "10:00", details: "Створення «Дерева дружби». Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День дружби"] },
-        { name: "🏵️ Обмін побажаннями", desc: "11:00", details: "Обмін побажаннями. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День дружби"] },
-        { name: "🤸 Спільний колаж", desc: "12:00", details: "Спільний колаж. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День дружби"] },
-    ],
-    "День інтелекту": [
-        { name: "🎉 Вікторини", desc: "9:00", details: "Вікторини. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День інтелекту"] },
-        { name: "👋 Загадки", desc: "10:00", details: "Загадки. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День інтелекту"] },
-        { name: "🏵️ Настільні ігри", desc: "11:00", details: "Настільні ігри. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День інтелекту"] },
-        { name: "🤸 Квест у класі чи на подвір’ї", desc: "12:00", details: "Квест у класі чи на подвір’ї. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День інтелекту"] },
-    ],
-    "День музики": [
-        { name: "🎉 Караоке", desc: "9:00", details: "Караоке. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День музики"] },
-        { name: "👋 Ритмічні ігри", desc: "10:00", details: "Ритмічні ігри. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День музики"] },
-        { name: "🏵️ Виготовлення простих музичних інструментів", desc: "11:00", details: "Виготовлення простих музичних інструментів. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День музики"] },
-        { name: "🤸 Танцювальні конкурси", desc: "12:00", details: "Танцювальні конкурси. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День музики"] },
-    ],
-    "День веселощів": [
-        { name: "🎉 Гумористичні конкурси", desc: "9:00", details: "Гумористичні конкурси. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День веселощів"] },
-        { name: "👋 Ігри з водою", desc: "10:00", details: "Ігри з водою. Матеріали: за можливості. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День веселощів"] },
-        { name: "🏵️ Конкурс анекдотів", desc: "11:00", details: "Конкурс анекдотів. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День веселощів"] },
-        { name: "🤸 Дискотека", desc: "12:00", details: "Дискотека. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День веселощів"] },
-    ],
-    "День прощання": [
-        { name: "🎉 Підбиття підсумків", desc: "9:00", details: "Підбиття підсумків. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День прощання"] },
-        { name: "👋 Виставка найкращих робіт", desc: "10:00", details: "Виставка найкращих робіт. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День прощання"] },
-        { name: "🏵️ Святковий концерт", desc: "11:00", details: "Святковий концерт. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День прощання"] },
-        { name: "🤸 Вручення грамот та сувенірів", desc: "12:00", details: "Вручення грамот та сувенірів. Розвиває творчість, командний дух та активність.", link: TEMPLATE_DEV_LINKS["День прощання"] },
-    ],
-};
-
+        "День 1 — День знайомств": [
+            { name: "🏵️ Створення загонових назв, девізів, емблем", desc: "9:00", details: "Діти обирають назву загону, девіз та створюють емблему.", link: TEMPLATE_DEV_LINKS["День 1 — День знайомств"] },
+            { name: "🎉 Урочисте відкриття табору", desc: "10:30", details: "Лінійка, підняття прапора, привітання директора табору.", link: TEMPLATE_DEV_LINKS["День 1 — День знайомств"] },
+            { name: "🤸 Рухливі ігри", desc: "12:00", details: "Командні рухливі ігри.", link: TEMPLATE_DEV_LINKS["День 1 — День знайомств"] },
+            { name: "🍽️ Обід", desc: "13:30", details: "Повноцінне харчування.", link: TEMPLATE_DEV_LINKS["День 1 — День знайомств"] },
+            { name: "🎨 Творча майстерка", desc: "15:00", details: "Створення прапорця загону.", link: TEMPLATE_DEV_LINKS["День 1 — День знайомств"] }
+        ],
+        "День 2 — День спорту": [
+            { name: "🏃 Ранкова зарядка", desc: "8:30", details: "Розминка.", link: TEMPLATE_DEV_LINKS["День 2 — День спорту"] },
+            { name: "🏅 Рухливі ігри", desc: "10:00", details: "Ігри на швидкість.", link: TEMPLATE_DEV_LINKS["День 2 — День спорту"] },
+            { name: "🎯 Веселі старти", desc: "11:30", details: "Командні естафети.", link: TEMPLATE_DEV_LINKS["День 2 — День спорту"] },
+            { name: "🍽️ Обід", desc: "13:30", details: "Повноцінне харчування.", link: TEMPLATE_DEV_LINKS["День 2 — День спорту"] },
+            { name: "🎨 Конкурс малюнків", desc: "15:00", details: "Малювання улюблених видів спорту.", link: TEMPLATE_DEV_LINKS["День 2 — День спорту"] }
+        ],
+        "День 3 — День творчості": [
+            { name: "✂️ Вироби з паперу", desc: "10:00", details: "Орігамі, аплікації.", link: TEMPLATE_DEV_LINKS["День 3 — День творчості"] },
+            { name: "🎨 Конкурс аплікацій", desc: "11:30", details: "Змагання на кращу аплікацію.", link: TEMPLATE_DEV_LINKS["День 3 — День творчості"] },
+            { name: "🖍️ Малювання крейдою", desc: "12:30", details: "Творчість на асфальті.", link: TEMPLATE_DEV_LINKS["День 3 — День творчості"] },
+            { name: "🍽️ Обід", desc: "13:30", details: "Повноцінне харчування.", link: TEMPLATE_DEV_LINKS["День 3 — День творчості"] },
+            { name: "🖼️ Виставка робіт", desc: "15:00", details: "Презентація виробів.", link: TEMPLATE_DEV_LINKS["День 3 — День творчості"] }
+        ],
+        "День 4 — День природи": [
+            { name: "🚶 Прогулянка", desc: "10:00", details: "Екскурсія, спостереження.", link: TEMPLATE_DEV_LINKS["День 4 — День природи"] },
+            { name: "🍂 Збір матеріалів", desc: "11:00", details: "Збір листя, шишок.", link: TEMPLATE_DEV_LINKS["День 4 — День природи"] },
+            { name: "🌿 Створення композицій", desc: "11:45", details: "Гербарій.", link: TEMPLATE_DEV_LINKS["День 4 — День природи"] },
+            { name: "🍽️ Обід", desc: "13:30", details: "Повноцінне харчування.", link: TEMPLATE_DEV_LINKS["День 4 — День природи"] },
+            { name: "🦉 Вікторина", desc: "15:00", details: "Питання про природу.", link: TEMPLATE_DEV_LINKS["День 4 — День природи"] }
+        ],
+        "День 5 — День казки": [
+            { name: "📖 Читання казок", desc: "10:00", details: "Українські народні казки.", link: TEMPLATE_DEV_LINKS["День 5 — День казки"] },
+            { name: "🎭 Інсценізація", desc: "11:00", details: "Сценки з казок.", link: TEMPLATE_DEV_LINKS["День 5 — День казки"] },
+            { name: "👗 Конкурс костюмів", desc: "12:00", details: "Казкові костюми.", link: TEMPLATE_DEV_LINKS["День 5 — День казки"] },
+            { name: "🍽️ Обід", desc: "13:30", details: "Повноцінне харчування.", link: TEMPLATE_DEV_LINKS["День 5 — День казки"] },
+            { name: "🖌️ Малювання", desc: "15:00", details: "Малювання казкових героїв.", link: TEMPLATE_DEV_LINKS["День 5 — День казки"] }
+        ]
+    };
     
     // Готові окремі заходи з посиланнями
     const BLOCKS = [
@@ -968,13 +996,41 @@
             }
             
             if (currentRole === 'student') {
+                const status = getCampStatus();
+                if (status.status !== 'active') {
+                    document.getElementById('fullscreenContainer').innerHTML = `
+                        <div class="camp-status">
+                            <div style="font-size: 64px;">${status.status === 'not_started' ? '🏕️' : '😢'}</div>
+                            <h2>${status.status === 'not_started' ? 'Табір ще не розпочався' : 'Табір закінчився'}</h2>
+                            <p>${status.message}</p>
+                            <button onclick="logout()" style="margin-top:20px; padding:12px 30px; border-radius:30px; background:#4caf50; color:white; border:none; cursor:pointer;">Повернутися</button>
+                        </div>
+                    `;
+                    document.getElementById('appContainer').style.display = 'block';
+                    document.getElementById('squadSelector').style.display = 'none';
+                    document.getElementById('blocksPanel').style.display = 'none';
+                    document.getElementById('daysSection').style.display = 'none';
+                    return;
+                }
+                
                 document.getElementById('squadSelector').style.display = 'none';
                 document.getElementById('blocksPanel').style.display = 'none';
                 document.getElementById('daysSection').style.display = 'none';
-                const today = currentDayIndex;
-                setTimeout(() => {
-                    renderFullscreenDay(currentSquad, today);
-                }, 100);
+                const today = getTodayCampIndex();
+                if (today) {
+                    setTimeout(() => {
+                        renderFullscreenDay(currentSquad, today);
+                    }, 100);
+                } else {
+                    document.getElementById('fullscreenContainer').innerHTML = `
+                        <div class="camp-status">
+                            <div style="font-size: 64px;">📅</div>
+                            <h2>Сьогодні немає занять</h2>
+                            <p>Сьогодні вихідний або перерва в таборі.</p>
+                            <button onclick="logout()" style="margin-top:20px; padding:12px 30px; border-radius:30px; background:#4caf50; color:white; border:none; cursor:pointer;">Повернутися</button>
+                        </div>
+                    `;
+                }
             } else {
                 document.getElementById('squadSelector').style.display = 'flex';
                 document.getElementById('blocksPanel').style.display = 'block';
@@ -987,10 +1043,24 @@
             console.error(e);
             showToast('⚠️ Локальний режим', false);
             if (currentRole === 'student') {
-                const today = currentDayIndex;
-                setTimeout(() => {
-                    renderFullscreenDay(currentSquad, today);
-                }, 100);
+                const status = getCampStatus();
+                if (status.status !== 'active') {
+                    document.getElementById('fullscreenContainer').innerHTML = `
+                        <div class="camp-status">
+                            <div style="font-size: 64px;">${status.status === 'not_started' ? '🏕️' : '😢'}</div>
+                            <h2>${status.status === 'not_started' ? 'Табір ще не розпочався' : 'Табір закінчився'}</h2>
+                            <p>${status.message}</p>
+                            <button onclick="logout()" style="margin-top:20px; padding:12px 30px; border-radius:30px; background:#4caf50; color:white; border:none; cursor:pointer;">Повернутися</button>
+                        </div>
+                    `;
+                } else {
+                    const today = getTodayCampIndex();
+                    if (today) {
+                        setTimeout(() => {
+                            renderFullscreenDay(currentSquad, today);
+                        }, 100);
+                    }
+                }
             } else {
                 renderAll();
             }
@@ -1337,7 +1407,7 @@
                     <input type="url" id="customEventLink" placeholder="Посилання на матеріали (необов'язково)">
                     <button onclick="addCustomBlockToDay(${squad}, ${day})">➕ Додати свій захід</button>
                 </div>
-                ${templateButtonsHtml ? `<div class="template-buttons">${templateButtonsHtml}</div>` : ''}
+                                ${templateButtonsHtml ? `<div class="template-buttons">${templateButtonsHtml}</div>` : ''}
             `;
         }
         
@@ -1356,7 +1426,7 @@
                     </div>
                     <div>
                         <span style="font-size: 12px;">${dateStr}</span>
-                        <button class="exit-full-btn" onclick="closeFullscreen()" style="margin-left: 10px; background:#dc3545; color:white; border:none; padding:5px 15px; border-radius:30px;">✖</button>
+                        <button class="exit-full-btn" onclick="closeFullscreen()">✖ Вийти</button>
                     </div>
                 </div>
                 <div class="fullscreen-day-card">
@@ -1448,7 +1518,7 @@
                             📋 ${escapeHtml(name)} (${blocks.length} заходів)
                         </div>`;
         }
-                document.getElementById('detailTitle').innerHTML = `📋 Виберіть шаблон для ${dayInfo[squad][day]?.displayName || `Дня ${day}`}`;
+        document.getElementById('detailTitle').innerHTML = `📋 Виберіть шаблон для ${dayInfo[squad][day]?.displayName || `Дня ${day}`}`;
         document.getElementById('detailBody').innerHTML = `<div>${options}<hr><p style="font-size:12px; color:#888;">OK = замінити всі заходи, Скасувати = додати до наявних</p><button onclick="closeDetailModal()" style="margin-top:15px; width:100%; padding:10px; border-radius:30px; background:#ccc; border:none;">Скасувати</button></div>`;
         document.getElementById('detailModal').style.display = 'flex';
     }
@@ -1598,7 +1668,19 @@
         if (currentRole === 'teacher') {
             renderAll();
         } else if (currentRole === 'student') {
-            document.getElementById('fullscreenContainer').innerHTML = '<div style="text-align:center; padding:50px; color:white;">🏕️ Оберіть день з календаря вище</div>';
+            const status = getCampStatus();
+            if (status.status !== 'active') {
+                document.getElementById('fullscreenContainer').innerHTML = `
+                    <div class="camp-status">
+                        <div style="font-size: 64px;">${status.status === 'not_started' ? '🏕️' : '😢'}</div>
+                        <h2>${status.status === 'not_started' ? 'Табір ще не розпочався' : 'Табір закінчився'}</h2>
+                        <p>${status.message}</p>
+                        <button onclick="logout()" style="margin-top:20px; padding:12px 30px; border-radius:30px; background:#4caf50; color:white; border:none; cursor:pointer;">Повернутися</button>
+                    </div>
+                `;
+            } else {
+                document.getElementById('fullscreenContainer').innerHTML = '<div style="text-align:center; padding:50px; color:white;">🏕️ Оберіть день з календаря вище</div>';
+            }
         }
     }
     
@@ -1724,10 +1806,63 @@
     
     function showHelp() {
         if (currentRole === 'teacher') {
-            alert('🏕️ Табір "Супутник" - Довідка для вчителя\n\n📌 Функціонал:\n• Обирайте загін (Загін 1 або Загін 2)\n• Натисніть на день для детального перегляду\n• ✏️ Редагуйте назву дня\n• 📋 Застосуйте готовий шаблон (заміна або додавання)\n• ➕ Додайте свій захід (назва, час, опис, ПОСИЛАННЯ)\n• 🔗 Кнопка 🔗 дозволяє змінити посилання для будь-якого заходу\n• 🖱️ Перетягуйте заходи та шаблони з панелі справа\n• 🟠 Помаранчеві елементи - цілі шаблони днів');
+            alert('🏕️ Табір Мрії - Довідка для вчителя\n\n📌 Функціонал:\n• Обирайте загін (Загін 1 або Загін 2)\n• Натисніть на день для детального перегляду\n• ✏️ Редагуйте назву дня\n• 📋 Застосуйте готовий шаблон (заміна або додавання)\n• ➕ Додайте свій захід (назва, час, опис, ПОСИЛАННЯ)\n• 🔗 Кнопка 🔗 дозволяє змінити посилання для будь-якого заходу\n• 🖱️ Перетягуйте заходи та шаблони з панелі справа\n• 🟠 Помаранчеві елементи - цілі шаблони днів\n• При видаленні - підтвердження\n\n🔐 Код скидання всіх днів: 0230');
         } else {
-            alert('🏕️ Табір "Супутник"\n\n🧑‍🎓 Учень:\n• Ви можете обрати загін при вході\n• Бачите розклад для обраного загону\n• Можете гортати дні стрілками ◀ ▶\n• Можете переглядати деталі заходів 📖\n• Якщо є посилання - воно відкривається в новій вкладці\n\n📅 Всього 14 днів табору');
+            alert('🏕️ Табір Мрії\n\n🧑‍🎓 Учень:\n• Ви можете обрати загін при вході\n• Бачите розклад для обраного загону\n• Можете гортати дні стрілками ◀ ▶\n• Можете переглядати деталі заходів 📖\n• Якщо є посилання - воно відкривається в новій вкладці\n\n📅 Всього 14 днів табору');
         }
+    }
+    
+    // ========== PWA ВСТАНОВЛЕННЯ ==========
+    let deferredPrompt;
+    
+    function isAppInstalled() {
+        return window.matchMedia('(display-mode: standalone)').matches ||
+               window.navigator.standalone === true ||
+               localStorage.getItem("pwaInstalled") === "true";
+    }
+    
+    if (!isAppInstalled()) {
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+    
+            if (!localStorage.getItem("installDismissed")) {
+                const popup = document.getElementById("installPopup");
+                if (popup) popup.style.display = "flex";
+            }
+        });
+    
+        const installYes = document.getElementById("installYes");
+        if (installYes) {
+            installYes.addEventListener("click", async () => {
+                const popup = document.getElementById("installPopup");
+                if (popup) popup.style.display = "none";
+    
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    if (outcome === 'accepted') {
+                        localStorage.setItem("pwaInstalled", "true");
+                    }
+                    deferredPrompt = null;
+                }
+            });
+        }
+    
+        const installNo = document.getElementById("installNo");
+        if (installNo) {
+            installNo.addEventListener("click", () => {
+                const popup = document.getElementById("installPopup");
+                if (popup) popup.style.display = "none";
+                localStorage.setItem("installDismissed", "true");
+            });
+        }
+    
+        window.addEventListener('appinstalled', () => {
+            localStorage.setItem("pwaInstalled", "true");
+            const popup = document.getElementById("installPopup");
+            if (popup) popup.style.display = "none";
+        });
     }
     
     window.onclick = (e) => { 
@@ -1738,7 +1873,4 @@
     };
 </script>
 </body>
-    <script> let deferredPrompt; function isAppInstalled() { return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true || localStorage.getItem("pwaInstalled") === "true"; } if (!isAppInstalled()) { window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; if (!localStorage.getItem("installDismissed")) { document.getElementById("installPopup").style.display = "block"; } }); document.getElementById("installYes").addEventListener("click", async () => { document.getElementById("installPopup").style.display = "none"; if (deferredPrompt) { deferredPrompt.prompt(); const { outcome } = await deferredPrompt.userChoice; if (outcome === 'accepted') { localStorage.setItem("pwaInstalled", "true"); } deferredPrompt = null; } }); document.getElementById("installNo").addEventListener("click", () => { document.getElementById("installPopup").style.display = "none"; localStorage.setItem("installDismissed", "true"); }); window.addEventListener('appinstalled', () => { localStorage.setItem("pwaInstalled", "true"); document.getElementById("installPopup").style.display = "none"; }); } </script
-    <div id="installPopup" style="display:none;"> <p>Встановити додаток на пристрій?</p> <button id="installYes">Встановити</button> <button id="installNo">Пізніше</button> </div>
-    <script> if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/tabir26/service-worker.js') .then(function() { console.log("Service Worker Registered"); }); } </script>
 </html>
