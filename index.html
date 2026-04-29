@@ -377,16 +377,22 @@
             user-select: none;
             transition: background 0.2s;
         }
-        .block-chip:active { cursor: grabbing; }
-        .block-chip.dragging { opacity: 0.3; background: #ccc; cursor: grabbing; }
-        .block-chip.drag-over { border-top: 3px solid #4caf50; margin-top: -3px; }
-        .block-chip.template-chip, .fullscreen-block.template-block {
+        .block-chip.template-chip {
             background: linear-gradient(135deg, #fff3e0, #ffe0b2);
             border-left: 4px solid #ff9800;
         }
+        .block-chip.ready-event {
+            background: linear-gradient(135deg, #ffebee, #ffcdd2);
+            border-left: 4px solid #f44336;
+        }
+        .block-chip.ready-event .block-name {
+            color: #c62828;
+        }
+        .block-chip:active { cursor: grabbing; }
+        .block-chip.dragging { opacity: 0.3; background: #ccc; cursor: grabbing; }
+        .block-chip.drag-over { border-top: 3px solid #4caf50; margin-top: -3px; }
         .block-info { flex: 1; min-width: 0; }
         .block-name { font-weight: 700; color: #1565c0; font-size: 14px; word-break: break-word; }
-        .template-name { color: #e65100; }
         .block-desc { font-size: 11px; color: #666; margin-top: 2px; }
         .block-actions { display: flex; gap: 6px; flex-shrink: 0; }
         .delete-block, .view-detail, .edit-link-btn, .edit-event-btn {
@@ -487,7 +493,6 @@
             border-radius: 20px;
             margin-bottom: 20px;
             text-align: center;
-            position: relative;
         }
         .day-name-title { 
             font-size: 1.7rem; 
@@ -499,7 +504,6 @@
             padding: 4px 16px;
             border-radius: 40px;
         }
-        .template-badge { background: rgba(255,255,255,0.2); display: inline-block; padding: 5px 14px; border-radius: 30px; font-size: 13px; margin-top: 8px; }
         .dev-link { 
             margin-top: 12px; 
             font-size: 13px;
@@ -508,14 +512,7 @@
             padding: 6px 16px;
             border-radius: 30px;
         }
-        .dev-link a { 
-            color: #FFD700; 
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .dev-link a:hover { text-decoration: underline; }
+        .dev-link a { color: #FFD700; text-decoration: none; }
         .edit-day-name-btn { 
             background: rgba(255,255,255,0.2); 
             border: none; 
@@ -525,11 +522,7 @@
             cursor: pointer; 
             font-size: 13px; 
             margin-top: 12px;
-            margin-left: 10px;
             transition: background 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
         }
         .edit-day-name-btn:hover { background: rgba(255,255,255,0.35); }
         .fullscreen-day-content { padding: 8px; max-height: 60vh; overflow-y: auto; }
@@ -547,12 +540,19 @@
             user-select: none;
             transition: background 0.2s;
         }
+        .fullscreen-block.template-block {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+        }
+        .fullscreen-block.ready-event {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+        }
         .fullscreen-block:active { cursor: grabbing; }
         .fullscreen-block.dragging { opacity: 0.3; background: #ccc; }
         .fullscreen-block.drag-over { border-top: 3px solid #4caf50; margin-top: -3px; }
         .fullscreen-block-info { flex: 1; min-width: 0; }
-        .fullscreen-block-name { font-weight: 700; color: #1565c0; font-size: 16px; word-break: break-word; }
-        .fullscreen-template-name { color: #e65100; }
+        .fullscreen-block-name { font-weight: 700; font-size: 16px; word-break: break-word; }
         .fullscreen-block-desc { font-size: 12px; color: #666; margin-top: 3px; }
         .fullscreen-block-actions { display: flex; gap: 8px; flex-shrink: 0; }
 
@@ -755,8 +755,6 @@
             .fullscreen-day-card { padding: 16px; }
             .fullscreen-block { padding: 10px 12px; }
             .camp-status { padding: 40px 20px; }
-            .edit-day-name-btn { font-size: 11px; padding: 4px 12px; }
-            .day-name-title { font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -882,7 +880,7 @@
         <h3>🔗 Редагувати посилання</h3>
         <input type="url" id="editLinkInput" placeholder="https://...">
         <div class="modal-buttons">
-                        <button onclick="saveEditedLink()" class="modal-save">Зберегти</button>
+            <button onclick="saveEditedLink()" class="modal-save">Зберегти</button>
             <button onclick="closeEditLinkModal()" class="modal-cancel">Скасувати</button>
         </div>
     </div>
@@ -890,7 +888,7 @@
 
 <div id="editDayNameModal" class="modal">
     <div class="modal-content">
-        <h3>✏️ Редагувати назву дня</h3>
+                <h3>✏️ Редагувати назву дня</h3>
         <input type="text" id="editDayNameInput" placeholder="Назва дня" style="font-size: 16px;">
         <div class="modal-buttons">
             <button onclick="saveEditedDayName()" class="modal-save">💾 Зберегти</button>
@@ -911,7 +909,8 @@
     </div>
 </div>
 
-<div id="confirmDeleteModal" style="display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:4000; display:flex; justify-content:center; align-items:center; padding:16px;">
+<!-- ВИПРАВЛЕНО: прибрано display:flex з inline-стилю -->
+<div id="confirmDeleteModal" style="display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:4000; justify-content:center; align-items:center; padding:16px;">
     <div class="confirm-card">
         <p>❓ Ви впевнені, що хочете видалити цей захід?</p>
         <div class="confirm-buttons">
@@ -1001,14 +1000,14 @@
         return null;
     }
     
-    // ========== ШАБЛОНИ ДНІВ (скорочено для прикладу) ==========
+    // ========== ШАБЛОНИ ДНІВ ==========
     const TEMPLATE_DEV_LINKS = {
-    "День «Коло знайомств»": "https://docs.google.com/document/d/1UA1I-hUZNz8FMeANFSoeKW2N_viJ39ra08fHnK47KsE/edit?usp=sharing",
-    "День «День шифрувальників»": "https://docs.google.com/document/d/1bMUfMcb1cdxjXITEKfyEurJs8Ow0QVISE4f9WEuScjo/edit?usp=sharing",
-    "День «Що в коробці?»": "https://docs.google.com/document/d/1uBGfd0vSx5KQrRnoWdriUHKPU92EE8PWL-_p9B6kCog/edit?usp=sharing",
-    "День «Слідопити»": "https://docs.google.com/document/d/1NiQaTPqNNpq0OuyPW3BoOwe5MwF5hs_1EbWTc3h1N1Q/edit?usp=sharing",
+    "День «Коло знайомств»": "https://docs.google.com/document/d/1UA1I-hUZNz8FMeANFSoeKW2N_viJ39ra08fHnK47KsE/edit?usp=drive_link",
+    "День «День шифрувальників»": "https://docs.google.com/document/d/1bMUfMcb1cdxjXITEKfyEurJs8Ow0QVISE4f9WEuScjo/edit?usp=drive_link",
+    "День «Що в коробці?»": "https://docs.google.com/document/d/1uBGfd0vSx5KQrRnoWdriUHKPU92EE8PWL-_p9B6kCog/edit?usp=drive_link",
+    "День «Слідопити»": "https://docs.google.com/document/d/1NiQaTPqNNpq0OuyPW3BoOwe5MwF5hs_1EbWTc3h1N1Q/edit?usp=drive_link",
     "День «Водний день (без шлангів)»": "https://docs.google.com/document/d/EXAMPLE__водний__без_шлангів/edit?usp=sharing",
-    "День «День мотузки та вузлів»": "https://docs.google.com/document/d/1qGavlZRoWiMWqHQwm51tdtD8T1q930K5VVpvwdTZGIg/edit?usp=sharing",
+    "День «День мотузки та вузлів»": "https://docs.google.com/document/d/EXAMPLE___мотузки_та_вузлів/edit?usp=sharing",
     "День «Тихий день»": "https://docs.google.com/document/d/EXAMPLE__тихий_/edit?usp=sharing",
     "День «День прищіпок»": "https://docs.google.com/document/d/EXAMPLE___прищіпок/edit?usp=sharing",
     "День «День тіней та світла»": "https://docs.google.com/document/d/EXAMPLE___тіней_та_світла/edit?usp=sharing",
@@ -1399,7 +1398,7 @@
         }
     }
     
-    // ========== РЕДАГУВАННЯ НАЗВИ ДНЯ (ЧЕРЕЗ МОДАЛЬНЕ ВІКНО) ==========
+    // ========== РЕДАГУВАННЯ НАЗВИ ДНЯ ==========
     function openEditDayNameModal(squad, day) {
         editingDayNameData = { squad, day };
         const currentName = dayInfo[squad][day]?.displayName || `День ${day}`;
@@ -1638,7 +1637,12 @@
         if (currentRole !== 'teacher') { showToast('⚠️ Тільки для вчителів', true); return; }
         if (!assignments[squad][day]) assignments[squad][day] = [];
         
-        const newBlock = { ...block, id: Date.now() + '_' + Math.random(), link: block.link || null };
+        const newBlock = { 
+            ...block, 
+            id: Date.now() + '_' + Math.random(), 
+            link: block.link || null,
+            isReadyEvent: true
+        };
         
         if (insertBeforeElement && insertBeforeElement.getAttribute) {
             const targetId = insertBeforeElement.getAttribute('data-block-id');
@@ -1686,9 +1690,9 @@
         const info = dayInfo[squad][day] || {};
         let linkHtml = '';
         if (block.link) {
-                        linkHtml = `<p style="margin-top:10px;">🔗 <a href="${block.link}" target="_blank" style="display:inline-flex; align-items:center; gap:5px; background:#f0f7ff; padding:8px 16px; border-radius:30px; text-decoration:none; color:#2196f3;">📎 Посилання на матеріали</a></p>`;
+            linkHtml = `<p style="margin-top:10px;">🔗 <a href="${block.link}" target="_blank" style="display:inline-flex; align-items:center; gap:5px; background:#f0f7ff; padding:8px 16px; border-radius:30px; text-decoration:none; color:#2196f3;">📎 Посилання на матеріали</a></p>`;
         } else if (info.devLink && info.devLink !== '#' && block.id && block.id.toString().startsWith('template_')) {
-            linkHtml = `<p style="margin-top:10px;">📄 <a href="${info.devLink}" target="_blank" style="display:inline-flex; align-items:center; gap:5px; background:#fff3e0; padding:8px 16px; border-radius:30px; text-decoration:none; color:#e65100;">📋 Посилання на розробку дня</a></p>`;
+                        linkHtml = `<p style="margin-top:10px;">📄 <a href="${info.devLink}" target="_blank" style="display:inline-flex; align-items:center; gap:5px; background:#fff3e0; padding:8px 16px; border-radius:30px; text-decoration:none; color:#e65100;">📋 Посилання на розробку дня</a></p>`;
         }
         
         let editButton = '';
@@ -1728,13 +1732,17 @@
         } else {
             blocks.forEach(b => {
                 const isTemplate = b.id && b.id.toString().startsWith('template_');
+                const isReadyEvent = b.isReadyEvent === true;
+                let blockClass = '';
+                if (isTemplate) blockClass = 'template-block';
+                if (isReadyEvent) blockClass = 'ready-event';
                 blocksHtml += `
-                    <div class="fullscreen-block ${isTemplate ? 'template-block' : ''}"
+                    <div class="fullscreen-block ${blockClass}"
                          data-block-id="${b.id}"
                          data-day="${day}"
                          data-squad="${squad}">
                         <div class="fullscreen-block-info">
-                            <div class="fullscreen-block-name ${isTemplate ? 'fullscreen-template-name' : ''}">${escapeHtml(b.name)}</div>
+                            <div class="fullscreen-block-name">${escapeHtml(b.name)}</div>
                             <div class="fullscreen-block-desc">${escapeHtml(b.desc || '')}</div>
                         </div>
                         <div class="fullscreen-block-actions">
@@ -1785,7 +1793,7 @@
                             <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
                                 <button class="add-day-btn" onclick="showBlockSelector(${squad}, ${day})" style="background:#2196f3; color:white; flex:1;">➕ Готовий захід</button>
                                 <button class="add-day-btn" onclick="openAddEventModal(${squad}, ${day})" style="background:#4caf50; color:white; flex:1;">✏️ Свій захід</button>
-                                <button class="add-day-btn" onclick="showTemplateSelector(${squad}, ${day})" style="background:#ff9800; color:white; flex:1;">📋 Шаблон</button>
+                                <button class="add-day-btn" onclick="showTemplateSelector(${squad}, ${day})" style="background:#ff9800; color:white; flex:1;">📋 Вибрати шаблон</button>
                             </div>
                             ${templateButtonsHtml ? `<div class="template-buttons" style="margin-top: 15px;">${templateButtonsHtml}</div>` : ''}
                         ` : ''}
@@ -1815,13 +1823,17 @@
             } else {
                 blocks.forEach(b => {
                     const isTemplate = b.id && b.id.toString().startsWith('template_');
+                    const isReadyEvent = b.isReadyEvent === true;
+                    let blockClass = '';
+                    if (isTemplate) blockClass = 'template-chip';
+                    if (isReadyEvent) blockClass = 'ready-event';
                     blocksHtml += `
-                        <div class="block-chip ${isTemplate ? 'template-chip' : ''}"
+                        <div class="block-chip ${blockClass}"
                              data-block-id="${b.id}"
                              data-day="${day}"
                              data-squad="${currentSquad}">
                             <div class="block-info">
-                                <div class="block-name ${isTemplate ? 'template-name' : ''}">${escapeHtml(b.name)}</div>
+                                <div class="block-name">${escapeHtml(b.name)}</div>
                                 <div class="block-desc">${escapeHtml(b.desc || '')}</div>
                             </div>
                             <div class="block-actions">
@@ -1846,7 +1858,7 @@
                     <div class="add-to-day">
                         <button class="add-day-btn" onclick="event.stopPropagation(); showBlockSelector(${currentSquad}, ${day})" style="background:#2196f3; color:white;">➕ Готовий захід</button>
                         <button class="add-day-btn" onclick="event.stopPropagation(); openAddEventModal(${currentSquad}, ${day})" style="background:#4caf50; color:white; margin-top:4px;">✏️ Свій захід</button>
-                        <button class="add-day-btn" onclick="event.stopPropagation(); showTemplateSelector(${currentSquad}, ${day})" style="background:#ff9800; color:white; margin-top:4px;">📋 Шаблон</button>
+                        <button class="add-day-btn" onclick="event.stopPropagation(); showTemplateSelector(${currentSquad}, ${day})" style="background:#ff9800; color:white; margin-top:4px;">📋 Вибрати шаблон</button>
                     </div>
                 </div>
             `;
@@ -2240,7 +2252,7 @@
     
     function showHelp() {
         if (currentRole === 'teacher') {
-            alert('🏕️ Табір «Супутник» - Довідка\n\n📌 Для вчителя:\n• Обирайте загін\n• 🖱️ Клік на день - детальний перегляд\n• ✏️ Редагуйте назву дня (через кнопку)\n• ✏️ Редагуйте заходи (назва, час, опис, посилання)\n• 📋 3 варіанти роботи з шаблоном: Замінити / Додати / Скасувати\n• 🖱️ Перетягуйте заходи мишею для зміни порядку\n• 🔗 Кнопка 🔗 - змінити посилання');
+            alert('🏕️ Табір «Супутник» - Довідка\n\n📌 Для вчителя:\n• Обирайте загін\n• 🖱️ Клік на день - детальний перегляд\n• ✏️ Редагуйте назву дня (через кнопку)\n• ✏️ Редагуйте заходи (назва, час, опис, посилання)\n• 📋 3 варіанти роботи з шаблоном: Замінити / Додати / Скасувати\n• 🖱️ Перетягуйте заходи мишею для зміни порядку\n• 🔗 Кнопка 🔗 - змінити посилання\n• 🎨 Кольорове маркування: 🔴 червоні - готові заходи, 🟠 помаранчеві - з шаблонів, 🔵 сині - додані вручну');
         } else {
             alert('🏕️ Табір «Супутник»\n\n🧑‍🎓 Учень:\n• Оберіть загін при вході\n• Гортайте дні стрілками ◀ ▶\n• Переглядайте деталі заходів 📖\n• Посилання відкриваються в новій вкладці\n\n📅 14 днів табору');
         }
@@ -2291,4 +2303,3 @@
 </script>
 </body>
 </html>
-           
